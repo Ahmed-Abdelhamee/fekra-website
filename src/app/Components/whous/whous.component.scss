@@ -1,0 +1,300 @@
+* {
+    box-sizing: border-box;
+}
+
+.body {
+    overflow-x: hidden;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-12 {
+    flex: 100%;
+    padding: 18px;
+}
+
+@media screen and (max-width:700px) {
+    .who-are-we .row {
+        flex: 60%;
+    }
+
+    body {
+        margin-left: 11%;
+    }
+
+    .footer {
+        margin-left: -13%;
+    }
+
+    .row .col-12 {
+        padding: 18px;
+    }
+
+    .who-are-we .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+    .Service-container {
+        justify-content: center;
+    }
+
+    .main-team {
+        justify-content: center;
+        display: flex;
+    }
+
+    .Service-container .row {
+        margin-right: 0px;
+        margin-left: 0px;
+        justify-content: center;
+    }
+
+    .team .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+    .maindiv .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+    .values-and-principles .Icons {
+        display: block;
+    }
+
+    .values-and-principles .conspt {
+        justify-content: center;
+        display: flex;
+    }
+
+    .teams {
+        padding: 10px;        
+    }
+
+    /* .who-are-we  .row .col-12{
+padding: 18px;
+    } */
+
+    .Services .row {
+        margin-right: 800px;
+    }
+
+    .success .succdiv2 {
+        height: 86px;
+    }
+
+    .row .team5 {
+        width: 100%;
+    }
+
+}
+
+
+.Aboutus {
+    margin-top: 70px;
+    font-size: 40px;
+    text-align: center;
+    color: cornflowerblue;
+}
+
+.text-block1 {
+    width: 600px;
+    text-align: center;
+    margin-right: 320px;
+}
+
+.text-block1 p {
+    text-align: center;
+    margin-right: -40px;
+}
+
+.conspt {
+    font-size: 40px;
+    text-align: center;
+    color: cornflowerblue;
+}
+
+.Icons {
+    display: flex;
+    align-items: center;
+}
+
+.Icon2 {
+    flex: 1;
+    font-size: 35px;
+}
+
+.Icon2 span {
+    font-size: 25px;
+}
+
+
+.simple-text2 {
+    width: 600px;
+}
+
+.simple-text2 p {
+    text-align: center;
+}
+
+.Services {
+    font-size: 40px;
+    text-align: center;
+    color: cornflowerblue;
+}
+
+.serviceimage {
+    display: flex;
+    justify-content: space-evenly;
+    width: 60%;
+    margin-right: 300px;
+}
+
+.service1 {
+    flex: 1;
+    width: 70%;
+}
+
+.service1 figure {
+    width: 100px;
+}
+
+.service1 image {
+    width: 200;
+    height: 300;
+}
+
+.service1 a {
+    color: #000000;
+}
+
+.imagservic {
+    border-radius: 200px;
+    width: 160px;
+}
+
+.team {
+    font-size: 40px;
+    text-align: center;
+    color: cornflowerblue;
+}
+
+.divteam {
+    display: flex;
+    align-items: center;
+    padding: 1%;
+    width: 90%;
+    margin-right: 60px;
+}
+
+.imgdiv {
+    background-color: gainsboro;
+    border-radius: 50%;
+    height: 5%;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.imgdiv img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.team1 {
+    height: 180px;
+    border-color: darkorange;
+    border-radius: 20px;
+    border-width: 1px;
+    background-color: white;
+    border-style: solid;
+    margin-inline: 1%;
+    margin-bottom: 24px;
+    width: 30%;
+
+}
+
+.team5 {
+    height: 180px;
+    border-color: darkorange;
+    border-radius: 20px;
+    border-width: 1px;
+    background-color: white;
+    border-style: solid;
+    margin-inline: 1%;
+    margin-bottom: 24px;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+}
+
+.team1 figure {
+    width: 40%;
+    margin-right: 100%;
+}
+
+.team1 image {
+    width: 45px;
+    height: 70px;
+
+}
+
+.team1 p {
+    text-align: center;
+}
+
+.succses {
+    display: flex;
+    align-items: center;
+    padding: 5%;
+}
+
+.succdiv1 {
+    flex: 1;
+    width: 15%;
+    border-style: solid;
+    border-color: #6441a5;
+}
+
+.succdiv2 {
+    flex: 1;
+    width: 30%;
+    height: 50px;
+    text-align: center;
+    border-style: solid;
+    border-radius: 5%;
+    border-width: 3%;
+    border-color: #6441a5;
+}
+
+.succdiv3 {
+    flex: 1;
+    width: 15%;
+    border-style: solid;
+    border-color: #6441a5;
+}
+
+.succses h5 {
+    color: #6441a5;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.flex {
+    flex: 1;
+}
+
+.fgsuc img{
+    width: 50%;
+}
+
+.maindiv {
+    width: 100%;
+}

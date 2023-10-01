@@ -1,231 +1,271 @@
 @media screen and (max-width:700px) {
-    .row .col-6 {
-         width: 83%;
-         text-align: center;
-     }
-   .row  .Allnededdiv1{
-    margin-left: 10px
-   }
-   .row  .Allnededdiv2{
-    margin-right: 52px;
-    margin-left: 13px;
-   }
-   .row .Allneded {
-    width: 27%;
-    margin-right: 43%;
-   }
-   .row  .Allnededdiv1 .img{
-    width: 50%;
-   }
-   .stor .row .h22{
-    margin-right: 10px;
-   }
-.figure5{
-    width: 100%;
-}
+    .container .co-programs .texts-div {
+        padding-right: 0px;
+    }
 
-.fgr .row{
-    margin-right: 2%;
-}
-.row .simple-text{
-    margin-right: 66px;
-} 
-.row .h2serv{
-    margin-right: 66px;
-}
- .row .tt-service-title{
-    margin-right: 10px;
-} 
-.row .c-h4{
-    margin-left: 5px;
-}
-.row .figu3{
-    margin-right: 0px;
-    width: 100%;
-}
-.row .appimg{
-    width: 100%;
-    margin-right: 0px;
-}
-.row .line2 {
-    width: 1%;
-    height: 93px;
-    background-color: blue;
-    margin-top: -108px;
-    margin-right: 0px;
-}
-.row .line{
+    .row .Allnededdiv1 {
+        margin-left: 10px
+    }
+
+    .row .Allnededdiv1 .img {
+        width: 50%;
+    }
+
+    .stor .row .h22 {
+        margin-right: 10px;
+    }
+
+    .figure5 {
+        width: 100%;
+    }
+
+    .fgr .row {
+        margin-right: 2%;
+    }
+
+    .row .simple-text {
+        margin-right: 66px;
+    }
+
+    .row .h2serv {
+        margin-right: 66px;
+    }
+
+    .row .tt-service-title {
+        margin-right: 10px;
+    }
+
+    .row .c-h4 {
+        margin-left: 5px;
+    }
+
+    .row .figu3 {
+        margin-right: 0px;
+        width: 100%;
+    }
+
+    .row .appimg {
+        width: 100%;
+        margin-right: 0px;
+    }
+
+    .row .line2 {
+        width: 1%;
+        height: 93px;
+        background-color: blue;
+        margin-top: -108px;
+        margin-right: 0px;
+    }
+
+    .row .line {
         width: 1%;
         height: 130px;
         background-color: blue;
         margin-top: -148px;
         margin-right: 0px;
-}
-.row .firstp{
-    margin-right: 10px;
-}
-.row{
-    margin-left: 0px;
-    margin-right: 0px;
-}
-/* .row .figure2{
+    }
+
+    .row .firstp {
+        margin-right: 10px;
+    }
+
+    .row {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    /* .row .figure2{
 width: 10%;
 margin-right: 12px;
 } */
 }
 
-.set-margin-for-header{
+.set-margin-for-header {
     padding-top: 20px;
 }
-.row{
+
+.row {
     overflow-x: hidden;
     width: 100%;
 }
-.app{
+
+.app {
     display: flex;
     align-items: center;
 }
-.appimg{
+
+.appimg {
     width: 500px;
     height: 400px;
     margin-top: 50px;
-    margin-right: 100px;
 }
-.app h2{
+
+.app h2 {
     margin-right: 70px;
 }
-.h22{
+
+.h22 {
     margin-right: 200px;
 }
-.span1{
-    color:orangered;
+
+.span1 {
+    color: orangered;
 }
-.span2{
+
+.span2 {
     color: blue;
 }
-.span3{
+
+.span3 {
     color: blue;
 }
-.appdiv{
+
+.appdiv {
     flex: 1;
 
 }
-.line{
+
+.line {
     width: 5px;
     height: 130px;
     background-color: blue;
-    margin-top: -170px;  
-    margin-left: 10px; 
+    margin-top: -170px;
+    margin-left: 10px;
     margin-right: -15px;
 }
-.line2{
+
+.line2 {
     width: 5px;
     height: 90px;
     background-color: blue;
     margin-top: -100px;
     margin-right: -15px;
 }
-.fgr .row .col-6 img{
+
+.fgr .row .col-6 img {
     width: 100%;
 }
- .comapp{
+
+.comapp {
     text-align: center;
 }
+
 // <!-- شركة فكرة تعمل  -->
-.thired-parag{
+.thired-parag {
     margin-right: 20px;
 }
-.fourth-parag{
+
+.fourth-parag {
     margin-right: 30px;
 }
-.fivth-parag{
+
+.fivth-parag {
     margin-right: 60px;
 }
-.fgr .col-6{
+
+.fgr .col-6 {
     text-align: center;
 }
-.figure5{
+
+.figure5 {
     width: 100%;
-    
+
 }
-.stor{
-    margin-right: 20%;
+
+.stor {
+    text-align: center;
 }
-.stor .h22{
+
+.stor .h22 {
     margin-right: -5px;
 }
-.Allneded{
-    display: flex;
-    width: 30%;
-    margin-right: 280px;
+.stor .texts-div{
+    padding: 0px 50px;
 }
-.Allnededdiv1 img{
-    width: 100%;
+.stor img{
+    width: auto;
 }
-.Allnededdiv2 img
-{
-    width: 50%;
-}
-.Allnededdiv1{
-    flex: 1;margin-left: 200px;
-}
-.Allnededdiv2{
-    margin-right: 30px;
-    margin-left: 200px
-}
-.row .simple-text{
+
+.row .simple-text {
     margin-right: 66px;
-} 
-.row .h2serv{
+}
+
+.row .h2serv {
     margin-right: 100px;
 }
-.titel{
+
+.titel {
     text-align: center;
 }
-.appstore{
+
+.appstore {
     display: flex;
     align-items: center;
     margin-right: 200px;
 }
-.appstorediv1{
+
+.appstorediv1 {
     flex: 1;
     margin-right: 20px;
 }
-.appstorediv1 figure{
+
+.appstorediv1 figure {
     margin-right: 200px;
 }
-.figu3{
+
+.figu3 {
     width: 300px;
 }
-
-.menyservices{
+.figu3 img{
+    width: auto;
+}
+.menyservices {
     color: #7f4398;
     text-align: right;
-    font-family:Abril Fatface;
+    font-family: Abril Fatface;
     margin-right: 40px;
 }
-.h2serv{
+
+.h2serv {
     color: #7f4398;
     text-align: right;
-    font-family:Abril Fatface;
+    font-family: Abril Fatface;
     margin-right: 30px;
 }
-.figure2{
+
+.figure2 {
     width: 400px;
 }
 
-.last-container .col-sm-4{
+.last-container .col-sm-4 {
     margin-left: -15px;
 }
-.figure5 img{
+
+.figure5 img {
     width: auto !important;
 }
 
 // <!-- ------------------------------- co-programs part -------------------------------- -->
-.co-programs .texts-div{
+.co-programs .texts-div {
     padding-top: 40px;
     padding-right: 40px;
 }
-.co-programs .texts-div p{
-    
+
+.co-programs .texts-div p {
+    font-size: 18px;
+}
+
+.Allneded {
+    display: flex;
+}
+
+.Allnededdiv1 img,
+.Allnededdiv2 img {
+    width: 107px;
+    height: 107px;
+    margin-top: 14px;
+}
+
+.Allnededdiv1 {
+    flex: 1;
 }

@@ -1,0 +1,162 @@
+@media screen and (max-width:700px) {
+    .row .col-6 {
+        width: 100%;
+        text-align: center;
+        margin-top: 45px;
+    }
+
+    .maindiv .main2 {
+        margin-top: -440px;
+    }
+
+    .main2 .office {
+        width: 100%
+    }
+
+    .maindiv .figure1 {
+        width: 286px;
+        height: 640px;
+    }
+
+    .maindiv .row .h1 {
+        width: 87%;
+    }
+
+    .main2 .frame {
+        width: 100%;
+    }
+
+
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.office {
+    display: flex;
+    align-items: center;
+    padding: 2%;
+}
+
+.h1 {
+    text-align: center;
+    color: blue;
+}
+
+
+
+form {
+    max-width: 90%;
+    margin: 0 auto;
+    margin-top: -400px;
+    justify-content: center;
+
+}
+
+.contact {
+    width: 99%;
+    flex: 1;
+}
+
+.maindiv {
+    display: flex;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.half {
+    flex-basis: 50%;
+    padding: 0 5px;
+}
+
+textarea {
+    width: 99%;
+    height: 100px;
+}
+
+.inputs {
+    width: 96%;
+    padding: 9px;
+    font-size: 16px;
+    height: 50px;
+}
+
+.input {
+    width: 99%;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.submit {
+    width: 99%;
+    height: 50px;
+    margin-bottom: 10px;
+    background-color: rgba(255, 166, 0, 0.916);
+}
+
+.off1 {
+    flex: 1;
+    width: 15%;
+    background-color: black;
+    height: 3px;
+}
+
+.off2 {
+    flex: 1;
+    width: 20%;
+    text-align: center;
+}
+
+.off3 {
+    flex: 1;
+    width: 15%;
+    background-color: black;
+    height: 3px;
+}
+
+.office h5 {
+    color: blue;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.bransh {
+    display: flex;
+    align-items: center;
+    padding: 2%;
+}
+
+.bransh1 {
+    flex: 1;
+}
+
+.frame {
+    width: 60%;
+    height: 300px;
+}
+
+.bransh2 {
+    margin-top: -160px;
+}
+
+.frame2 {
+    width: 60%;
+    height: 300px;
+}
+
+.br3 {
+    margin-top: -160px;
+}
+
+.wtapp {
+    width: 20px;
+    height: 20px;
+    background-color: aqua;
+}

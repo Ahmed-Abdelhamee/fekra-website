@@ -1,49 +1,41 @@
 @media screen and (max-width:700px) {
-    .row {
-        margin-right: 0px;
-        margin-left: 0px;
-
+ .row {
+    margin-right: 0px;
+    margin-left: 0px;
+        
     }
-
-    .row .col-6 {
+    .row .col-6{
         width: 100%;
         padding: 17px;
     }
-
-    .h1 {
+    .h1{
         text-align: center;
         color: blue;
     }
-
-    .img {
+    .img{
         margin-top: 0px;
     }
-
-    .figimg1 {
+    .figimg1{
         padding: 0px;
         margin-top: 0px;
     }
 }
-
-.divh1 {
-    padding-top: 30px;
+body{
+    overflow-x: hidden;
 }
-
-.h1 {
+.h1{
     color: blue;
     text-align: center;
 }
-
-.row .col-6 {
+.row .col-6{
     padding: 20px;
 }
-
-.figimg1 {
+.figimg1{
     padding: 11px;
     margin-top: -10px;
 }
-
-.img {
+.img{
     height: 106%;
     margin-top: -21px
 }
+ 

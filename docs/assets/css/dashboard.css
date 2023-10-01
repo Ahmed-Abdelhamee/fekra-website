@@ -1,0 +1,47 @@
+/* /* .dashboard {
+     display: flex; 
+    justify-content: space-between;
+  } */
+  .header {
+    padding: 10px 0;
+    box-shadow: 0 0 10px black;
+    direction: ltr;
+    position: fixed;
+    top: 0px;
+    z-index: 34;
+    width: 100%;
+    background-color: white;
+}
+  .widget {
+    padding: 20px; 
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 37px;
+  }
+  .row{
+    height: 100%;
+        margin-top: 110px;
+  }
+  .col-md-1 {
+    flex: 0 0 auto;
+    width: 4.333333%;
+}
+.col-lg-4 {
+    flex: 0 0 auto;
+    width: 22.333333%;
+    margin-left: 22px;
+    background-color:yellow
+}
+.col-7 {
+    flex: 0 0 auto;
+    width: 69.333333%;
+}
+  .widget h3 {
+    margin-top: 0;
+  }
+  
+  .widget p {
+    margin-bottom: 0;
+    padding: 10px;
+  } 
+  

@@ -1,82 +1,66 @@
 @media screen and (max-width:700px) {
-    .Design-company .Dc .img {
+    .Design-company .Dc .img{
         width: 100%;
     }
-
-    .The-best-design-company .prefer {
+    .The-best-design-company .prefer{
+        display: block;
+        padding: 10px 29px;
+    }
+    .Articles .row{
         display: block;
     }
-
-    .Articles .row {
-        display: block;
-    }
-
-    .most-important-features-of-Electro-website-design .row {
+    .most-important-features-of-Electro-website-design .row{
         display: block;
         /* height: 0; */
         /* width: 100%; */
         margin-right: 0;
     }
-
-    .most-important-features-of-Electro-website-design .maindiv2 {
+     .most-important-features-of-Electro-website-design .maindiv2{
         margin-bottom: 27px;
     }
-
-
-    .Advantages .row {
+    .Types-of-sites-container .h55{
+        margin-right: 57px;
+    }
+    .Types-of-sites-container .h5{
+        margin-right: 98px;
+    }
+    .Advantages .row{
         margin-top: -120px;
     }
-
-    .row {
+    .row{
         margin-left: 0px;
         margin-right: 0px;
     }
-
-    .Design-company .span1 {
+    .Design-company .span1{
         margin-right: 3px;
-
+    
     }
-
-    .prefer .col-lg-6 p{
-        font-size: 16px;
-    }
-    .Some-of-our-work .row .mb-3{
-        margin-bottom: 2rem !important;
-    }
-}
-
-body {
+} 
+body{
     overflow-x: hidden;
 }
-
-.Design-company {
+.Design-company{
     margin-top: 100px;
 
 }
-
-.Design-company img {
+.Design-company img{
     padding-top: 100px;
     width: 100%;
 }
-
-.The-best-design-company {
+.The-best-design-company{
     padding-right: 20px;
 }
-
-.prefer {
-    font-size: 22px;
+.prefer{
+    font-size: 22px; 
 }
-
-.prefer-img img {
+.prefer-img img{
     width: 100%;
     height: 338px;
 }
-
-.maindiv2 {
-    background-color: white;
-    box-shadow: 2px 2px 2px 2px rgba(136, 136, 136, 0.18);
-    border-radius: 20px;
-    padding: 20px;
+.maindiv2{
+background-color: white;box-shadow: 2px 2px 2px 2px rgba(136, 136, 136, 0.18);
+border-radius: 20px;
+padding: 20px;
 }
 
 /* .maindiv{
@@ -86,126 +70,98 @@ body {
     align-items: center;
     margin-right: 80px
 } */
-.h2 {
-    font-size: 61px;
-    color: #0072bb;
-    text-align: center;
-    font-family: Abril Fatface;
-    font-weight: 400;
-    font-style: normal;
+.h2{
+    font-size: 61px;color: #0072bb;text-align: center;font-family:Abril Fatface;font-weight:400;font-style:normal;
 }
-
-.h3 {
-    font-size: 40px;
-    color: #0072bb;
-    text-align: center;
-    font-family: Abril Fatface;
-    font-weight: 400;
-    font-style: normal;
+.h3{
+    font-size: 40px;color: #0072bb;text-align: center;font-family:Abril Fatface;font-weight:400;font-style:normal;
 }
-
-.span1 {
+.span1{
     color: black;
     margin-right: 40px;
 }
-
-.spa {
+.spa{
     color: blue;
 }
-
-.span2 {
-    white-space: nowrap;
-    font-family: GE SS Two;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 32px;
-    color: rgba(66, 73, 91, 1);
+.span2{
+    white-space: nowrap; font-family: GE SS Two; font-style: normal; font-weight: bold; font-size: 32px; color: rgba(66,73,91,1);
 }
-
-.span3 {
-    white-space: nowrap;
-    text-align: right;
-    font-family: GE SS Two;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 32px;
-    color: rgba(66, 73, 91, 1);
+.span3{
+    white-space: nowrap; text-align: right; font-family: GE SS Two; font-style: normal; font-weight: bold; font-size: 32px; color: rgba(66,73,91,1);
 }
-
-.p {
-    text-align: center;
-    color: blue;
+.p{
+    text-align: center;color:blue;
 }
-
-.row {
+.row{
     padding: 10px;
 }
-
-.mainimg {
-    display: flex;
-    align-items: center;
+.mainimg{
+    display: flex; align-items: center;
     justify-content: center;
     align-items: center;
 
 }
-
-.wh2 {
+/* .img{
+    flex: 1;
+} */
+.wh2{
     text-align: center;
     margin-top: 150px;
     color: blue;
 
 }
-.h4 {
+.h5{
+    margin-right:40%;
+}
+.h55{
+    margin-right: 30%;
+}
+.h4{
     text-align: center;
 }
-
-.engin {
+/* .img2{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    margin-right: 600px;
+} */
+.engin{
     margin-top: 70px;
 }
-
-.h555 {
+.h555{
     color: blue;
 }
-
-.h5ing {
+.h5ing{
     justify-content: center;
     display: flex;
 }
-
-.maindiv1 {
-    display: flex;
-    align-items: center;
+.maindiv1{
+    display: flex; align-items: center;
     width: 80%;
     justify-content: center;
     align-items: center;
     margin-right: 150px;
     overflow-x: hidden;
 }
-
-.imgg {
+.imgg{
     width: 20%;
 }
-
-.immg {
+.immg{
     justify-content: center;
     display: flex;
 }
-
-.div1 {
-    display: flex;
-    align-items: center;
+.div1{
+    display: flex; align-items: center;
     margin-inline: 20px;
-
+    
 }
-
-.div2 {
+.div2{
+    flex:1;
+}
+.d1{
     flex: 1;
 }
-
-.d1 {
-    flex: 1;
-}
-
 .phone {
     width: 300px;
     height: 600px;
@@ -213,9 +169,9 @@ body {
     border-radius: 30px;
     overflow: hidden;
     /* position: relative; */
-}
-
-.top-bar {
+  }
+  
+  .top-bar {
     width: 100%;
     height: 30px;
     background-color: grey;
@@ -224,64 +180,56 @@ body {
     align-items: center;
     padding: 0 10px;
     color: white;
-}
-
-.battery,
-.network,
-.charging {
+  }
+  
+  .battery,
+  .network,
+  .charging {
     display: flex;
     align-items: center;
-}
-
-.battery i,
-.network i,
-.charging i {
+  }
+  
+  .battery i,
+  .network i,
+  .charging i {
     margin-right: 5px;
-}
-
-.screen {
+  }
+  
+  .screen {
     width: 100%;
     height: 480px;
     background-color: white;
-}
-
-.bottom-bar {
+  }
+  
+  .bottom-bar {
     width: 100%;
     height: 90px;
     background-color: #333;
-}
-
-.imgicons {
+  }
+  .imgicons{
     width: 60px;
     display: block;
+    
+  }
 
-}
-
-.Advantages {
+  .Advantages{
     margin-top: 300px;
-}
-
-.Adimgdiv {
+  }
+  .Adimgdiv{
     justify-content: center;
     display: flex;
 
     padding: 39px;
-}
-
-.siteimg {
+  }
+  .siteimg{
     width: 100px;
     height: 100px;
-}
-
-.sitediv {
+  }
+  .sitediv{
     justify-content: center;
     display: flex;
-}
-
-.searching {
+  }
+  .searching{
     justify-content: center;
     display: flex;
-}
-.Types-of-sites-container .col-lg-4 {
-    text-align: center;
-}
+  }
