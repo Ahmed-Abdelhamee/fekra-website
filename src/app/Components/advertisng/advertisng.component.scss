@@ -1,3 +1,13 @@
+
+@media screen and (max-width:600px) {
+    div.carousel-item img{
+        height: 272px !important;
+    }
+}
+
+.carousel-item img{
+    height: 500px !important;
+}
 .ad-home{
     direction: rtl;
     text-align: right;
