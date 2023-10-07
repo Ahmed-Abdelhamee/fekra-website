@@ -12,6 +12,7 @@ import { WhousComponent } from './Components/whous/whous.component';
 import { MobileappComponent } from './Components/mobileapp/mobileapp.component';
 import { AdvertisngComponent } from './Components/advertisng/advertisng.component';
 import { ContactusComponent } from './Components/contactus/contactus.component';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ContactusComponent } from './Components/contactus/contactus.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]
