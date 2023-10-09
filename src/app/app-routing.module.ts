@@ -8,21 +8,22 @@ import { MobileappComponent } from './Components/mobileapp/mobileapp.component';
 import { WebsitedesignComponent } from './Components/websitedesign/websitedesign.component';
 import { WhousComponent } from './Components/whous/whous.component';
 import { AdminComponent } from './admin/admin.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 
 const routes: Routes = [
   {path:"",component:HomeComponent},
-  {path:"home",component:HomeComponent},
+  {path:"home",component:AdminLoginComponent},
   {path:"ad",component:AdvertisngComponent},
   {path:"contact-us",component:ContactusComponent},
   {path:"ele",component:ElectioncampaignsComponent},
   {path:"mob",component:MobileappComponent},
   {path:"web-desgin",component:WebsitedesignComponent},
   {path:"whous",component:WhousComponent},
-  {path:"admin",component:AdminComponent}
+  {path:"admin/",component:AdminComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{useHash:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

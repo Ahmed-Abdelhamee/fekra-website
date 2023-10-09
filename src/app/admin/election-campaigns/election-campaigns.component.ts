@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-election-campaigns',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ElectionCampaignsComponent implements OnInit {
 
-  constructor() { }
+  constructor( private formBuilder:FormBuilder , private route : Router) { }
+
+  election=this.formBuilder.group({
+    photourl:["", Validators.required],
+  })
 
   ngOnInit(): void {
   }
-
+  submit(){
+    
+  }
 }

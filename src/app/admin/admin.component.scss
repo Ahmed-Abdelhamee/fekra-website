@@ -1,8 +1,4 @@
-body {
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-  }
-  
+
   html {
     height: -webkit-fill-available;
   }
@@ -37,6 +33,7 @@ body {
   
   .nav-flush .nav-link {
     border-radius: 3px;
+    font-size: 25px;
   }
   
   .btn-toggle {
@@ -90,12 +87,35 @@ body {
   
 
   // ---------------------------------- my edit view--------------------------------------------
+
+  @media screen and (max-width: 600px) {
+    .sidebar-width{
+      width: 3.5rem  !important;
+    }
+    li.nav-item{
+      margin-left: 5px;
+    }
+    .nav-flush .nav-link {
+      font-size: 15px;
+    }
+    div.content{
+      right: 3.6rem;
+      width: calc(100% - 3.6rem);
+    }
+  }
+
 .nav.nav-pills.nav-flush.mb-auto{
   display:flex;
   align-content: end;
 }
 .nav-item{
   margin-left: 9px;
+  margin-left: 9px;
+  box-shadow: 0px 0px 8px lightgray;
+  border-radius: 4px;
+}
+.active{
+  background-color: orange !important;
 }
 .sidebar{
   width: 72px;
@@ -108,4 +128,12 @@ body {
   position: absolute;
   padding: 20px;
   padding-top: 50px;
+}
+.remove-sidebar-list{
+  width: 100%;
+  right: 0px;
+}
+.sidebar-width{
+  width: 4.5rem;
+   height: 100vh;
 }

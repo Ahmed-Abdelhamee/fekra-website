@@ -1,0 +1,18 @@
+@media screen and (max-width: 600px) {
+    div.part-view{
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    .part-view .view-parts-btn{
+        font-size: 3vw !important;
+    }
+  }
+
+.part-view{
+    margin-bottom: 50px;
+}
+
+.view-parts-btn{
+    background-color: #f3efc9;
+}

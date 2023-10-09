@@ -1,0 +1,22 @@
+.form-div{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-group{
+    padding: 10px;
+}
+label{
+    padding-bottom: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: system-ui;
+}
+.btn{
+    font-size: 14px;
+}
+.error{
+    font-family: system-ui;
+    font-weight: 600;
+}

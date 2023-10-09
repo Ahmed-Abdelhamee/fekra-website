@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -7,8 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
-
+  dash_list:boolean=true;
+  constructor(private route:Router){
+    route.events.subscribe( e =>{
+      if(e instanceof NavigationEnd){
+        if(route.url.endsWith("admin")){
+          this.dash_list=false;
+        }else{
+          this.dash_list=true;
+        }
+      }
+    })
+  }
   ngOnInit(): void {
   }
 

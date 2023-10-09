@@ -13,6 +13,8 @@ import { MobileappComponent } from './Components/mobileapp/mobileapp.component';
 import { AdvertisngComponent } from './Components/advertisng/advertisng.component';
 import { ContactusComponent } from './Components/contactus/contactus.component';
 import { AdminModule } from './admin/admin.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -30,9 +32,13 @@ import { AdminModule } from './admin/admin.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AdminModule
+    AdminModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {provide : LocationStrategy,useClass:HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

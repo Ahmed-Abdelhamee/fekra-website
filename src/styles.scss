@@ -7,4 +7,32 @@
     margin-top: 92px;
 }
 
-// ----------------------------- spagety code for main css file shared --------------------------- 
+// ----------------------------- style code for main css file shared --------------------------- 
+
+
+input::placeholder{
+    text-transform: capitalize;
+}
+label{
+    padding: 5px;
+}
+.control-button{
+    margin-left: 10px;
+    color: white;
+    font-size: 13px !important; 
+    margin-bottom: 20px;
+}
+@media screen and (max-width: 600px) {
+    div.d-flex.justify-content-end{
+        justify-content: center !important;
+    }
+    .form-group label{
+        font-size: 12px;
+    }
+    .form-group input::placeholder{
+        font-size: 12px;
+    }
+    .form-group input[type="file"]{
+        font-size: 12px;
+    }
+  }

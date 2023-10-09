@@ -7,6 +7,8 @@ import { AdvertismentComponent } from './advertisment/advertisment.component';
 import { WebDesignComponent } from './web-design/web-design.component';
 import { ElectionCampaignsComponent } from './election-campaigns/election-campaigns.component';
 import { WhoUsComponent } from './who-us/who-us.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,11 +17,14 @@ import { WhoUsComponent } from './who-us/who-us.component';
     AdvertismentComponent,
     WebDesignComponent,
     ElectionCampaignsComponent,
-    WhoUsComponent
+    WhoUsComponent,
+    AdminLoginComponent
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }
