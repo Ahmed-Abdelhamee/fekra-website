@@ -9,19 +9,6 @@
 
 // ----------------------------- style code for main css file shared --------------------------- 
 
-
-input::placeholder{
-    text-transform: capitalize;
-}
-label{
-    padding: 5px;
-}
-.control-button{
-    margin-left: 10px;
-    color: white;
-    font-size: 13px !important; 
-    margin-bottom: 20px;
-}
 @media screen and (max-width: 600px) {
     div.d-flex.justify-content-end{
         justify-content: center !important;
@@ -35,4 +22,25 @@ label{
     .form-group input[type="file"]{
         font-size: 12px;
     }
-  }
+}
+
+input::placeholder{
+    text-transform: capitalize;
+}
+label{
+    padding: 5px;
+}
+.control-button{
+    margin-left: 10px;
+    color: white;
+    font-size: 13px !important; 
+    margin-bottom: 20px;
+}
+.promo-img-show-Admin{
+    height: 70px;
+    width: 85px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px #8883793d;
+    margin-top: 13px;
+}
+

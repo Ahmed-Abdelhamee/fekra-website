@@ -15,10 +15,10 @@
     <div class="btn btn-warning control-button">Edit </div>
     <div class="btn btn-info control-button">Add </div>
   </div>
-    <form [formGroup]="who_us" (ngSubmit)="submit()">
+    <form [formGroup]="who_us" (ngSubmit)="submitWhoUs()">
       <div class="form-group">
         <label for="formGroupExampleInput">من نحن</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Advertisment Title">
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Advertisment Title" formControlName="description">
       </div>
       <div class="text-center m-2">
         <button type="submit" class="btn btn-outline-warning"> save</button>
@@ -34,21 +34,21 @@
     <div class="btn btn-warning control-button">Edit </div>
     <div class="btn btn-info control-button">Add </div>
   </div>
-    <form [formGroup]="who_us" (ngSubmit)="submit()">
+    <form [formGroup]="services" (ngSubmit)="submitServices()">
       <div class="form-group">
         <label for="formGroupExampleInput">وصف الخدمة</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Advertisment Title">
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Advertisment Title" formControlName="description">
       </div>
       <div class="form-group mt-2">
         <label for="formGroupExampleInput2"> صورة الخدمات</label>
-        <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Advertisment Content">
+        <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Advertisment Content" (change)="servicesfileUpload($event.target)">
+        <img [src]="servicesPhotoUrl" alt="" *ngIf="servicesPhotoUrl != '' " class="promo-img-show-Admin">
       </div>
       <div class="text-center m-2">
         <button type="submit" class="btn btn-outline-warning"> save</button>
       </div>
     </form>
 </div>
-
 
 
 <!-- our team -->
@@ -58,21 +58,21 @@
     <div class="btn btn-warning control-button">Edit </div>
     <div class="btn btn-info control-button">Add </div>
   </div>
-    <form [formGroup]="our_team" (ngSubmit)="submit()">
+    <form [formGroup]="our_team" (ngSubmit)="submitOurTeam()">
       <div class="form-group">
         <label for="formGroupExampleInput">اسم العضو</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Advertisment Title">
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Advertisment Title" formControlName="name">
       </div>
       <div class="form-group mt-2">
         <label for="formGroupExampleInput2"> صور العضو</label>
-        <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Advertisment Content">
+        <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Advertisment Content" (change)="ourTeamfileUpload($event.target)">
+        <img [src]="teamPhotoUrl" alt="" *ngIf="teamPhotoUrl != '' " class="promo-img-show-Admin">
       </div>
       <div class="text-center m-2">
         <button type="submit" class="btn btn-outline-warning"> save</button>
       </div>
     </form>
 </div>
-
 
 
 <!-- our clients -->
@@ -82,10 +82,11 @@
     <div class="btn btn-warning control-button">Edit </div>
     <div class="btn btn-info control-button">Add </div>
   </div>
-    <form [formGroup]="our_clients" (ngSubmit)="submit()">
+    <form [formGroup]="our_clients" (ngSubmit)="submitOurClients()">
       <div class="form-group mt-2">
         <label for="formGroupExampleInput2"> صورة احد العملاء</label>
-        <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Advertisment Content">
+        <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Advertisment Content" (change)="clientfileUpload($event.target)">
+        <img [src]="clientPhotoUrl" alt="" *ngIf="clientPhotoUrl != '' " class="promo-img-show-Admin">
       </div>
       <div class="text-center m-2">
         <button type="submit" class="btn btn-outline-warning"> save</button>

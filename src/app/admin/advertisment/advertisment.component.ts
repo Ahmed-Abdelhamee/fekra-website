@@ -20,7 +20,7 @@ export class AdvertismentComponent implements OnInit {
   }
 
   submit(){
-    
+    console.log(this.advertisment.value)
   }
 
 }

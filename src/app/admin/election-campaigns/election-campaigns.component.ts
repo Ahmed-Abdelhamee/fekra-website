@@ -11,6 +11,8 @@ export class ElectionCampaignsComponent implements OnInit {
 
   constructor( private formBuilder:FormBuilder , private route : Router) { }
 
+  photoUrl : any="" ;
+  
   election=this.formBuilder.group({
     photourl:["", Validators.required],
   })
@@ -18,6 +20,16 @@ export class ElectionCampaignsComponent implements OnInit {
   ngOnInit(): void {
   }
   submit(){
-    
+    console.log(this.election.value);
+  }
+
+  fileUpload(event:any){
+      if (event.files && event.files[0]) {
+          var reader = new FileReader();
+          reader.onload = (e: any) => {
+          this.photoUrl = e.target.result;
+      }
+        reader.readAsDataURL(event.files[0]);
+    }
   }
 }

@@ -24,6 +24,7 @@ export class AdminLoginComponent implements OnInit {
   login(){
     if (this.adminLogin.get("email")?.value=="fekra@admin" && this.adminLogin.get("pass")?.value=="admin-f-2023"){
       this.route.navigate(["/admin/advertisment"])
+      sessionStorage.setItem("Admin","welcomeAdminfekra")
     }
     else{
       this.errorView=true
