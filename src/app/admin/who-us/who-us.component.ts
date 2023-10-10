@@ -16,7 +16,7 @@ export class WhoUsComponent implements OnInit {
   clientPhotoUrl:any=""
 
   constructor( private formBuilder:FormBuilder , private route : Router) { 
-    this.showpart('who-us')
+    this.showpart('who-us-add')
   }
 
   who_us=this.formBuilder.group({

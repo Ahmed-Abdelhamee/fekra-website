@@ -2,11 +2,10 @@
 
 <div class="col-12">
   <div class="d-flex justify-content-end">
-    <div class="btn btn-danger control-button">Delete </div>
-    <div class="btn btn-warning control-button">Edit </div>
-    <div class="btn btn-info control-button">Add </div>
+    <button class="btn btn-info control-button" (click)="controlShow('add')" *ngIf="controlItem !='add'">Add </button>
+    <button class="btn btn-secondary control-button" (click)="controlShow('showData')" *ngIf="controlItem !='showData'">show data </button>
   </div>
-  <form [formGroup]="advertisment" (ngSubmit)="submit()">
+  <form [formGroup]="advertisment" (ngSubmit)="submit()" *ngIf="controlItem=='add'">
     <div class="form-group">
       <label for="formGroupExampleInput">اسم الاعلان</label>
       <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Advertisment Title" formControlName="name">
@@ -20,3 +19,26 @@
     </div>
   </form>
 </div>
+
+
+<table class="table" *ngIf="controlItem=='showData'">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">اسم الاعلان</th>
+      <th scope="col">محتوي الاعلان</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of advertismentList; let i=index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{item.name}}</td>
+      <td>{{item.description}}</td>
+      <td>
+        <button class="btn btn-danger control-button">Delete </button>
+        <button class="btn btn-warning control-button">Edit </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
