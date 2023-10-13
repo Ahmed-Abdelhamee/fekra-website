@@ -1,4 +1,5 @@
 export interface advertisment{
     name:string,
-    description:string
+    description:string,
+    id:number
 }

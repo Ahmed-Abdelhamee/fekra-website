@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { WhoUs } from 'src/app/admin/interfaces/who-us.interface';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-whous',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WhousComponent implements OnInit {
 
-  constructor() { }
+  WhoUsDescription:WhoUs[]=[]
+
+  constructor(private dataServ:DataService) {
+    this.dataServ.getWhoUsDescription().subscribe(data =>{
+      this.WhoUsDescription=data
+    })
+   }
 
   ngOnInit(): void {
   }

@@ -5,7 +5,7 @@
     <button class="btn btn-info control-button" (click)="controlShow('add')" *ngIf="controlItem !='add'">Add </button>
     <button class="btn btn-secondary control-button" (click)="controlShow('showData')" *ngIf="controlItem !='showData'">show data </button>
   </div>
-  <form [formGroup]="advertisment" (ngSubmit)="submit()" *ngIf="controlItem=='add'">
+  <form [formGroup]="advertisment" (ngSubmit)="submit()" *ngIf="controlItem=='add' || controlItem=='edit'">
     <div class="form-group">
       <label for="formGroupExampleInput">اسم الاعلان</label>
       <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Advertisment Title" formControlName="name">
@@ -36,8 +36,8 @@
       <td>{{item.name}}</td>
       <td>{{item.description}}</td>
       <td>
-        <button class="btn btn-danger control-button">Delete </button>
-        <button class="btn btn-warning control-button">Edit </button>
+        <button class="btn btn-danger control-button" (click)="deleteItem(item.id)">Delete </button>
+        <button class="btn btn-warning control-button" (click)="updateItem(item)">Edit </button>
       </td>
     </tr>
   </tbody>

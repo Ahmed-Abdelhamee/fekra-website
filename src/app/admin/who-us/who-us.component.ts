@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-who-us',
@@ -9,15 +10,13 @@ import { Router } from '@angular/router';
 })
 export class WhoUsComponent implements OnInit {
 
-  view_part:string=""
-
+  view_part:string="";
+  updatedObject:any;
+  // data variables 
+  list :any[]=[];
   servicesPhotoUrl:any=""
   teamPhotoUrl:any=""
   clientPhotoUrl:any=""
-
-  constructor( private formBuilder:FormBuilder , private route : Router) { 
-    this.showpart('who-us-add')
-  }
 
   who_us=this.formBuilder.group({
     description:["", Validators.required],
@@ -37,32 +36,83 @@ export class WhoUsComponent implements OnInit {
     photourl:["", Validators.required],
   })
 
-
+  constructor( private formBuilder:FormBuilder , private route : Router , private dataServ:DataService) { 
+    this.showpart('who-us-showData')
+    this.getDataFromAPI()
+  }
 
   ngOnInit(): void {
   }
 
   showpart(part:string){
-    this.view_part=part
+    this.view_part=part;
+    if(this.view_part=="who-us-add"){
+      this.who_us.patchValue({
+        description:"",
+      })
+    }
   }
 
+
+  // ------------------------- Who Us ---------------------
+
   submitWhoUs(){
-    console.log(this.who_us.value)
+    if(this.view_part=="who-us-add"){
+      this.dataServ.createWhoUsDescription(this.who_us.value)
+    }else{
+      this.dataServ.updateWhoUsDescription(this.updatedObject.id,this.who_us.value)
+    }
+    setTimeout(() => { this.getDataFromAPI() }, 400); // to view data
+    this.view_part="who-us-showData"  // to view data
   }
+
+  // ------------------------------------------------------
 
   submitServices(){
     console.log(this.services.value)
   }
-
   submitOurTeam(){
     console.log(this.our_team.value)
   }
-
   submitOurClients(){
     console.log(this.our_clients.value)
   }
 
 
+
+
+  /* get data from API */
+  getDataFromAPI(){
+    this.list=[]
+    if(this.view_part=="who-us-showData"){
+      this.dataServ.getWhoUsDescription().subscribe(data =>{
+        this.list=data
+      })
+    }
+  }
+
+  /* delete data from API */
+  deleteItem(item:any){
+    if(this.view_part=="who-us-showData"){
+      this.dataServ.deleteWhoUsDescription(item.id);
+      setTimeout(() => { this.getDataFromAPI() }, 400);
+    }
+  }
+
+  /* update data from API */
+  updateItem(item:any){
+    this.updatedObject=item;
+    if(this.view_part=="who-us-showData"){
+      this.view_part="who-us-description-edit" // to show form with data to edit
+      this.who_us.patchValue({
+        description:item.description,
+      })
+    }
+    
+  }
+
+
+// ------------------------------------------ uploading Images ------------------------------------------
   servicesfileUpload(event:any){
     if (event.files && event.files[0]) {
         var reader = new FileReader();
@@ -75,7 +125,6 @@ export class WhoUsComponent implements OnInit {
       reader.readAsDataURL(event.files[0]);
     }
   }
-
 
   ourTeamfileUpload(event:any){
     if (event.files && event.files[0]) {
@@ -90,8 +139,6 @@ export class WhoUsComponent implements OnInit {
     }
   }
 
-
-
   clientfileUpload(event:any){
     if (event.files && event.files[0]) {
         var reader = new FileReader();
@@ -104,6 +151,10 @@ export class WhoUsComponent implements OnInit {
       reader.readAsDataURL(event.files[0]);
     }
   }
+
+// ---------------------------------------------------------------------------------------------------
+
+
 
 
 }

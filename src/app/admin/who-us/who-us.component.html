@@ -1,11 +1,7 @@
 
 
 <div class="col-12 text-center part-view">
-  <!-- <button class="btn control-button view-parts-btn" (click)="showpart('who-us-showData')">من نحن </button>
-  <button class="btn control-button view-parts-btn" (click)="showpart('our-services-showData')">الخدمات </button>
-  <button class="btn control-button view-parts-btn" (click)="showpart('our-team-showData')">فريق العمل</button>
-  <button class="btn control-button view-parts-btn" (click)="showpart('our-clients-showData')">عملائنا</button> -->
-  <button class="btn control-button view-parts-btn" (click)="showpart('who-us-add')">من نحن </button>
+  <button class="btn control-button view-parts-btn" (click)="showpart('who-us-showData')">من نحن </button>
   <button class="btn control-button view-parts-btn" (click)="showpart('our-services-showData')">الخدمات </button>
   <button class="btn control-button view-parts-btn" (click)="showpart('our-team-showData')">فريق العمل</button>
   <button class="btn control-button view-parts-btn" (click)="showpart('our-clients-showData')">عملائنا</button>
@@ -13,18 +9,15 @@
 
 
 <!-- who-us -->
-<div class="col-12" *ngIf="view_part=='who-us-add'">
+<div class="col-12">
   <div class="d-flex justify-content-end">
-    <div class="btn btn-danger control-button">Delete </div>
-    <div class="btn btn-warning control-button">Edit </div>
-    <div class="btn btn-info control-button">Add </div>
-    <!-- <button class="btn btn-info control-button" (click)="showpart('who-us-add')" *ngIf="view_part !='who-us-add'">Add </button>
-    <button class="btn btn-info control-button" (click)="showpart('who-us-showData')" *ngIf="view_part !='who-us-showData'">Show Data </button> -->
+    <button class="btn btn-info control-button" (click)="showpart('who-us-add')" *ngIf="view_part !='who-us-add'">Add </button>
+    <button class="btn btn-info control-button" (click)="showpart('who-us-showData')" *ngIf="view_part !='who-us-showData'">Show Data </button>
   </div>
-    <form [formGroup]="who_us" (ngSubmit)="submitWhoUs()">
+    <form [formGroup]="who_us" (ngSubmit)="submitWhoUs()" *ngIf="view_part=='who-us-add' || view_part=='who-us-description-edit'">
       <div class="form-group">
         <label for="formGroupExampleInput">من نحن</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="description" formControlName="description">
+        <textarea type="text" class="form-control" id="formGroupExampleInput" rows="10" cols="30" placeholder="description" formControlName="description"></textarea>
       </div>
       <div class="text-center m-2">
         <button type="submit" class="btn btn-outline-warning"> save</button>
@@ -99,3 +92,34 @@
       </div>
     </form>
 </div>
+
+
+
+
+<!-- ----------------------------- data tables ----------------------------- -->
+
+<table class="table" *ngIf="view_part=='who-us-showData' || view_part=='our-services-showData' || view_part=='our-team-showData' || view_part=='our-clients-showData'">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">الوصف</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of list; let i=index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{item.description}}</td>
+      <td>
+        <button class="btn btn-danger control-button" (click)="deleteItem(item)">Delete </button>
+        <button class="btn btn-warning control-button" (click)="updateItem(item)">Edit </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+

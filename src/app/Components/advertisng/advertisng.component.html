@@ -28,12 +28,12 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <div class="card">
+                    <div class="card" *ngFor="let item of advertismentList">
                         <div class="card-header">
-                            اعلان واتس اب
+                            {{item.name}}
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title">. اعلان الواتس اب من احدث الطرق لتمويل منتاجاتك</h5>
+                            <h5 class="card-title">{{item.description}}</h5>
                             <a class="card-text " href="https://wa.me/message/H3BHYD7VPJ25E1">
                                 <div class="top_btn">
                                     <button class="btn">
