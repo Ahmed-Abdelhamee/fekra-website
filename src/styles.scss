@@ -22,6 +22,13 @@
     .form-group input[type="file"]{
         font-size: 12px;
     }
+
+
+    thead tr th,
+    tbody tr td,
+    tbody tr td .btn{
+        font-size: 12px !important; 
+    }
 }
 
 input::placeholder{

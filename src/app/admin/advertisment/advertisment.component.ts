@@ -49,13 +49,13 @@ export class AdvertismentComponent implements OnInit {
       this.dataSrv.createAdvertisments(this.advertisment.value)
     else {
       this.dataSrv.updateAdvertisments(this.updatedObject.id,this.advertisment.value);
-      setTimeout(()=> { this.getAdvertisment() ; this.controlItem= "showData"}, 400)
     }
+    setTimeout(()=> { this.getAdvertisment() ; this.controlItem= "showData"}, 500)
   }
 
   deleteItem(id:number){
     this.dataSrv.deleteAdvertisments(id);
-    setTimeout(()=> this.getAdvertisment() , 400)
+    setTimeout(()=> this.getAdvertisment() , 500)
   }
 
   updateItem(item:advertisment){

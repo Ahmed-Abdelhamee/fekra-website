@@ -99,9 +99,10 @@
       font-size: 15px;
     }
     div.content {
-      width: 100%;
-      right: 0rem;
+      width: calc(100% - 3rem);
+      right: 3rem;
     }
+    
   }
 
 .nav.nav-pills.nav-flush.mb-auto{

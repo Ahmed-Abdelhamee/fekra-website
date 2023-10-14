@@ -1,4 +1,14 @@
 
+
+@media screen and (max-width: 600px) {
+    .form-div .card{    
+        position: relative;
+        right: -2rem;
+        width: calc(100%);
+    }
+
+}
+
 div.content{
     right: 0rem;
     width: 100%;
