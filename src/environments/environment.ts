@@ -6,7 +6,7 @@ export const environment = {
   production: false
 };
 
-export const Api_link = " "
+export const Api_link = "http://markitingwebsite-001-site1.dtempurl.com/api";
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

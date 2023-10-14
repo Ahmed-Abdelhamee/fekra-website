@@ -8,7 +8,8 @@
     <form [formGroup]="design" (ngSubmit)="submit()" *ngIf="controlItem =='add'">
       <div class="form-group mt-2">
         <label for="formGroupExampleInput2">صورة من اعمالنا</label>
-        <input type="file" class="form-control" id="formGroupExampleInput2">
+        <!-- <input type="file" class="form-control" accept=".jpg , .png , .webp , jpeg" id="formGroupExampleInput2" (change)="fileUpload($event.target)"> -->
+        <input type="file" class="form-control" accept=".jpg , .png , .webp , jpeg" id="formGroupExampleInput2" (change)="fileUploaded($event)">
         <img [src]="photoUrl" alt="" *ngIf="photoUrl != '' " class="promo-img-show-Admin">
       </div>
       <div class="text-center m-2">
@@ -22,7 +23,7 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">صورة حملة انتخابية</th>
+      <th scope="col">صور من اعمالنا</th>
       <th scope="col"></th>
     </tr>
   </thead>
