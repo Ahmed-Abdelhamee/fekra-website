@@ -23,11 +23,14 @@
         font-size: 12px;
     }
 
-
     thead tr th,
     tbody tr td,
+    tbody tr th,
     tbody tr td .btn{
-        font-size: 12px !important; 
+        font-size: 10px !important; 
+    }
+    tr td .btn-warning{
+        padding: 5px 17px;
     }
 }
 
@@ -48,7 +51,7 @@ label{
     width: 85px;
     border-radius: 5px;
     box-shadow: 0px 0px 6px #8883793d;
-    margin-top: 13px;
+    margin-top: 22px;
     margin-bottom: 13px;
 }
 .additional-height{
