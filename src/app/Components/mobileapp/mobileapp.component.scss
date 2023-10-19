@@ -2,53 +2,12 @@
     .container .co-programs .texts-div {
         padding-right: 0px;
     }
-
     .row .Allnededdiv1 {
         margin-left: 10px
     }
-
     .row .Allnededdiv1 .img {
         width: 50%;
     }
-
-    .stor .row .h22 {
-        margin-right: 10px;
-    }
-
-    .figure5 {
-        width: 100%;
-    }
-
-    .fgr .row {
-        margin-right: 2%;
-    }
-
-    .row .simple-text {
-        margin-right: 66px;
-    }
-
-    .row .h2serv {
-        margin-right: 66px;
-    }
-
-    .row .tt-service-title {
-        margin-right: 10px;
-    }
-
-    .row .c-h4 {
-        margin-left: 5px;
-    }
-
-    .row .figu3 {
-        margin-right: 0px;
-        width: 100%;
-    }
-
-    .row .appimg {
-        width: 100%;
-        margin-right: 0px;
-    }
-
     .row .line2 {
         width: 1%;
         height: 93px;
@@ -56,7 +15,6 @@
         margin-top: -108px;
         margin-right: 0px;
     }
-
     .row .line {
         width: 1%;
         height: 130px;
@@ -64,14 +22,12 @@
         margin-top: -148px;
         margin-right: 0px;
     }
-
-    .row .firstp {
-        margin-right: 10px;
-    }
-
     .row {
         margin-left: 0px;
         margin-right: 0px;
+    }
+    img.mobileImage{
+        width: 100%;
     }
 
 }
@@ -100,10 +56,6 @@
     margin-right: 70px;
 }
 
-.h22 {
-    margin-right: 200px;
-}
-
 .span1 {
     color: orangered;
 }
@@ -114,11 +66,6 @@
 
 .span3 {
     color: blue;
-}
-
-.appdiv {
-    flex: 1;
-
 }
 
 .line {
@@ -138,60 +85,8 @@
     margin-right: -15px;
 }
 
-.fgr .row .col-6 img {
-    width: 100%;
-}
-
-.comapp {
-    text-align: center;
-}
-
-// <!-- شركة فكرة تعمل  -->
-.thired-parag {
-    margin-right: 20px;
-}
-
-.fourth-parag {
-    margin-right: 30px;
-}
-
-.fivth-parag {
-    margin-right: 60px;
-}
-
-.fgr .col-6 {
-    text-align: center;
-}
-
-.figure5 {
-    width: 100%;
-
-}
-
-.stor {
-    text-align: center;
-}
-
-.stor .h22 {
-    margin-right: -5px;
-}
-.stor .texts-div{
-    padding: 0px 50px;
-}
-.stor img{
-    width: auto;
-}
-
 .row .simple-text {
     margin-right: 66px;
-}
-
-.row .h2serv {
-    margin-right: 100px;
-}
-
-.titel {
-    text-align: center;
 }
 
 .appstore {
@@ -200,21 +95,6 @@
     margin-right: 200px;
 }
 
-.appstorediv1 {
-    flex: 1;
-    margin-right: 20px;
-}
-
-.appstorediv1 figure {
-    margin-right: 200px;
-}
-
-.figu3 {
-    width: 300px;
-}
-.figu3 img{
-    width: auto;
-}
 .menyservices {
     color: #7f4398;
     text-align: right;
@@ -222,22 +102,13 @@
     margin-right: 40px;
 }
 
-.h2serv {
+.last-title {
     color: #7f4398;
     font-family: Abril Fatface;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-.figure2 {
-    width: 400px;
-}
-
-.last-container .col-sm-4 {
-    margin-left: -15px;
-}
-
-.figure5 img {
-    width: auto !important;
-}
 
 // <!-- ------------------------------- co-programs part -------------------------------- -->
 .co-programs .texts-div {
@@ -249,10 +120,6 @@
     font-size: 18px;
 }
 
-.Allneded {
-    display: flex;
-}
-
 .Allnededdiv1 img,
 .Allnededdiv2 img {
     width: 107px;
@@ -260,6 +127,42 @@
     margin-top: 14px;
 }
 
-.Allnededdiv1 {
-    flex: 1;
+// ------------------------------------------------------- Eng Ahmed ------------------------------------------
+
+.mobileImage{
+    width: 93%;
+    height: 360px;
+    border-radius: 10px;
 }
+
+.design-service{
+    font-size: 19px;
+    font-family: Tajawal;
+    line-height: 35px;
+    margin-top: 40px;
+}
+
+.Store-applications-img{
+    height: 315px;
+    width: 80%;
+}
+
+.special-program{
+    width: 80%;
+    margin-right: 10%;
+    max-height: 500px;
+}
+
+.paragraph{
+    margin-top: 30px;
+    line-height: 35px;
+    font-size: 18px;
+    text-align: center;
+}
+
+
+
+
+
+
+

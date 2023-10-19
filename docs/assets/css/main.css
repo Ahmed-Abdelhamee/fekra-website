@@ -17,6 +17,7 @@ body {
 img {
     width: 100%;
     /* height: fit-content; */
+    border-radius: 4px;
 }
 
 /* Global Colors */
