@@ -65,8 +65,8 @@ export class DataService {
   getWhoUsServices():Observable<Services[]>{
     return this.http.get<Services[]>(`${this.Api_link}/api/Services/GetAllservices`);
   }
-  createWhoUsServices(data:any){
-     this.http.post(`${this.Api_link}/api/Services/Addservices`,JSON.stringify(data)).subscribe();
+  createWhoUsServices(data:any): Observable<any>{
+     return this.http.post(`${this.Api_link}/api/Services/Addservices`,data);
   }
   deleteWhoUsServices(id:number){
     this.http.delete(`${this.Api_link}/api/Services/Deleteservices?id=${id}`).subscribe();
@@ -88,7 +88,7 @@ export class DataService {
       this.http.delete(`${this.Api_link}/api/Teamworks/DeleteTeammember?id=${id}`).subscribe();
    }
     updateWhoUsTeamWorks(id:number,data:any){
-      this.http.put(`${this.Api_link}/api/Teamworks/updateupdateteam?id=${id}` , data).subscribe();
+      this.http.put(`${this.Api_link}/api/Teamworks/updateteam?id=${id}` , data).subscribe();
     }
     /* ------------------------------------------------------------------------------------------------------- */
 

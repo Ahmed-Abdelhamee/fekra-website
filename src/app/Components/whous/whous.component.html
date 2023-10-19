@@ -53,27 +53,12 @@
         <h2 class="Services">الخدمات التي نقدمها</h2>
         <br>
         <div class="row serv text-center">
-            <div class="col-lg-4">
+            <div class="col-lg-4" *ngFor="let item of WhoUsServices">
                 <figure>
                     <img class="imagservic"
-                        src="https://matissedm.com/wp-content/uploads/2021/08/تهيئة-المواقع-لمحركات-البحث-SEO-150x150.jpg">
+                        src="{{api_link}}{{item.image}}">
                 </figure>
-                <a href="#" class="vc_gitem-link" title="خدمة SEO">خدمة SEO</a>
-            </div>
-            <div class="col-lg-4">
-                <figure>
-                    <img class="imagservic"
-                        src="https://matissedm.com/wp-content/uploads/2021/08/تصميم-المواقع-150x150.jpg">
-                </figure>
-                <a href="#" class="vc_gitem-link" title="خدمة تصميم المواقع">خدمة تصميم المواقع</a>
-            </div>
-
-            <div class="col-lg-4">
-                <figure>
-                    <img class="imagservic"
-                        src="https://matissedm.com/wp-content/uploads/2021/08/التسويق-الالكتروني-150x150.jpg">
-                </figure>
-                <a href="#" class="vc_gitem-link" title="خدمة التسويق الالكتروني">خدمة التسويق الالكتروني</a>
+                <a href="#" class="vc_gitem-link" title="{{item.name}}">{{item.name}}</a>
             </div>
         </div>
 
@@ -82,34 +67,13 @@
     <!-- ------------------------------------------------------------------------------------Team members-------------------------------------------------------------- -->
 
     <div class="main-team">
-        <div class="row teams">
+        <div class="row teams text-center">
             <h2 class="team">فريق العمل</h2>
-            <div class="col-lg-4 team5">
-                <div class="vc_col-sm-12 vc_gitem-col vc_gitem-col-align- vc_custom_1662335720720">
-                    <div class="wpb_single_image wpb_content_element vc_align_center">
-                        <figure class="wpb_wrapper vc_figure">
-                            <div class="imgdiv"><img
-                                    src="https://matissedm.com/wp-content/uploads/2016/10/user_2-2.png"></div>
-                            <br>
-                            <p class="text-center">Maria</p>
-                        </figure>
-                    </div>
+            <div class="col-lg-4 team5" *ngFor="let item of WhoUsOurTeam">
+                <div class="imgdiv">
+                    <img src="{{api_link}}{{item.image}}">
+                    <p class="text-center">{{item.name}}</p>
                 </div>
-            </div>
-            <div class="col-lg-4 team5">
-                <figure class="wpb_wrapper vc_figure">
-                    <div class="imgdiv"><img src="https://matissedm.com/wp-content/uploads/2016/10/user_2-2.png"></div>
-                    <br>
-                    <p>منال الغزالي</p>
-                </figure>
-            </div>
-            <div class="col-lg-4 team5">
-                <figure>
-                    <div class="imgdiv"><img src="https://matissedm.com/wp-content/uploads/2021/08/user_3-2.png">
-                    </div>
-                    <br>
-                    <p>عمر الاسودي</p>
-                </figure>
             </div>
         </div>
     </div>

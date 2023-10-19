@@ -59,8 +59,16 @@ export class WhoUsComponent implements OnInit {
       this.getDataFromAPI()
     }else  if(this.view_part=="our-team-showData"){
       this.getDataFromAPI()
+    }else  if(this.view_part=="our-team-add"){
+      this.our_team.patchValue({
+        name:"",// to show form with data to edit
+      })
     } else  if(this.view_part=="our-services-showData"){
       this.getDataFromAPI()
+    }else  if(this.view_part=="our-services-add"){
+      this.services.patchValue({
+        name:"",// to show form with data to edit
+      })
     }else  if(this.view_part=="our-clients-showData"){
       this.getDataFromAPI()
     }
@@ -82,18 +90,25 @@ export class WhoUsComponent implements OnInit {
   // ------------------------------------------------------
 
   submitServices(){
-    this.formData.append('name',this.services.get("name")?.value!);
+    let data ={
+      id:0,
+      Name:this.services.get("name")?.value!
+    }
+    this.formData.append('data',JSON.stringify(data));
     if(this.view_part=="our-services-add"){
-      this.dataServ.createWhoUsServices(this.formData)
+      this.dataServ.createWhoUsServices(this.formData).subscribe()
     }else if(this.view_part=="our-services-edit"){
       this.dataServ.updateWhoUsServices(this.updatedObject.id,this.formData)
     }
     setTimeout(() => {  this.view_part="our-services-showData"; this.getDataFromAPI() }, 700); // to view data
-
-
   }
 
   submitOurTeam(){
+    let data ={
+      id:0,
+      Name:this.our_team.get("name")?.value!
+    }
+    this.formData.append('data',JSON.stringify(data));
     if(this.view_part=="our-team-add"){
       this.dataServ.createWhoUsTeamWorks(this.formData)
     }else if(this.view_part=="our-team-edit"){
@@ -154,22 +169,22 @@ export class WhoUsComponent implements OnInit {
     if(this.view_part=="who-us-showData"){
       this.view_part="who-us-description-edit" // to show form with data to edit
       this.who_us.patchValue({
-        description:item.description,
+        description:item.descr// to show form with data to editiption,
       })
     }else if(this.view_part=="our-services-showData"){
-      this.view_part="our-services-showData" // to show form with data to edit
+      this.view_part="our-services-edit" // to show form with data to edit
       this.services.patchValue({
-        name:item.name,
+        name:item.name,// to show form with data to edit
       })
     }else if(this.view_part=="our-team-showData"){
       this.view_part="our-team-edit" // to show form with data to edit
-      this.who_us.patchValue({
-        description:item.description,
+      this.our_team.patchValue({
+        name:item.name,// to show form with data to editiption,
       })
     }else if(this.view_part=="our-clients-showData"){
       this.view_part="our-clients-edit" // to show form with data to edit
     }
-  }
+  }// to show form with data to edit
 
 
 // ------------------------------------------ uploading Images ------------------------------------------
