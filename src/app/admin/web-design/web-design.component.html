@@ -5,10 +5,9 @@
     <button class="btn btn-info control-button" (click)="controlShow('add')" *ngIf="controlItem !='add'">Add </button>
     <button class="btn btn-info control-button" (click)="controlShow('showData')" *ngIf="controlItem !='showData'">Show Data </button>
   </div>
-    <form [formGroup]="design" (ngSubmit)="submit()" *ngIf="controlItem =='add'">
+    <form (ngSubmit)="submit()" *ngIf="controlItem =='add' || controlItem =='edit'">
       <div class="form-group mt-2">
         <label for="formGroupExampleInput2">صورة من اعمالنا</label>
-        <!-- <input type="file" class="form-control" accept=".jpg , .png , .webp , jpeg" id="formGroupExampleInput2" (change)="fileUpload($event.target)"> -->
         <input type="file" class="form-control" accept=".jpg , .png , .webp , jpeg" id="formGroupExampleInput2" (change)="fileUploaded($event)">
         <img [src]="photoUrl" alt="" *ngIf="photoUrl != '' " class="promo-img-show-Admin">
       </div>
@@ -33,11 +32,11 @@
         <div class="additional-height"></div>
         {{i+1}}
       </th>
-      <td><img src="{{item.photourl}}" class="promo-img-show-Admin" alt=""></td>
+      <td><img src="{{api_link}}{{item.image}}" class="promo-img-show-Admin" alt=""></td>
       <td>
         <div class="additional-height"></div>
-        <button class="btn btn-danger control-button">Delete </button>
-        <button class="btn btn-warning control-button">Edit </button>
+        <button class="btn btn-danger control-button" (click)="deleteItem(item.id)">Delete </button>
+        <button class="btn btn-warning control-button" (click)="editItem(item);controlShow('edit')">Edit </button>
       </td>
     </tr>
   </tbody>

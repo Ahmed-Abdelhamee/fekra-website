@@ -1,25 +1,10 @@
 <div class="col-12 container set-margin-for-header">
-    <div class="divh1">
+    <div class="div-title">
         <h1 class="h1">مع فكره.. أنت في المقدمة</h1>
     </div>
     <div class="row">
-        <div class="col-6">
-            <figure class="figimg1">
-                <img src="assets/IMG1.jpg">
-            </figure>
-        </div>
-        <div class="col-6">
-            <img src="assets/IMG2.jpg">
+        <div class="col-lg-6 p-1 mb-2" *ngFor="let item of electionList">
+                <img src="{{api_link}}{{item.image}}">
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-6">
-            <img class="img" src="assets/MG3.jpg">
-        </div>
-        <div class="col-6">
-            <img src="assets/IMG4.jpg">
-        </div>
-    </div>
-
 </div>

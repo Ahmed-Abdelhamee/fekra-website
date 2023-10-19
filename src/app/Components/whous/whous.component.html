@@ -125,23 +125,8 @@
         </div>
         <div class="maindiv col-12">
             <div class="row">
-                <div class="col-lg-4 text-center">
-                    <figure class="fgsuc">
-                        <img class="img-responsive"
-                            src="https://matissedm.com/wp-content/uploads/2019/12/aden-decor-logo.png">
-                    </figure>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <figure class="fgsuc">
-                        <img class="img-responsive"
-                            src="https://matissedm.com/wp-content/uploads/2019/12/virtualestudio.png">
-                    </figure>
-                </div>
-
-                <div class="col-lg-4 text-center">
-                    <figure class="fgsuc">
-                        <img class="img-responsive" src="https://matissedm.com/wp-content/uploads/2019/12/siraindo.png">
-                    </figure>
+                <div class="col-lg-4 text-center" *ngFor="let item of WhoUsOurClients">
+                    <img src="{{api_link}}{{item.image}}" alt="" class="our-clients-img">
                 </div>
             </div>
         </div>

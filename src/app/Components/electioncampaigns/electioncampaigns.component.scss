@@ -5,45 +5,26 @@
 
     }
 
-    .row .col-6 {
-        width: 100%;
-        padding: 17px;
+    div.col-lg-6 img {
+        height: 300px;
     }
 
-    .h1 {
-        text-align: center;
-        color: blue;
-    }
-
-    .img {
-        margin-top: 0px;
-    }
-
-    .figimg1 {
-        padding: 0px;
-        margin-top: 0px;
-    }
 }
 
-.divh1 {
+.div-title {
     padding-top: 30px;
 }
 
 .h1 {
     color: blue;
     text-align: center;
+    margin-bottom: 20px;
 }
 
-.row .col-6 {
-    padding: 20px;
-}
 
-.figimg1 {
-    padding: 11px;
-    margin-top: -10px;
-}
-
-.img {
-    height: 106%;
-    margin-top: -21px
+.col-lg-6 img{
+    height: 480px;
+    width: 90%;
+    margin-right: 5%;
+    border-radius: 4px;
 }

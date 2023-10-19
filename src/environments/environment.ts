@@ -3,10 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
 };
 
-export const Api_link = "http://markitingwebsite-001-site1.dtempurl.com/api";
+// export const Api_link = "http://markitingwebsite-001-site1.dtempurl.com";
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

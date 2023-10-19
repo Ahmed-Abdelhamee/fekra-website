@@ -1,3 +1,4 @@
 export interface election{
-    photourl:string
+    id:number,
+    image:string,
 }

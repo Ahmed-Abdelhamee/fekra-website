@@ -1,0 +1,51 @@
+  // ------------------send file----------------------------------------------
+  // uploadFile(file: File): Observable<any>{
+  //   const url = 'https://localhost:44308/api/Election/Addelection';
+  //   const formData = new FormData();
+  //   formData.append('file', file);
+  //   return this.http.post<any>(url, formData);
+  // }
+
+
+
+// ----------------------send file and data---------------------------------
+  //   uploadFile(data:any,file: File): Observable<any>{
+  //   const url = 'https://localhost:44308/api/Election/Addelection';
+  //   const formData = new FormData();
+  //   formData.append('data', JSON.stringify(data));
+  //   formData.append('file', file);
+  //   return this.http.post<any>(url, formData);
+  // }
+
+-----------------------------------------------------------------------------------
+Ts:-
+  // -----------------------------------send file-------------------------------------
+  onFileSelected(event: any){
+     const file = event.target.files[0];
+     this.userservices.uploadFile(file).subscribe(
+       (response) => {
+         console.log('File uploaded successfully', response);
+       },
+       (error) => {
+         console.error('Error uploading file', error);
+       }
+ 
+     );
+   }
+
+  // -----------------------------------send file and data-----------------------------
+//   onFileSelected(event: any){
+// //    var data={
+// //       "Id": 0,
+// //        "Name": "Ahmed",
+// //  };
+//     const file = event.target.files[0];
+//     this.userservices.uploadFile(file).subscribe(
+//       (response) => {
+//         console.log('File uploaded successfully', response);
+//       },
+//       (error) => {
+//         console.error('Error uploading file', error);
+//       }
+
+//     );

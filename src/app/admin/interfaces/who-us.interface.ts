@@ -5,17 +5,17 @@ export interface WhoUs{
 
 export interface Services{
     id:number,
-    photourl:string,
-    description:string,
+    image:string,
+    name:string,
 }
 
 export interface OurTeam{
     id:number,
-    photourl:string,
+    image:string,
     name:string,
 }
 
 export interface OurClients{
     id:number,
-    description:string
+    image:any
 }

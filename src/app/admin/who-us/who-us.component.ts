@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-who-us',
@@ -18,22 +19,26 @@ export class WhoUsComponent implements OnInit {
   teamPhotoUrl:any=""
   clientPhotoUrl:any=""
 
+  formData=new FormData()
+
+  api_link="http://markitingwebsite-001-site1.dtempurl.com";
+
   who_us=this.formBuilder.group({
     description:["", Validators.required],
   })
 
   services=this.formBuilder.group({
-    photourl:["", Validators.required],
-    description:["", Validators.required],
+    image:[{}, Validators.required],
+    name:["", Validators.required],
   })
 
   our_team=this.formBuilder.group({
-    photourl:["", Validators.required],
+    image:["", Validators.required],
     name:["", Validators.required],
   })
 
   our_clients=this.formBuilder.group({
-    photourl:["", Validators.required],
+    image:[{}, Validators.required],
   })
 
   constructor( private formBuilder:FormBuilder , private route : Router , private dataServ:DataService) { 
@@ -50,6 +55,14 @@ export class WhoUsComponent implements OnInit {
       this.who_us.patchValue({
         description:"",
       })
+    }else if(this.view_part=="who-us-showData"){
+      this.getDataFromAPI()
+    }else  if(this.view_part=="our-team-showData"){
+      this.getDataFromAPI()
+    } else  if(this.view_part=="our-services-showData"){
+      this.getDataFromAPI()
+    }else  if(this.view_part=="our-clients-showData"){
+      this.getDataFromAPI()
     }
   }
 
@@ -62,23 +75,41 @@ export class WhoUsComponent implements OnInit {
     }else{
       this.dataServ.updateWhoUsDescription(this.updatedObject.id,this.who_us.value)
     }
-    setTimeout(() => { this.getDataFromAPI() }, 400); // to view data
+    setTimeout(() => { this.getDataFromAPI() }, 700); // to view data
     this.view_part="who-us-showData"  // to view data
   }
 
   // ------------------------------------------------------
 
   submitServices(){
-    console.log(this.services.value)
+    this.formData.append('name',this.services.get("name")?.value!);
+    if(this.view_part=="our-services-add"){
+      this.dataServ.createWhoUsServices(this.formData)
+    }else if(this.view_part=="our-services-edit"){
+      this.dataServ.updateWhoUsServices(this.updatedObject.id,this.formData)
+    }
+    setTimeout(() => {  this.view_part="our-services-showData"; this.getDataFromAPI() }, 700); // to view data
+
+
   }
+
   submitOurTeam(){
-    console.log(this.our_team.value)
+    if(this.view_part=="our-team-add"){
+      this.dataServ.createWhoUsTeamWorks(this.formData)
+    }else if(this.view_part=="our-team-edit"){
+      this.dataServ.updateWhoUsTeamWorks(this.updatedObject.id,this.formData)
+    }
+    setTimeout(() => {  this.view_part="our-team-showData"; this.getDataFromAPI() }, 700); // to view data
   }
+
   submitOurClients(){
-    console.log(this.our_clients.value)
+    if(this.view_part=="our-clients-add"){
+      this.dataServ.createWhoUsOurClients(this.formData)
+    }else if(this.view_part=="our-clients-edit"){
+      this.dataServ.updateWhoUsOurClients(this.updatedObject.id,this.formData)
+    }
+    setTimeout(() => {  this.view_part="our-clients-showData"; this.getDataFromAPI() }, 700); // to view data
   }
-
-
 
 
   /* get data from API */
@@ -88,6 +119,18 @@ export class WhoUsComponent implements OnInit {
       this.dataServ.getWhoUsDescription().subscribe(data =>{
         this.list=data
       })
+    }else if(this.view_part=="our-services-showData"){
+      this.dataServ.getWhoUsServices().subscribe(data =>{
+        this.list=data
+      })
+    }else if(this.view_part=="our-team-showData"){
+      this.dataServ.getWhoUsTeamWorks().subscribe(data =>{
+        this.list=data
+      })
+    }else if(this.view_part=="our-clients-showData"){
+      this.dataServ.getWhoUsOurClients().subscribe(data =>{
+        this.list=data
+      })
     }
   }
 
@@ -95,8 +138,14 @@ export class WhoUsComponent implements OnInit {
   deleteItem(item:any){
     if(this.view_part=="who-us-showData"){
       this.dataServ.deleteWhoUsDescription(item.id);
-      setTimeout(() => { this.getDataFromAPI() }, 400);
+    }else if(this.view_part=="our-services-showData"){
+      this.dataServ.deleteWhoUsServices(item.id);
+    }else if(this.view_part=="our-team-showData"){
+      this.dataServ.deleteWhoUsTeamWorks(item.id);
+    }else if(this.view_part=="our-clients-showData"){
+      this.dataServ.deleteWhoUsOurClients(item.id);
     }
+    setTimeout(() => { this.getDataFromAPI() }, 700);
   }
 
   /* update data from API */
@@ -107,54 +156,42 @@ export class WhoUsComponent implements OnInit {
       this.who_us.patchValue({
         description:item.description,
       })
+    }else if(this.view_part=="our-services-showData"){
+      this.view_part="our-services-showData" // to show form with data to edit
+      this.services.patchValue({
+        name:item.name,
+      })
+    }else if(this.view_part=="our-team-showData"){
+      this.view_part="our-team-edit" // to show form with data to edit
+      this.who_us.patchValue({
+        description:item.description,
+      })
+    }else if(this.view_part=="our-clients-showData"){
+      this.view_part="our-clients-edit" // to show form with data to edit
     }
-    
   }
 
 
 // ------------------------------------------ uploading Images ------------------------------------------
   servicesfileUpload(event:any){
-    if (event.files && event.files[0]) {
-        var reader = new FileReader();
-        reader.onload = (e: any) => {
-        this.services.patchValue({
-          photourl: e.target.result
-        })
-        this.servicesPhotoUrl= e.target.result
-      }
-      reader.readAsDataURL(event.files[0]);
-    }
+    this.formData=new FormData;
+    const file =event.target.files[0];
+    this.formData.append('file', file);
   }
 
   ourTeamfileUpload(event:any){
-    if (event.files && event.files[0]) {
-        var reader = new FileReader();
-        reader.onload = (e: any) => {
-        this.our_team.patchValue({
-          photourl: e.target.result
-        })
-        this.teamPhotoUrl= e.target.result
-    }
-      reader.readAsDataURL(event.files[0]);
-    }
+    this.formData=new FormData;
+    const file =event.target.files[0];
+    this.formData.append('file', file);
   }
 
   clientfileUpload(event:any){
-    if (event.files && event.files[0]) {
-        var reader = new FileReader();
-        reader.onload = (e: any) => {
-        this.our_clients.patchValue({
-          photourl: e.target.result
-        })
-        this.clientPhotoUrl= e.target.result
-    }
-      reader.readAsDataURL(event.files[0]);
-    }
+    this.formData=new FormData;
+    const file =event.target.files[0];
+    this.formData.append('file', file);
   }
 
 // ---------------------------------------------------------------------------------------------------
-
-
 
 
 }

@@ -8,11 +8,11 @@
 </div>
 
 
-<!-- who-us -->
+<!-- who-us form-->
 <div class="col-12">
   <div class="d-flex justify-content-end">
-    <button class="btn btn-info control-button" (click)="showpart('who-us-add')" *ngIf="view_part !='who-us-add'">Add </button>
-    <button class="btn btn-info control-button" (click)="showpart('who-us-showData')" *ngIf="view_part !='who-us-showData'">Show Data </button>
+    <button class="btn btn-info control-button" (click)="showpart('who-us-add')" *ngIf="view_part =='who-us-showData'">Add </button>
+    <button class="btn btn-info control-button" (click)="showpart('who-us-showData')" *ngIf="view_part =='who-us-add' || view_part =='who-us-description-edit' ">Show Data </button>
   </div>
     <form [formGroup]="who_us" (ngSubmit)="submitWhoUs()" *ngIf="view_part=='who-us-add' || view_part=='who-us-description-edit'">
       <div class="form-group">
@@ -26,21 +26,20 @@
 </div>
 
 
-<!-- our services -->
-<div class="col-12" *ngIf="view_part=='our-services-showData'">
+<!-- our services form-->
+<div class="col-12">
   <div class="d-flex justify-content-end">
-    <div class="btn btn-danger control-button">Delete </div>
-    <div class="btn btn-warning control-button">Edit </div>
-    <div class="btn btn-info control-button">Add </div>
+    <button class="btn btn-info control-button" (click)="showpart('our-services-add')" *ngIf="view_part =='our-services-showData'">Add </button>
+    <button class="btn btn-info control-button" (click)="showpart('our-services-showData')" *ngIf="view_part =='our-services-add' || view_part =='our-services-edit' ">Show Data </button>
   </div>
-    <form [formGroup]="services" (ngSubmit)="submitServices()">
+    <form [formGroup]="services" (ngSubmit)="submitServices()"  *ngIf="view_part =='our-services-add' || view_part =='our-services-edit' ">
       <div class="form-group">
         <label for="formGroupExampleInput">وصف الخدمة</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="description" formControlName="description">
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="description" formControlName="name">
       </div>
       <div class="form-group mt-2">
         <label for="formGroupExampleInput2"> صورة الخدمات</label>
-        <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Advertisment Content" (change)="servicesfileUpload($event.target)">
+        <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Advertisment Content" (change)="servicesfileUpload($event)">
         <img [src]="servicesPhotoUrl" alt="" *ngIf="servicesPhotoUrl != '' " class="promo-img-show-Admin">
       </div>
       <div class="text-center m-2">
@@ -50,21 +49,20 @@
 </div>
 
 
-<!-- our team -->
-<div class="col-12" *ngIf="view_part=='our-team-showData'">
+<!-- our team form-->
+<div class="col-12">
   <div class="d-flex justify-content-end">
-    <div class="btn btn-danger control-button">Delete </div>
-    <div class="btn btn-warning control-button">Edit </div>
-    <div class="btn btn-info control-button">Add </div>
+    <button class="btn btn-info control-button" (click)="showpart('our-team-add')" *ngIf="view_part =='our-team-showData'">Add </button>
+    <button class="btn btn-info control-button" (click)="showpart('our-team-showData')" *ngIf="view_part =='our-team-add' || view_part =='our-team-edit' ">Show Data </button>
   </div>
-    <form [formGroup]="our_team" (ngSubmit)="submitOurTeam()">
+    <form [formGroup]="our_team" (ngSubmit)="submitOurTeam()" *ngIf="view_part=='our-team-add' || view_part=='our-team-edit'">
       <div class="form-group">
         <label for="formGroupExampleInput">اسم العضو</label>
         <input type="text" class="form-control" id="formGroupExampleInput" placeholder="enter name" formControlName="name">
       </div>
       <div class="form-group mt-2">
         <label for="formGroupExampleInput2"> صور العضو</label>
-        <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Advertisment Content" (change)="ourTeamfileUpload($event.target)">
+        <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Advertisment Content" (change)="ourTeamfileUpload($event)">
         <img [src]="teamPhotoUrl" alt="" *ngIf="teamPhotoUrl != '' " class="promo-img-show-Admin">
       </div>
       <div class="text-center m-2">
@@ -74,17 +72,16 @@
 </div>
 
 
-<!-- our clients -->
-<div class="col-12" *ngIf="view_part=='our-clients-showData'">
+<!-- our clients form-->
+<div class="col-12">
   <div class="d-flex justify-content-end">
-    <div class="btn btn-danger control-button">Delete </div>
-    <div class="btn btn-warning control-button">Edit </div>
-    <div class="btn btn-info control-button">Add </div>
+    <button class="btn btn-info control-button" (click)="showpart('our-clients-add')" *ngIf="view_part =='our-clients-showData'">Add </button>
+    <button class="btn btn-info control-button" (click)="showpart('our-clients-showData')" *ngIf="view_part =='our-clients-add' || view_part =='our-clients-edit' ">Show Data </button>
   </div>
-    <form [formGroup]="our_clients" (ngSubmit)="submitOurClients()">
+    <form [formGroup]="our_clients" (ngSubmit)="submitOurClients()" *ngIf="view_part=='our-clients-add' || view_part=='our-clients-edit'">
       <div class="form-group mt-2">
         <label for="formGroupExampleInput2"> صورة احد العملاء</label>
-        <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Advertisment Content" (change)="clientfileUpload($event.target)">
+        <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Advertisment Content" (change)="clientfileUpload($event)">
         <img [src]="clientPhotoUrl" alt="" *ngIf="clientPhotoUrl != '' " class="promo-img-show-Admin">
       </div>
       <div class="text-center m-2">
@@ -95,21 +92,25 @@
 
 
 
-
 <!-- ----------------------------- data tables ----------------------------- -->
 
 <table class="table" *ngIf="view_part=='who-us-showData' || view_part=='our-services-showData' || view_part=='our-team-showData' || view_part=='our-clients-showData'">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">الوصف</th>
+      <th scope="col"*ngIf="view_part=='who-us-showData'">الوصف</th>
+      <th scope="col" *ngIf="view_part!='who-us-showData'">صورة</th>
+      <th scope="col" *ngIf="view_part=='our-services-showData'|| view_part=='our-team-showData'">الاسم</th>
       <th scope="col"></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="view_part=='who-us-showData'||view_part=='our-clients-showData'|| view_part=='our-services-showData'|| view_part=='our-team-showData'">
     <tr *ngFor="let item of list; let i=index">
       <th scope="row">{{i+1}}</th>
-      <td>{{item.description}}</td>
+      <td *ngIf="view_part=='who-us-showData'">{{item.description}}</td>
+      <td *ngIf="view_part=='our-services-showData'|| view_part=='our-team-showData'">{{item.name}}</td>
+      <td *ngIf="view_part!='who-us-showData'"><img src="{{api_link}}{{item.image}}" class="promo-img-show-Admin" alt=""></td>
+
       <td>
         <button class="btn btn-danger control-button" (click)="deleteItem(item)">Delete </button>
         <button class="btn btn-warning control-button" (click)="updateItem(item)">Edit </button>

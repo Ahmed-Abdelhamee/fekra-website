@@ -1,3 +1,4 @@
 export interface design{
-    photourl:string
+    id:number,
+    image:string
 }

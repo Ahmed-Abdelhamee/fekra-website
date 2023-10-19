@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { design } from '../interfaces/design.interface';
-import { HttpClient } from '@angular/common/http';
-import { Api_link } from 'src/environments/environment';
+import { HttpClient, HttpEvent, HttpErrorResponse, HttpEventType } from  '@angular/common/http';  
+import { DataService } from 'src/app/services/data.service';
+import { catchError, map, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-web-design',
@@ -14,56 +16,97 @@ export class WebDesignComponent implements OnInit {
 
   photoUrl:any="";
   controlItem:string ="";
-  fileSelected?:File;
-  designList:design[]=[
-    {photourl: "assets/a.jpg"},
-    {photourl: "assets/animate_img.png"},
-    {photourl: "assets/IMG1.jpg"},
-  ]
-  design=this.formBuilder.group({
-    photourl:["", Validators.required],
-  })
-  
-  constructor( private formBuilder:FormBuilder , private route : Router, private http:HttpClient) {
+  formData = new FormData();
+  designList:design[]=[]
+  api_link="http://markitingwebsite-001-site1.dtempurl.com";
+
+  updateObject:design={
+    id:0,
+    image:""
+  }
+
+  constructor( private formBuilder:FormBuilder , private route : Router, private http:HttpClient, private dataServ:DataService) {
     this.controlShow("showData")
+    this.getData()
    }
 
   ngOnInit(): void {
   }
 
-  submit(){
-    console.log(this.design.value)
-    let formData= new FormData();
-    formData.append("file" , this.fileSelected as any  )
-  }
-
-  // fileUpload(event:any):void{
-  //   if (event.files && event.files[0]) {
-  //       var reader = new FileReader();
-  //       reader.onload = (e: any) => {
-  //       this.photoUrl = e.target.result;
-  //       console.log(e.target.result);
-  //    }
-  //     reader.readAsDataURL(event.files[0]);
-  //   }
-  // }
-
-
-
-
-  fileUploaded(event:any):void{
-    let file =event.target.files[0];
-    let formData:FormData = new FormData();
-    formData.append("myfile", file , file.name);
-    console.log(formData)
-    // this.http.post(` ......... ${Api_link} ........... `,formData).subscribe()
+  getData(){
+    this.dataServ.getOurWorks().subscribe(data=>{
+      this.designList=data
+    })
   }
   
+  submit(){
+    if(this.controlItem=="add"){
+      this.dataServ.createOurWorks(this.formData).subscribe(
+        (response: any) => {
+          console.log('File uploaded successfully', response);
+        },
+        (error: any) => {
+          console.error('Error uploading file', error);
+        }
+       )
+    }else {
+      this.dataServ.updateOurWorks(this.updateObject.id,this.formData).subscribe(
+        (response: any) => {
+          console.log('File uploaded successfully', response);
+        },
+        (error: any) => {
+          console.error('Error uploading file', error);
+        }
+       )
+    }
+    setTimeout(()=> this.controlShow("showData") , 700)
+  }
 
 
+  fileUploaded(event:any){
+      this.formData=new FormData;
+      const  file =event.target.files[0];
+      this.formData.append('file', file);
+
+// code should be ... because we want to send file as it is created in => event.target.files[0] - not to add it again to formdata
+
+    //  this.design.patchValue({
+    //   image:event.target.files[0]
+    // })
+    //  this.dataServ.createOurWorks(this.design.value).subscribe(
+    //   (response) => {
+    //     console.log('File uploaded successfully', response);
+    //   },
+    //   (error) => {
+    //     console.error('Error uploading file', error);
+    //   }
+    //  )
+    
+  }
+
+  editItem(item:design){
+    this.updateObject=item;
+  }
+
+  deleteItem(id:number){
+    this.dataServ.deleteOurWorks(id);
+    console.log(id)
+    setTimeout(()=> this.controlShow("showData") , 700)
+  }
   
   controlShow(data:string){
     this.controlItem=data;
+    if(data=="showData"){
+      this.designList=[];
+      this.getData()
+    }
   }
+
+
+
+
+
+
+  
 
 }
