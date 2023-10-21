@@ -8,8 +8,8 @@
     <form [formGroup]="election" (ngSubmit)="submit()"  *ngIf="controlItem=='add' || controlItem=='edit'">
       <div class="form-group mt-2">
         <label for="formGroupExampleInput2"> صورة للحملات الانتخابية</label>
-        <input type="file" accept=".jpg , .png , .jpeg , .webp "  class="form-control" (change)="fileUploaded($event)"  id="formGroupExampleInput2" >
-        <img [src]="photoUrl" alt="" *ngIf="photoUrl != '' " class="promo-img-show-Admin">
+        <input type="file" accept=".jpg , .png , .jpeg , .webp "  class="form-control" (change)="uploadImg($event)"  id="formGroupExampleInput2" >
+        <small><img [src]="photoUrl" alt="" *ngIf="photoUrl != '' && uploadingImg == 'imgUploaded'" class="promo-img-show-Admin">  <span class="p-2" *ngIf="uploadingImg == 'uploadingImg'">جاري التحميل ...</span></small>
       </div>
       <div class="text-center m-2">
         <button type="submit" class="btn btn-outline-warning"> save</button>
@@ -33,7 +33,7 @@
         <div class="additional-height"></div>
         {{i+1}}
       </th>
-      <td><img src="{{api_link}}{{item.image}}" class="promo-img-show-Admin" alt=""></td>
+      <td><img src="{{item.image}}" class="promo-img-show-Admin" alt=""></td>
       <td>
         <div class="additional-height"></div>
         <button class="btn btn-danger control-button" (click)="deleteItem(item.id)">Delete </button>
@@ -42,3 +42,9 @@
     </tr>
   </tbody>
 </table>
+
+
+
+
+        <!-- code for uplaod ASP.net -->
+        <!-- <input type="file" accept=".jpg , .png , .jpeg , .webp "  class="form-control" (change)="fileUploaded($event)"  id="formGroupExampleInput2" > -->

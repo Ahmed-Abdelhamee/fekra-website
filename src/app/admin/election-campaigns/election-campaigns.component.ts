@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { election } from '../interfaces/election.interface';
-import { DataService } from 'src/app/services/data.service';
-import { environment } from 'src/environments/environment';
+import { Database } from '@angular/fire/database';
+import { DataService } from 'src/app/new-services/data.service';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+// import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-election-campaigns',
@@ -12,22 +14,29 @@ import { environment } from 'src/environments/environment';
 })
 export class ElectionCampaignsComponent implements OnInit {
 
-  photoUrl : any="" ;
-  controlItem:string ="";
 
+  // api_link="http://markitingwebsite-001-site1.dtempurl.com";
+  // formData: FormData= new FormData();
+
+  
+  // for control the view 
+  controlItem:string ="";
+  uploadingImg:string="";
+  // variables for getting the data 
+  photoUrl : any="" ;
+  electionList:election[]=[ ]
+  // for add the image
   election=this.formBuilder.group({
     image:[{}, Validators.required],
+    id:[new Date().getTime()]
   })
-
-  electionList:election[]=[ ]
-  formData: FormData= new FormData();
-  api_link="http://markitingwebsite-001-site1.dtempurl.com";
+  // for update the image 
   updateObject:election={
     id:0,
     image:""
   }
 
-  constructor( private formBuilder:FormBuilder , private route : Router, private dataServ:DataService) {
+  constructor( private formBuilder:FormBuilder ,private db:Database, private dataServ:DataService , private firestorage:AngularFireStorage) {
     this.controlShow("showData")
    }
 
@@ -36,49 +45,46 @@ export class ElectionCampaignsComponent implements OnInit {
 
   submit(){
     if(this.controlItem=="add"){
-      this.dataServ.createElection(this.formData).subscribe(
-        (response: any) => {
-          console.log('File uploaded successfully', response);
-        },
-        (error: any) => {
-          console.error('Error uploading file', error);
-        }
-       )
+      this.dataServ.createElection(this.election.value)
     }else {
-      this.dataServ.updateElection(this.updateObject.id,this.formData).subscribe(
-        (response: any) => {
-          console.log('File uploaded successfully', response);
-        },
-        (error: any) => {
-          console.error('Error uploading file', error);
+      this.dataServ.getElection().subscribe(data=>{
+        for (const key in data) {
+          if(data[key].id==this.updateObject.id){
+            this.election.patchValue({
+              id:this.updateObject.id
+            })
+            this.dataServ.updateElection(key,this.election.value)
+          }
         }
-       )
+      })
     }
+    setTimeout(() => { this.controlShow("showData"); this.photoUrl=""  }, 700);
   }
 
-  fileUploaded(event:any){
-    this.formData=new FormData;
-    const  file =event.target.files[0];
-    this.formData.append('file', file);
-  // code should be ... because we want to send file as it is created in => event.target.files[0] - not to add it again to formdata
-    //  this.election.patchValue({
-    //   image:event.target.files[0]
-    // })
-    //  this.dataServ.createElection(this.election.value).subscribe(
-    //   (response) => {
-    //     console.log('File uploaded successfully', response);
-    //   },
-    //   (error) => {
-    //     console.error('Error uploading file', error);
-    //   }
-    //  )
+  // for uploading image on firebase
+  async uploadImg(event:any){
+    this.uploadingImg="uploadingImg";
+    const file=event.target.files[0];
+    if(file){
+      const path=`fekra/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
+      const uploadTask = await this.firestorage.upload(path,file)
+      const url =await uploadTask.ref.getDownloadURL()
+      this.photoUrl=url;
+    }
+    this.uploadingImg="imgUploaded";
+    this.election.patchValue({
+      image:this.photoUrl
+    })
   }
+
+
 
   getData(){
     this.dataServ.getElection().subscribe(data=>{
-      this.electionList=data
+      for (const key in data) {
+        this.electionList.push(data[key])
+      }
     })
-  // setTimeout(()=> console.log(this.electionList), 700)  // To give the matrix the opportunity to load data
   }
 
   editItem(item:election){
@@ -86,7 +92,12 @@ export class ElectionCampaignsComponent implements OnInit {
   }
   
   deleteItem(id:number){
-    this.dataServ.deleteElection(id);
+    this.dataServ.getElection().subscribe(data=>{
+      for (const key in data) {
+        if(data[key].id==id)
+          this.dataServ.deleteElection(key);
+      }
+    })
     this.controlShow("showData")
   }
 
@@ -100,3 +111,49 @@ export class ElectionCampaignsComponent implements OnInit {
   }
 
 }
+
+
+
+
+
+  // fileUploaded(event:any){
+  // code should be ... because we want to send file as it is created in => event.target.files[0] - not to add it again to formdata
+    // this.formData=new FormData;
+    // const  file =event.target.files[0];
+    // this.formData.append('file', file);
+    //  this.election.patchValue({
+    //   image:event.target.files[0]
+    // })
+    //  this.dataServ.createElection(this.election.value).subscribe(
+    //   (response) => {
+    //     console.log('File uploaded successfully', response);
+    //   },
+    //   (error) => {
+    //     console.error('Error uploading file', error);
+    //   }
+    //  )
+  // }
+
+
+// submit database for the ASP.Net
+  // submit(){
+  //   if(this.controlItem=="add"){
+  //     this.dataServ.createElection(this.formData).subscribe(
+  //       (response: any) => {
+  //         console.log('File uploaded successfully', response);
+  //       },
+  //       (error: any) => {
+  //         console.error('Error uploading file', error);
+  //       }
+  //      )
+  //   }else {
+  //     this.dataServ.updateElection(this.updateObject.id,this.formData).subscribe(
+  //       (response: any) => {
+  //         console.log('File uploaded successfully', response);
+  //       },
+  //       (error: any) => {
+  //         console.error('Error uploading file', error);
+  //       }
+  //      )
+  //   }
+  // }

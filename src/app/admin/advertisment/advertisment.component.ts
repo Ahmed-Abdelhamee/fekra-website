@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { advertisment } from '../interfaces/advertisment.interface';
-import { DataService } from 'src/app/services/data.service';
+import { DataService } from 'src/app/new-services/data.service';
 
 @Component({
   selector: 'app-advertisment',
@@ -24,13 +24,11 @@ export class AdvertismentComponent implements OnInit {
   advertisment=this.formBuilder.group({
     name:["", Validators.required],
     description:["", Validators.required],
+    id:[new Date().getTime()]
   })
 
   constructor( private formBuilder:FormBuilder , private route : Router , private dataSrv:DataService) { 
     this.controlShow('showData')
-    dataSrv.getAdvertisments().subscribe(data =>{
-      this.advertismentList=data
-    })
   }
 
   ngOnInit(): void {
@@ -38,24 +36,44 @@ export class AdvertismentComponent implements OnInit {
   }
 
   getAdvertisment(){
-      this.advertismentList=[]
-      this.dataSrv.getAdvertisments().subscribe(data =>{
-      this.advertismentList=data
+    this.advertismentList=[]
+    this.dataSrv.getAdvertisment().subscribe(data =>{
+      for (const key in data) {
+        this.advertismentList.push(data[key])
+      }
     })
   }
 
   submit(){
-    if(this.controlItem=="add")
-      this.dataSrv.createAdvertisments(this.advertisment.value)
-    else {
-      this.dataSrv.updateAdvertisments(this.updatedObject.id,this.advertisment.value);
+    if(this.controlItem=="add"){
+      this.advertisment.patchValue({
+        id:new Date().getTime()
+      })
+      this.dataSrv.createAdvertisment(this.advertisment.value)
+    } else {
+      this.dataSrv.getAdvertisment().subscribe(data =>{
+        for (const key in data) {
+          if(data[key].id==this.updatedObject.id){
+            this.advertisment.patchValue({
+              id:this.updatedObject.id
+            })
+            this.dataSrv.updateAdvertisment(key,this.advertisment.value);
+          }
+        }
+      })
     }
-    setTimeout(()=> { this.getAdvertisment() ; this.controlItem= "showData"}, 500)
+    setTimeout(()=> { this.getAdvertisment() ; this.controlItem= "showData"}, 700)
   }
 
   deleteItem(id:number){
-    this.dataSrv.deleteAdvertisments(id);
-    setTimeout(()=> this.getAdvertisment() , 500)
+    this.dataSrv.getAdvertisment().subscribe(data =>{
+        for (const key in data) {
+        if(data[key].id==id){
+          this.dataSrv.deleteAdvertisment(key);
+        }
+      }
+    })
+    setTimeout(()=> this.getAdvertisment() , 700)
   }
 
   updateItem(item:advertisment){
