@@ -4,6 +4,7 @@ import { Database } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { election } from '../admin/interfaces/election.interface';
 import { advertisment } from '../admin/interfaces/advertisment.interface';
+import { design } from '../admin/interfaces/design.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +43,21 @@ export class DataService {
   }
   deleteElection(key:string){
     this.http.delete(`${this.databaseURL}/ElectionImages/${key}.json`).subscribe()
-}
+  }
+  // ******************************************** OurWorks Data ********************************************
+  getOurWorks():Observable<design[]>{
+    return this.http.get<design[]>(`${this.databaseURL}/OurWorksImages.json`)
+  }
+  createOurWorks(data:any){
+    this.http.post(`${this.databaseURL}/OurWorksImages.json`,data).subscribe()
+  }
+  updateOurWorks(key:string,data:any){
+    this.http.put(`${this.databaseURL}/OurWorksImages/${key}.json`,data).subscribe();
+  }
+  deleteOurWorks(key:string){
+    this.http.delete(`${this.databaseURL}/OurWorksImages/${key}.json`).subscribe()
+  }
+
+
+
 }

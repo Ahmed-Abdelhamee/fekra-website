@@ -43,25 +43,16 @@ export class ElectionCampaignsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  submit(){
-    if(this.controlItem=="add"){
-      this.dataServ.createElection(this.election.value)
-    }else {
-      this.dataServ.getElection().subscribe(data=>{
-        for (const key in data) {
-          if(data[key].id==this.updateObject.id){
-            this.election.patchValue({
-              id:this.updateObject.id
-            })
-            this.dataServ.updateElection(key,this.election.value)
-          }
-        }
-      })
+  // ----------------------- to control the show   with API  -----------------------
+  controlShow(data:string){
+    this.controlItem=data;
+    if(data=="showData"){
+      this.electionList=[];
+      setTimeout(() => { this.getData() }, 700);
     }
-    setTimeout(() => { this.controlShow("showData"); this.photoUrl=""  }, 700);
   }
 
-  // for uploading image on firebase
+  // -----------  for uploading image on firebase  ----------
   async uploadImg(event:any){
     this.uploadingImg="uploadingImg";
     const file=event.target.files[0];
@@ -79,6 +70,7 @@ export class ElectionCampaignsComponent implements OnInit {
 
 
 
+  // -------------------- get data for firebase  --------------------
   getData(){
     this.dataServ.getElection().subscribe(data=>{
       for (const key in data) {
@@ -86,11 +78,29 @@ export class ElectionCampaignsComponent implements OnInit {
       }
     })
   }
-
+  // -------------- sending data to function() ----------------
+  submit(){
+    if(this.controlItem=="add"){
+      this.dataServ.createElection(this.election.value)
+    }else {
+      this.dataServ.getElection().subscribe(data=>{
+        for (const key in data) {
+          if(data[key].id==this.updateObject.id){
+            this.election.patchValue({
+              id:this.updateObject.id
+            })
+            this.dataServ.updateElection(key,this.election.value)
+          }
+        }
+      })
+    }
+    setTimeout(() => { this.controlShow("showData"); this.photoUrl=""  }, 700);
+  }
+  // ----------------- to update data -------------------
   editItem(item:election){
     this.updateObject=item;
   }
-  
+  // ----------------- for deleting item -----------------
   deleteItem(id:number){
     this.dataServ.getElection().subscribe(data=>{
       for (const key in data) {
@@ -101,14 +111,7 @@ export class ElectionCampaignsComponent implements OnInit {
     this.controlShow("showData")
   }
 
-  // ----------------------- to vontrol the show -----------------------
-  controlShow(data:string){
-    this.controlItem=data;
-    if(data=="showData"){
-      this.electionList=[];
-      setTimeout(() => { this.getData() }, 700);
-    }
-  }
+
 
 }
 

@@ -10,6 +10,7 @@
         <label for="formGroupExampleInput2">صورة من اعمالنا</label>
         <input type="file" class="form-control" accept=".jpg , .png , .webp , jpeg" id="formGroupExampleInput2" (change)="fileUploaded($event)">
         <img [src]="photoUrl" alt="" *ngIf="photoUrl != '' " class="promo-img-show-Admin">
+        <span *ngIf="uploadingImg == 'uploadingImg'"><br>جاري التحميل ...</span>
       </div>
       <div class="text-center m-2">
         <button type="submit" class="btn btn-outline-warning"> save</button>
@@ -32,7 +33,7 @@
         <div class="additional-height"></div>
         {{i+1}}
       </th>
-      <td><img src="{{api_link}}{{item.image}}" class="promo-img-show-Admin" alt=""></td>
+      <td><img src="{{item.image}}" class="promo-img-show-Admin" alt=""></td>
       <td>
         <div class="additional-height"></div>
         <button class="btn btn-danger control-button" (click)="deleteItem(item.id)">Delete </button>

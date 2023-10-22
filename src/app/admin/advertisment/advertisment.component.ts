@@ -32,9 +32,26 @@ export class AdvertismentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
+
+  
+  // for controling the show    &&    and we will use it with the API for controling the data 
+  controlShow(data:string){
+    this.controlItem=data;
+    if(this.controlItem=="add"){
+      this.advertisment.patchValue({
+        name:"",
+        description:"",
+      })
+    }else  if(data =="showData"){
+      this.getAdvertisment()
+    }
+  }
+  
+
+
+  // -------------------- get data for firebase  --------------------
   getAdvertisment(){
     this.advertismentList=[]
     this.dataSrv.getAdvertisment().subscribe(data =>{
@@ -43,14 +60,16 @@ export class AdvertismentComponent implements OnInit {
       }
     })
   }
-
+  // -------------- sending data to function() ----------------
   submit(){
+    // adding data 
     if(this.controlItem=="add"){
       this.advertisment.patchValue({
         id:new Date().getTime()
       })
       this.dataSrv.createAdvertisment(this.advertisment.value)
     } else {
+      // editing data
       this.dataSrv.getAdvertisment().subscribe(data =>{
         for (const key in data) {
           if(data[key].id==this.updatedObject.id){
@@ -64,7 +83,16 @@ export class AdvertismentComponent implements OnInit {
     }
     setTimeout(()=> { this.getAdvertisment() ; this.controlItem= "showData"}, 700)
   }
-
+  // ----------------- to update data -------------------
+  updateItem(item:advertisment){
+    this.updatedObject=item;
+    this.controlItem="edit";
+    this.advertisment.patchValue({
+      name:item.name,
+      description:item.description,
+    })
+  }
+  // ----------------- for deleting item -----------------
   deleteItem(id:number){
     this.dataSrv.getAdvertisment().subscribe(data =>{
         for (const key in data) {
@@ -74,27 +102,6 @@ export class AdvertismentComponent implements OnInit {
       }
     })
     setTimeout(()=> this.getAdvertisment() , 700)
-  }
-
-  updateItem(item:advertisment){
-    this.updatedObject=item;
-    this.controlItem="edit";
-    this.advertisment.patchValue({
-      name:item.name,
-      description:item.description,
-    })
-  }
-
-  controlShow(data:string){
-    this.controlItem=data;
-    if(this.controlItem=="add"){
-      this.advertisment.patchValue({
-        name:"",
-        description:"",
-      })
-    }else  if(data =="showData"){
-      this.getAdvertisment()
-    }
   }
 
 }
