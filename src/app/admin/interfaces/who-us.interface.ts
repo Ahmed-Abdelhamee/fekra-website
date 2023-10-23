@@ -6,7 +6,7 @@ export interface WhoUs{
 export interface Services{
     id:number,
     image:string,
-    name:string,
+    description:string,
 }
 
 export interface OurTeam{

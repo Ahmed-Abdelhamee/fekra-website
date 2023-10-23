@@ -1,3 +1,10 @@
+
+@media screen and (max-width:991px) {
+    i.bi{
+        display: none;
+    }
+}
+
 @media screen and (max-width:700px) {
     .Design-company .Dc .img {
         width: 100%;
@@ -22,7 +29,6 @@
         margin-bottom: 27px;
     }
 
-
     .Advantages .row {
         margin-top: -120px;
     }
@@ -40,9 +46,11 @@
     .prefer .col-lg-6 p{
         font-size: 16px;
     }
+
     .Some-of-our-work .row .mb-3{
         margin-bottom: 2rem !important;
     }
+
 }
 
 body {
@@ -258,7 +266,7 @@ body {
 }
 
 .Advantages {
-    margin-top: 300px;
+    margin-top: 100px;
 }
 
 .Adimgdiv {
@@ -290,8 +298,33 @@ body {
 
 // ----------------------------------------------- Eng Ahmed ------------------------------------------
 
+.Some-of-our-work{
+    position: relative;
+}
+.our-works-list-view{
+    display: flex;
+    justify-content: space-evenly;
+}
 .our-work-img{
     height: 240px;
     width: 100%;
+    width: 300px;
     border-radius: 20px;
+    margin-bottom: 10px;
+}
+.bi-caret-left-fill{
+    position: absolute;
+    left: -1.5%;
+    top: 45%;
+    z-index: 4;
+    font-size: 25px;
+    color: orange;
+}
+.bi-caret-right-fill{
+    position: absolute;
+    top: 45%;
+    z-index: 4;
+    right: -1.5%;
+    font-size: 25px;
+    color: orange;
 }

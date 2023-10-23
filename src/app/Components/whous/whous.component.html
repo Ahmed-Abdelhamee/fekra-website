@@ -52,26 +52,26 @@
     <div class="Service-container">
         <h2 class="Services">الخدمات التي نقدمها</h2>
         <br>
-        <div class="row serv text-center">
+        <div class="row serv text-center d-flex justify-content-center">
             <div class="col-lg-4" *ngFor="let item of WhoUsServices">
                 <figure>
-                    <img class="imagservic"
-                        src="{{api_link}}{{item.image}}">
+                    <img class="imagservic" src="{{item.image}}">
+                        <!-- src="{{api_link}}{{item.image}}"> -->
                 </figure>
-                <a href="#" class="vc_gitem-link" title="{{item.name}}">{{item.name}}</a>
+                <a href="#" class="vc_gitem-link" title="{{item.description}}">{{item.description}}</a>
             </div>
         </div>
-
     </div>
     <br>
     <!-- ------------------------------------------------------------------------------------Team members-------------------------------------------------------------- -->
 
     <div class="main-team">
-        <div class="row teams text-center">
+        <div class="row teams text-center d-flex justify-content-center">
             <h2 class="team">فريق العمل</h2>
             <div class="col-lg-4 team5" *ngFor="let item of WhoUsOurTeam">
                 <div class="imgdiv">
-                    <img src="{{api_link}}{{item.image}}">
+                    <img src="{{item.image}}">
+                    <!-- <img src="{{api_link}}{{item.image}}"> -->
                     <p class="text-center">{{item.name}}</p>
                 </div>
             </div>
@@ -88,9 +88,10 @@
             <div class="succdiv3"></div>
         </div>
         <div class="maindiv col-12">
-            <div class="row">
+            <div class="row d-flex justify-content-center">
                 <div class="col-lg-4 text-center" *ngFor="let item of WhoUsOurClients">
-                    <img src="{{api_link}}{{item.image}}" alt="" class="our-clients-img">
+                    <img src="{{item.image}}" alt="" class="our-clients-img">
+                    <!-- <img src="{{api_link}}{{item.image}}" alt="" class="our-clients-img"> -->
                 </div>
             </div>
         </div>

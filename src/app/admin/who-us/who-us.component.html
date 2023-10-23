@@ -35,11 +35,12 @@
     <form [formGroup]="services" (ngSubmit)="submitServices()"  *ngIf="view_part =='our-services-add' || view_part =='our-services-edit' ">
       <div class="form-group">
         <label for="formGroupExampleInput">وصف الخدمة</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="description" formControlName="name">
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="description" formControlName="description">
       </div>
       <div class="form-group mt-2">
         <label for="formGroupExampleInput2"> صورة الخدمات</label>
         <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Advertisment Content" (change)="servicesfileUpload($event)">
+        <span *ngIf="uploadingImg == 'uploadingImg'"><br>جاري التحميل ...</span>
         <img [src]="servicesPhotoUrl" alt="" *ngIf="servicesPhotoUrl != '' " class="promo-img-show-Admin">
       </div>
       <div class="text-center m-2">
@@ -63,7 +64,8 @@
       <div class="form-group mt-2">
         <label for="formGroupExampleInput2"> صور العضو</label>
         <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Advertisment Content" (change)="ourTeamfileUpload($event)">
-        <img [src]="teamPhotoUrl" alt="" *ngIf="teamPhotoUrl != '' " class="promo-img-show-Admin">
+        <span *ngIf="uploadingImg == 'uploadingImg'"><br>جاري التحميل ...</span>
+        <img [src]="teamPhotoUrl" alt="" *ngIf=" teamPhotoUrl != '' " class="promo-img-show-Admin">
       </div>
       <div class="text-center m-2">
         <button type="submit" class="btn btn-outline-warning"> save</button>
@@ -82,6 +84,7 @@
       <div class="form-group mt-2">
         <label for="formGroupExampleInput2"> صورة احد العملاء</label>
         <input type="file" class="form-control" id="formGroupExampleInput2" placeholder="Advertisment Content" (change)="clientfileUpload($event)">
+        <span *ngIf="uploadingImg == 'uploadingImg'"><br>جاري التحميل ...</span>
         <img [src]="clientPhotoUrl" alt="" *ngIf="clientPhotoUrl != '' " class="promo-img-show-Admin">
       </div>
       <div class="text-center m-2">
@@ -107,10 +110,10 @@
   <tbody *ngIf="view_part=='who-us-showData'||view_part=='our-clients-showData'|| view_part=='our-services-showData'|| view_part=='our-team-showData'">
     <tr *ngFor="let item of list; let i=index">
       <th scope="row">{{i+1}}</th>
-      <td *ngIf="view_part=='who-us-showData'">{{item.description}}</td>
-      <td *ngIf="view_part=='our-services-showData'|| view_part=='our-team-showData'">{{item.name}}</td>
-      <td *ngIf="view_part!='who-us-showData'"><img src="{{api_link}}{{item.image}}" class="promo-img-show-Admin" alt=""></td>
-
+      <td *ngIf="view_part=='our-services-showData' || view_part=='who-us-showData'">{{item.description}}</td>
+      <td *ngIf="view_part=='our-team-showData'">{{item.name}}</td>
+      <td *ngIf="view_part!='who-us-showData'"><img src="{{item.image}}" class="promo-img-show-Admin" alt=""></td> <!-- old Asp.net Code -->
+      <!-- <td *ngIf="view_part!='who-us-showData'"><img src="{{api_link}}{{item.image}}" class="promo-img-show-Admin" alt=""></td> --> <!-- old Asp.net Code -->
       <td>
         <button class="btn btn-danger control-button" (click)="deleteItem(item)">Delete </button>
         <button class="btn btn-warning control-button" (click)="updateItem(item)">Edit </button>

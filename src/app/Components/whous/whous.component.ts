@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OurClients, OurTeam, Services, WhoUs } from 'src/app/admin/interfaces/who-us.interface';
-import { DataService } from 'src/app/services/data.service';
+import { DataService } from 'src/app/new-services/data.service';
 
 @Component({
   selector: 'app-whous',
@@ -14,20 +14,28 @@ export class WhousComponent implements OnInit {
   WhoUsServices:Services[]=[];
   WhoUsOurTeam:OurTeam[]=[];
 
-  api_link="http://markitingwebsite-001-site1.dtempurl.com";
+  // api_link="http://markitingwebsite-001-site1.dtempurl.com";
 
   constructor(private dataServ:DataService) {
     this.dataServ.getWhoUsDescription().subscribe(data =>{
-      this.WhoUsDescription=data
+      for (const key in data) {
+        this.WhoUsDescription.push(data[key])
+        }
     })
     this.dataServ.getWhoUsServices().subscribe(data =>{
-      this.WhoUsServices=data
+      for (const key in data) {
+        this.WhoUsServices.push(data[key])
+        }
     })
     this.dataServ.getWhoUsTeamWorks().subscribe(data =>{
-      this.WhoUsOurTeam=data
+      for (const key in data) {
+        this.WhoUsOurTeam.push(data[key])
+        }
     })
     this.dataServ.getWhoUsOurClients().subscribe(data =>{
-      this.WhoUsOurClients=data
+      for (const key in data) {
+        this.WhoUsOurClients.push(data[key])
+        }
     })
    }
 
