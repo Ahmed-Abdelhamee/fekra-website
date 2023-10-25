@@ -7,10 +7,12 @@ import { WebDesignComponent } from '../admin/web-design/web-design.component';
 import { WhoUsComponent } from './who-us/who-us.component';
 import { ElectionCampaignsComponent } from './election-campaigns/election-campaigns.component';
 import { IsAdminGuard } from '../services/is-admin.guard';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {path:"admin",component:AdminComponent, children:[
     {path:"" , component:AdminLoginComponent },
+    {path:"home" , component:HomeComponent , canActivate : [IsAdminGuard]},
     {path:"advertisment" , component:AdvertismentComponent , canActivate : [IsAdminGuard]},
     {path:"web-design" , component:WebDesignComponent , canActivate : [IsAdminGuard]},
     {path:"who-us" , component:WhoUsComponent , canActivate : [IsAdminGuard]},

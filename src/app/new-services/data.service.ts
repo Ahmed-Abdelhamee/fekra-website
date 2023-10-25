@@ -6,6 +6,7 @@ import { election } from '../admin/interfaces/election.interface';
 import { advertisment } from '../admin/interfaces/advertisment.interface';
 import { design } from '../admin/interfaces/design.interface';
 import { OurClients, OurTeam, Services, WhoUs } from '../admin/interfaces/who-us.interface';
+import { homeServices } from '../admin/interfaces/home.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,19 @@ export class DataService {
    }
 
 
+   // ******************************************** HomeSerevices Data ********************************************
+   getHomeSerevices():Observable<homeServices[]>{
+    return this.http.get<homeServices[]>(`${this.databaseURL}/HomeSerevicesData.json`)
+   }
+  createHomeSerevices(data:any){
+    this.http.post(`${this.databaseURL}/HomeSerevicesData.json`,data).subscribe()
+  }
+  updateHomeSerevices(key:string,data:any){
+    this.http.put(`${this.databaseURL}/HomeSerevicesData/${key}.json`,data).subscribe();
+  }
+  deleteHomeSerevices(key:string){
+    this.http.delete(`${this.databaseURL}/HomeSerevicesData/${key}.json`).subscribe()
+  }
 // ******************************************** Advertisment Data ********************************************
    getAdvertisment():Observable<advertisment[]>{
     return this.http.get<advertisment[]>(`${this.databaseURL}/advertismentData.json`)

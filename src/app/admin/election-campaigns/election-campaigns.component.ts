@@ -86,9 +86,6 @@ export class ElectionCampaignsComponent implements OnInit {
       this.dataServ.getElection().subscribe(data=>{
         for (const key in data) {
           if(data[key].id==this.updateObject.id){
-            this.election.patchValue({
-              id:this.updateObject.id
-            })
             this.dataServ.updateElection(key,this.election.value)
           }
         }
@@ -99,6 +96,9 @@ export class ElectionCampaignsComponent implements OnInit {
   // ----------------- to update data -------------------
   editItem(item:election){
     this.updateObject=item;
+    this.election.patchValue({
+      id:this.updateObject.id
+    })
   }
   // ----------------- for deleting item -----------------
   deleteItem(id:number){

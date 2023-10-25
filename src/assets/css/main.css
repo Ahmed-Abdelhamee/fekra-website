@@ -253,7 +253,7 @@ a {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    height: 75vh;
     position: relative;
 }
 
@@ -261,6 +261,7 @@ a {
     color: white;
     position: absolute;
     left: 140px;
+    left: 95px;
     top: 28%;
 }
 
@@ -276,7 +277,7 @@ a {
 }
 
 .home .top_btn {
-    text-align: left;
+    text-align: right;
 }
 
 .home .top_btn .btn {

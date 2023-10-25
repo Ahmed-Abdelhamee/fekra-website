@@ -62,7 +62,29 @@
                 <div class="container srervice_footer mt-5 ">
                     <div class="row marketing_details py-5">
     
-    
+                        <div class="col-lg-4 col-md-6 mt-4" *ngFor="let item of homeServices">
+                            <div class="card mb-3">
+                                <div class="row">
+                                    <div class="col-md-2 col-sm col-sm col-sm">
+                                        <div class="service_icon text-center">
+                                            <strong> <img [src]="item.image" alt=""> </strong>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10 col-sm-8 left_card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <strong>{{item.title}}</strong>
+                                            </h5>
+                                            <p class="card-text">
+                                               {{item.text}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 
+                        
                         <div class="col-lg-4 col-md-6 mt-4">
                             <div class="card mb-3">
                                 <div class="row">
@@ -85,7 +107,7 @@
                                 </div>
                             </div>
                         </div>
-    
+                        
                         <div class="col-lg-4 col-md-6 mt-4">
                             <div class="card mb-3">
                                 <div class="row">
@@ -156,7 +178,6 @@
                                 </div>
                             </div>
                         </div>
-    
     
                         <div class="col-lg-4 col-md-6 mt-4">
                             <div class="card mb-3">
@@ -260,7 +281,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

@@ -140,9 +140,6 @@ export class WhoUsComponent implements OnInit {
       this.dataServ.createWhoUsDescription(this.who_us.value)
     }else{
       this.dataServ.getWhoUsDescription().subscribe(data =>{
-        this.who_us.patchValue({
-          id:this.updatedObject.id // to set the id as it is 
-        })
         // to get the object to update
         for (const key in data) {
           if(data[key].id == this.updatedObject.id)
@@ -162,9 +159,6 @@ export class WhoUsComponent implements OnInit {
       })
       this.dataServ.createWhoUsServices(this.services.value)
     }else if(this.view_part=="our-services-edit"){
-      this.services.patchValue({
-        id:this.updatedObject.id // to set the id as it is 
-      })
       // to get the object to update
       this.dataServ.getWhoUsServices().subscribe(data =>{
         for (const key in data) {
@@ -186,9 +180,6 @@ export class WhoUsComponent implements OnInit {
     this.dataServ.createWhoUsTeamWorks(this.our_team.value)
     // to get the object to update
     }else if(this.view_part=="our-team-edit"){
-      this.our_team.patchValue({
-        id:this.updatedObject.id   // to set the id as it is 
-      })
       // to get the object to update
       this.dataServ.getWhoUsTeamWorks().subscribe(data =>{
         for (const key in data) {
@@ -210,9 +201,6 @@ export class WhoUsComponent implements OnInit {
     this.dataServ.createWhoUsOurClients(this.our_clients.value)
     // to get the object to update
     }else if(this.view_part=="our-clients-edit"){
-      this.services.patchValue({
-        id:this.updatedObject.id   // to set the id as it is 
-      })
       // to get the object to update
       this.dataServ.getWhoUsOurClients().subscribe(data =>{
         for (const key in data) {
@@ -264,23 +252,29 @@ export class WhoUsComponent implements OnInit {
     if(this.view_part=="who-us-showData"){
       this.view_part="who-us-description-edit" // to show form with data to edit
       this.who_us.patchValue({
-        description:item.description// to show form with data to editiption,
+        description:item.description,// to show form with data to editiption,
+        id:item.id // to set the id as it is 
       })
     }else if(this.view_part=="our-services-showData"){
       this.view_part="our-services-edit" // to show form with data to edit
       this.services.patchValue({
         description:item.description,// to show form with data to edit
+        id:this.updatedObject.id // to set the id as it is 
       })
       this.servicesPhotoUrl=""
     }else if(this.view_part=="our-team-showData"){
       this.view_part="our-team-edit" // to show form with data to edit
       this.our_team.patchValue({
         name:item.name,// to show form with data to editiption,
+        id:this.updatedObject.id   // to set the id as it is 
       })
       this.teamPhotoUrl=""
     }else if(this.view_part=="our-clients-showData"){
       this.view_part="our-clients-edit" // to show form with data to edit
-      this.clientPhotoUrl=""
+      this.clientPhotoUrl="";
+      this.services.patchValue({
+        id:this.updatedObject.id   // to set the id as it is 
+      })
     }
   }
 

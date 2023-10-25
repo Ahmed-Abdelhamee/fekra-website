@@ -9,6 +9,7 @@ import { ElectionCampaignsComponent } from './election-campaigns/election-campai
 import { WhoUsComponent } from './who-us/who-us.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     WebDesignComponent,
     ElectionCampaignsComponent,
     WhoUsComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

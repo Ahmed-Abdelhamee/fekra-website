@@ -79,9 +79,6 @@ export class WebDesignComponent implements OnInit {
       })
       this.dataServ.createOurWorks(this.design.value)
     }else {
-      this.design.patchValue({
-        id:this.updateObject.id
-      })
       this.dataServ.getOurWorks().subscribe(data=>{
         for (const key in data) {
           if(data[key].id == this.updateObject.id)
@@ -94,6 +91,9 @@ export class WebDesignComponent implements OnInit {
   // -------------  edit data to API  -------------
   editItem(item:design){
     this.updateObject=item;
+    this.design.patchValue({
+      id:item.id
+    })
   }
   // -------------  edit data to API  -------------
   deleteItem(id:number){
