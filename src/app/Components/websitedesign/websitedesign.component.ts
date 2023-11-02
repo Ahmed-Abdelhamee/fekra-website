@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./websitedesign.component.scss']
 })
 export class WebsitedesignComponent implements OnInit {
-  designList:design[]=[{id:0,image:"assets/IMG1.jpg"},{id:1,image:"assets/1-4.jpg"},{id:2,image:"assets/IMG2.jpg"},{id:4,image:"assets/IMG4.jpg"}];
+  designList:design[]=[];
   designListShow:design[]=[]
 
   // designList:design[]=[];

@@ -60,6 +60,10 @@ export class WebDesignComponent implements OnInit {
     if(data=="showData"){
       this.designList=[];
       this.getData()
+    }else if(data=="add"){
+      this.design.patchValue({
+        image:""
+      })
     }
   }
 
@@ -103,7 +107,7 @@ export class WebDesignComponent implements OnInit {
         this.dataServ.deleteOurWorks(key)
       }
     })
-    setTimeout(()=> this.controlShow("showData") , 700)
+    setTimeout(()=> location.reload() , 700)
   }
 
 }
@@ -162,5 +166,5 @@ export class WebDesignComponent implements OnInit {
   //       }
   //      )
   //   }
-  //   setTimeout(()=> this.controlShow("showData") , 700)
+  //   setTimeout(()=> location.reload() , 700)
   // }
