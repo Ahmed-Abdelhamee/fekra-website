@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import  * as AOS from 'aos' ;
 
 @Component({
   selector: 'app-mobileapp',
@@ -10,6 +11,7 @@ export class MobileappComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    AOS.init();
   }
 
 }

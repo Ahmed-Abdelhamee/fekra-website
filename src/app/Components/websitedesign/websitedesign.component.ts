@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { design } from 'src/app/admin/interfaces/design.interface';
 import { DataService } from 'src/app/new-services/data.service';
-import { environment } from 'src/environments/environment';
+import  * as AOS from 'aos' ;
 
 @Component({
   selector: 'app-websitedesign',
@@ -10,7 +10,9 @@ import { environment } from 'src/environments/environment';
 })
 export class WebsitedesignComponent implements OnInit {
   designList:design[]=[];
-  designListShow:design[]=[]
+  designListShow:design[]=[];
+
+  leftOrRight:string="";
 
   // designList:design[]=[];
   // api_link="http://markitingwebsite-001-site1.dtempurl.com"
@@ -34,9 +36,11 @@ export class WebsitedesignComponent implements OnInit {
         }
       }
     }, 500); // to wait the constructor ;oad the data in the Array , then we set If statement
+    AOS.init();
   }
 
   scroll_list_to_right(){
+    this.leftOrRight="rightScroll";
     let itemDeleted=this.designList.pop()!
     this.designList.unshift(itemDeleted)
     this.designListShow=[]
@@ -46,7 +50,8 @@ export class WebsitedesignComponent implements OnInit {
   }
 
   scroll_list_to_left(){
-    let itemDeleted=this.designList.shift()!
+    this.leftOrRight="leftScroll";
+    let itemDeleted=this.designList.shift()!;
     this.designList.push(itemDeleted)
     this.designListShow=[]
     for(let i=0 ; i < 3 ; i++ ){

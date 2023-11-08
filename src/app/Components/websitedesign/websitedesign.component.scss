@@ -146,3 +146,23 @@
 .professionals-img{
     width: 70%;
 }
+
+
+// ------------------------------------------------------------------
+
+.animation-left{
+    animation-name: getProductLeft;
+    animation-duration: 1.5s;
+}
+.animation-right{
+    animation-name: getProductRight;
+    animation-duration: 1.5s;
+}
+@keyframes getProductLeft {
+    from{transform: translateX(30px);}
+    to{transform: translateX(0px);}
+}
+@keyframes getProductRight {
+    from{transform: translateX(-30px);}
+    to{transform: translateX(0px);}
+}

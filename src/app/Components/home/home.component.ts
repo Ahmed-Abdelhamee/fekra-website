@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { homeServices } from 'src/app/admin/interfaces/home.interface';
 import { DataService } from 'src/app/new-services/data.service';
-// import * as AOS from 'aos'; 
+import * as AOS from 'aos'; 
 
 @Component({
   selector: 'app-home',
@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // AOS.init();
+    AOS.init();
     
   }
 
