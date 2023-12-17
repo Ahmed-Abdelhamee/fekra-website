@@ -13,26 +13,16 @@
 
 .col-12 {
     flex: 100%;
-    padding: 18px;
 }
 
 @media screen and (max-width:700px) {
     .who-are-we .row {
         flex: 60%;
     }
-
-    body {
-        margin-left: 11%;
+    p.Aboutus-paragraph{
+        padding: 0px;
+        font-size: 16px;
     }
-
-    .footer {
-        margin-left: -13%;
-    }
-
-    .row .col-12 {
-        padding: 18px;
-    }
-
     .who-are-we .row {
         margin-right: 0px;
         margin-left: 0px;
@@ -76,19 +66,20 @@
         padding: 10px;        
     }
 
-    /* .who-are-we  .row .col-12{
-padding: 18px;
-    } */
-
     .Services .row {
         margin-right: 800px;
     }
-
+    img.service-image{
+        height: 220px;
+    }
     .success .succdiv2 {
         height: 86px;
     }
-
     .row .team5 {
+        width: 100%;
+    }
+    img.our-clients-img{
+        height: 220px;
         width: 100%;
     }
 
@@ -101,6 +92,10 @@ padding: 18px;
     font-size: 40px;
     text-align: center;
     color: cornflowerblue;
+}
+.Aboutus-paragraph{
+    padding: 18px;
+    font-size: 18px;
 }
 .Icons {
     display: flex;
@@ -131,6 +126,7 @@ padding: 18px;
 .service-description{
     color: darkorange;
     text-align: center;
+    font-size: 18px;
 }
 
 .team-card {
@@ -198,6 +194,10 @@ padding: 18px;
 
 
 // ------------------------------------------------------- Eng - Ahmed -------------------------------------------------
+.clients-title-text{
+    margin-left: 10px;
+    margin-right: 10px;
+}
 .our-clients-img{
     height: 200px;
     width: 200px;
