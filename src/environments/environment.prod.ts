@@ -1,14 +1,14 @@
 export const environment = {
   firebase: {
-    projectId: 'marketing-web-b6438',
-    appId: '1:314115971117:web:46777ec4bcbb0401a500a4',
-    databaseURL: 'https://marketing-web-b6438-default-rtdb.firebaseio.com',
-    storageBucket: 'marketing-web-b6438.appspot.com',
+    projectId: 'fekra-website',
+    appId: '1:329729592454:web:8760625c350dfd80ecd507',
+    databaseURL: 'https://fekra-website-default-rtdb.firebaseio.com',
+    storageBucket: 'fekra-website.appspot.com',
     locationId: 'us-central',
-    apiKey: 'AIzaSyD3rvZuKWsbn3wmeYKPGYkB7LETC8YqRvc',
-    authDomain: 'marketing-web-b6438.firebaseapp.com',
-    messagingSenderId: '314115971117',
-    measurementId: 'G-Q3E1P5JR3W',
+    apiKey: 'AIzaSyCct9C_iSmicgZH0kz8edOvcV9hqa2jsz0',
+    authDomain: 'fekra-website.firebaseapp.com',
+    messagingSenderId: '329729592454',
+    measurementId: 'G-RJRHZVGVRX',
   },
   production: true
 };

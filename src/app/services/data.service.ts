@@ -5,6 +5,7 @@ import { advertisment } from '../admin/interfaces/advertisment.interface';
 import { election } from '../admin/interfaces/election.interface';
 import { OurClients, OurTeam, Services, WhoUs } from '../admin/interfaces/who-us.interface';
 import { design } from '../admin/interfaces/design.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,7 @@ export class DataService {
 
   /* ------------------------------------------- Election API ---------------------------------------------- */
   getElection():Observable<election[]>{
-    return this.http.get<election[]>(`${this.Api_link}/api/Election/GetAllelection`);
+    return this.http.get<election[]>(`${this.Api_link}/Election/GetAllelection`);
   }
   createElection(data:any){
      return this.http.post(`${this.Api_link}/api/Election/Addelection`,data);

@@ -25,6 +25,7 @@ import { environment } from '../environments/environment';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/comp
     HttpClientModule,
     AngularFireModule,
     AngularFireStorageModule ,
-    provideFirebaseApp(() => initializeApp(environment.firebase)), provideDatabase(() => getDatabase()), provideStorage(() => getStorage()),
+    provideFirebaseApp(() => initializeApp(environment.firebase)), provideDatabase(() => getDatabase()), provideStorage(() => getStorage()), provideAuth(() => getAuth()),
   ],
   providers: [
    // write this special code for upload img 
