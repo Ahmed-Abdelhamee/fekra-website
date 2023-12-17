@@ -11,7 +11,8 @@ import { DataService } from 'src/app/new-services/data.service';
 })
 export class AdvertisngComponent implements OnInit {
 
-  advertismentList:advertisment[]=[]
+  advertismentList:advertisment[]=[];
+  
   constructor( private formBuilder:FormBuilder , private route : Router , private dataSrv:DataService) { 
     dataSrv.getAdvertisment().subscribe(data =>{
       for (const key in data) {

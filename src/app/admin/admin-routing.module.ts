@@ -10,15 +10,15 @@ import { IsAdminGuard } from '../services/is-admin.guard';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {path:"admin",component:AdminComponent, children:[
+  {path:"admin-dash",component:AdminComponent, children:[
     {path:"" , component:AdminLoginComponent },
     {path:"home" , component:HomeComponent , canActivate : [IsAdminGuard]},
-    {path:"advertisment" , component:AdvertismentComponent , canActivate : [IsAdminGuard]},
+    {path:"advertisment-dash" , component:AdvertismentComponent , canActivate : [IsAdminGuard]},
     {path:"web-design" , component:WebDesignComponent , canActivate : [IsAdminGuard]},
     {path:"who-us" , component:WhoUsComponent , canActivate : [IsAdminGuard]},
-    {path:"election" , component:ElectionCampaignsComponent , canActivate : [IsAdminGuard]}
-    // {path:"" , component:},
-  ]},
+    {path:"election" , component:ElectionCampaignsComponent , canActivate : [IsAdminGuard]},
+  // {path:"" , component:},
+]},
 ];
 
 @NgModule({

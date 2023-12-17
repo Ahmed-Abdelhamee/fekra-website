@@ -14,6 +14,10 @@ export class DataService {
 
   constructor( private http:HttpClient) { }
 
+// ---------------------------------------------------------------------------
+// this services was for a backend fault of  junior-backend developer Mohamed-fekry
+// ---------------------------------------------------------------------------
+
   Api_link:string="http://markitingwebsite-001-site1.dtempurl.com";
 
   /* ---------------------------------------- Advertisments API--------------------------------------- */

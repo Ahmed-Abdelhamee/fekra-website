@@ -56,7 +56,6 @@ a {
     text-decoration: none;
     transition: 0.3s;
 }
-
 .scroll-top {
     position: fixed;
     visibility: visible;
@@ -71,7 +70,6 @@ a {
     transition: all 0.4s;
     padding: 10px;
 }
-
 .scroll-top i {
     font-size: 36px;
     color: #ffffff;
@@ -103,27 +101,22 @@ a {
 }
 
 @keyframes eyeMove {
-
     0%,
     10% {
         background-position: 0px 0px
     }
-
     13%,
     40% {
         background-position: -15px 0px
     }
-
     43%,
     70% {
         background-position: 15px 0px
     }
-
     73%,
     90% {
         background-position: 0px 15px
     }
-
     93%,
     100% {
         background-position: 0px 0px
@@ -131,7 +124,6 @@ a {
 }
 
 @keyframes blink {
-
     0%,
     10%,
     12%,
@@ -149,7 +141,6 @@ a {
     100% {
         height: 48px
     }
-
     11%,
     21%,
     41%,
@@ -160,8 +151,6 @@ a {
         height: 18px
     }
 }
-
-
 .loading-spiner {
     position: fixed;
     width: 100%;
@@ -175,7 +164,6 @@ a {
     justify-content: center;
     align-items: center;
 }
-
 .spinner {
     margin: 100px auto;
     width: 50px;
@@ -184,7 +172,6 @@ a {
     font-size: 10px;
     color: white !important;
 }
-
 .spinner>div {
     background-color: #333;
     height: 100%;
@@ -195,12 +182,10 @@ a {
     animation: sk-stretchdelay 1.2s infinite ease-in-out;
 
 }
-
 .spinner .rect2 {
     -webkit-animation-delay: -1.1s;
     animation-delay: -1.1s;
 }
-
 .spinner .rect3 {
     -webkit-animation-delay: -1.0s;
     animation-delay: -1.0s;
@@ -217,27 +202,23 @@ a {
 }
 
 @-webkit-keyframes sk-stretchdelay {
-
     0%,
     40%,
     100% {
         -webkit-transform: scaleY(0.4)
     }
-
     20% {
         -webkit-transform: scaleY(1.0)
     }
 }
 
 @keyframes sk-stretchdelay {
-
     0%,
     40%,
     100% {
         transform: scaleY(0.4);
         -webkit-transform: scaleY(0.4);
     }
-
     20% {
         transform: scaleY(1.0);
         -webkit-transform: scaleY(1.0);
@@ -262,7 +243,7 @@ a {
     position: absolute;
     left: 140px;
     left: 95px;
-    top: 28%;
+    top: 18%;
 }
 
 .home .top_text {
@@ -311,12 +292,16 @@ a {
     position: absolute;
     top: 15px;
     left: 15px;
-
-    border-radius: 100%;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .home .bottom .bottom_bg i {
-    font-size: 30px;
+    font-size: 35px;
 }
 
 
@@ -517,7 +502,7 @@ a {
 
 @media screen and (max-width:768px) {
     .home .top {
-        top: 32%;
+        top: 28%;
         width: 69.666667%;
     }
 }

@@ -9,10 +9,11 @@ import { NavigationEnd, Router } from '@angular/router';
 export class AdminComponent implements OnInit {
 
   dash_list:boolean=true;
+  
   constructor(private route:Router){
     route.events.subscribe( e =>{
       if(e instanceof NavigationEnd){
-        if(route.url.endsWith("admin")){
+        if(route.url.endsWith("admin-dash")){
           this.dash_list=false;
         }else{
           this.dash_list=true;

@@ -12,10 +12,23 @@ export class AppComponent {
   constructor(private route:Router){
     route.events.subscribe( e =>{
       if(e instanceof NavigationEnd){
-        if(route.url.split("/").includes("admin")){
+        if(route.url.split("/").includes("admin-dash")){
           this.header_footer_Display=false;
         }else{
           this.header_footer_Display=true;
+        }
+      }
+    })
+
+    route.events.subscribe( e =>{
+      if(e instanceof NavigationEnd){
+        if(route.url.toString().endsWith("advertisment")){
+          if(!sessionStorage.getItem("advertisment")){
+            sessionStorage.setItem("advertisment","set carsoel work");
+            location.reload()
+          }
+        }else{
+          sessionStorage.removeItem("advertisment");
         }
       }
     })
