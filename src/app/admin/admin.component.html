@@ -3,49 +3,48 @@
     <div class="sidebar" *ngIf="dash_list">
         <main>
             <div class="d-flex flex-column flex-shrink-0 bg-light sidebar-width">
-                <a routerLink="/admin-dash" class="d-block p-3 link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip"
-                    data-bs-placement="right">
+                <a routerLink="/admin-dash" class="d-block p-3 link-dark text-decoration-none" title="Icon-only" data-bs-toggle="tooltip" data-bs-placement="right" (click)="logoutDash()"> 
                     <img src="assets/logo.jpeg" alt="mdo" width="24" class="rounded-circle">
                     <span class="visually-hidden">Icon-only</span>
                 </a>
                 <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
                     <li class="nav-item mt-3">
-                        <a routerLink="home" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" class="nav-link py-3 border-bottom" aria-current="page" title="Home"
-                            data-bs-toggle="tooltip" data-bs-placement="right">
+                        <a routerLink="home" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}" class="nav-link py-3 border-bottom" aria-current="page" title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
                             <i class="bi bi-house-heart-fill"></i>
                         </a>
                     </li>
                     <li class="nav-item mt-3">
-                        <a routerLink="advertisment-dash" [routerLinkActive]="'active'" class="nav-link py-3 border-bottom" aria-current="page" title="Home"
-                            data-bs-toggle="tooltip" data-bs-placement="right">
+                        <a routerLink="advertisment-dash" [routerLinkActive]="'active'" class="nav-link py-3 border-bottom" aria-current="page" title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
                             <i class="bi bi-badge-ad"></i>
                         </a>
                     </li>
                     <li class="nav-item mt-3">
-                        <a routerLink="election" [routerLinkActive]="'active'" class="nav-link py-3 border-bottom" title="Dashboard" data-bs-toggle="tooltip"
-                            data-bs-placement="right">
+                        <a routerLink="election" [routerLinkActive]="'active'" class="nav-link py-3 border-bottom" title="Dashboard" data-bs-toggle="tooltip" data-bs-placement="right">
                             <i class="bi bi-people-fill"></i>
                         </a>
                     </li>
                     <li class="nav-item mt-3">
-                        <a routerLink="web-design" [routerLinkActive]="'active'" class="nav-link py-3 border-bottom" title="Orders" data-bs-toggle="tooltip"
-                            data-bs-placement="right">
+                        <a routerLink="web-design" [routerLinkActive]="'active'" class="nav-link py-3 border-bottom" title="Orders" data-bs-toggle="tooltip" data-bs-placement="right">
                             <i class="bi bi-browser-chrome"></i>
                         </a>
                     </li>
                     <li class="nav-item mt-3">
-                        <a routerLink="who-us" [routerLinkActive]="'active'" class="nav-link py-3 border-bottom" title="Products" data-bs-toggle="tooltip"
-                            data-bs-placement="right">
+                        <a routerLink="who-us" [routerLinkActive]="'active'" class="nav-link py-3 border-bottom" title="Products" data-bs-toggle="tooltip" data-bs-placement="right">
                             <i class="bi bi-lightbulb"></i>
                         </a>
                     </li>
+                    <li class="nav-item mt-3">
+                        <a class="nav-link py-3 border-bottom" title="Products" data-bs-toggle="tooltip"  data-bs-placement="right"  (click)="logoutDash()">
+                            <i class="bi bi-box-arrow-left"></i>
+                        </a>
+                    </li>
                 </ul>
-                <div class="dropdown border-top">
-                    <!-- <a routerLink="" [routerLinkActive]="'active'"
+                <!--<div class="dropdown border-top">
+                     <a routerLink="" [routerLinkActive]="'active'"
                         class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle"
                         id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="assets/logo.jpeg" alt="mdo" width="24" height="24" class="rounded-circle">
-                    </a> -->
+                    </a> 
                     <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
                         <li><a class="dropdown-item" routerLink="" [routerLinkActive]="'active'">New project...</a></li>
                         <li><a class="dropdown-item" routerLink="" [routerLinkActive]="'active'">Settings</a></li>
@@ -55,7 +54,7 @@
                         </li>
                         <li><a class="dropdown-item" routerLink="" [routerLinkActive]="'active'">Sign out</a></li>
                     </ul>
-                </div>
+                </div>-->
             </div>
         </main>
     </div>

@@ -21,7 +21,13 @@ export class AdminComponent implements OnInit {
       }
     })
   }
+
   ngOnInit(): void {
+  }
+
+  logoutDash(){
+    sessionStorage.removeItem("Admin");
+    this.route.navigate(["/"])
   }
 
 }
