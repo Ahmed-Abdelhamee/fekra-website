@@ -94,36 +94,18 @@ padding: 18px;
 
 }
 
-
-.Aboutus {
+.Aboutus{
     margin-top: 70px;
+}
+.part-title {
     font-size: 40px;
     text-align: center;
     color: cornflowerblue;
 }
-
-.text-block1 {
-    width: 600px;
-    text-align: center;
-    margin-right: 320px;
-}
-
-.text-block1 p {
-    text-align: center;
-    margin-right: -40px;
-}
-
-.conspt {
-    font-size: 40px;
-    text-align: center;
-    color: cornflowerblue;
-}
-
 .Icons {
     display: flex;
     align-items: center;
 }
-
 .Icon2 {
     flex: 1;
     font-size: 35px;
@@ -134,115 +116,36 @@ padding: 18px;
 }
 
 
-.simple-text2 {
-    width: 600px;
-}
-
-.simple-text2 p {
-    text-align: center;
-}
-
-.Services {
-    font-size: 40px;
-    text-align: center;
-    color: cornflowerblue;
-}
-
-.serviceimage {
-    display: flex;
-    justify-content: space-evenly;
-    width: 60%;
-    margin-right: 300px;
-}
-
-.service1 {
-    flex: 1;
-    width: 70%;
-}
-
-.service1 figure {
-    width: 100px;
-}
-
-.service1 image {
-    width: 200;
-    height: 300;
-}
-
 .service1 a {
     color: #000000;
 }
 
-.imagservic {
-    border-radius: 200px;
-    width: 160px;
-}
-
-.team {
-    font-size: 40px;
-    text-align: center;
-    color: cornflowerblue;
-}
-
-.divteam {
-    display: flex;
-    align-items: center;
-    padding: 1%;
+.service-image {
+    border-radius: 20px;
     width: 90%;
-    margin-right: 60px;
+    height: 250px;
+    display: block;
+    margin-right: 5%;
+    margin-bottom: 15px;
+}
+.service-description{
+    color: darkorange;
+    text-align: center;
 }
 
-.imgdiv {
-    height: 215px;
+.team-card {
     margin-top: 10px;
+    border: 1px solid darkorange;
+    border-radius: 20px;
 }
-
-.imgdiv img {
+.team-card img{
     border-radius: 50%;
-    height: 100px;
-    width: 100px;
+    height: 190px;
+    width: 190px;
+    margin-top: 15px;
     margin-bottom: 15px;
 }
 
-.team1 {
-    height: 180px;
-    border-color: darkorange;
-    border-radius: 20px;
-    border-width: 1px;
-    background-color: white;
-    border-style: solid;
-    margin-inline: 1%;
-    margin-bottom: 24px;
-    width: 30%;
-
-}
-
-.team5 {
-    height: 180px;
-    border-color: darkorange;
-    border-radius: 20px;
-    border-width: 1px;
-    background-color: white;
-    border-style: solid;
-    margin-inline: 1%;
-    margin-bottom: 24px;
-    width: 30%;
-}
-
-.team1 figure {
-    width: 40%;
-    margin-right: 100%;
-}
-
-.team1 image {
-    width: 45px;
-    height: 70px;
-
-}
-
-.team1 p {
-    text-align: center;
-}
 
 .succses {
     display: flex;
@@ -296,6 +199,8 @@ padding: 18px;
 
 // ------------------------------------------------------- Eng - Ahmed -------------------------------------------------
 .our-clients-img{
-    height: 150px;
-    width: fit-content;
+    height: 200px;
+    width: 200px;
+    margin-bottom: 15px;
+    border-radius: 15px;
 }
