@@ -1,15 +1,3 @@
-@media screen and (max-width:700px) {
-    .row {
-        margin-right: 0px;
-        margin-left: 0px;
-
-    }
-
-    div.col-lg-6 img {
-        height: 300px;
-    }
-
-}
 
 .div-title {
     padding-top: 30px;
@@ -26,5 +14,27 @@
     border-radius: 4px;
 }
 .carousel-item img{
-    height: calc( 100vh - 190px);
+    height: calc( 100vh - 140px);
+}
+
+#carouselExampleControls{
+    width: 42%;
+    margin-right: 29.75%;
+}
+
+@media screen and (max-width:700px) {
+    .row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+    div.col-lg-6 img {
+        height: 300px;
+    }
+    .carousel-item img{
+        height: calc(100vh - 225px);
+    }
+    #carouselExampleControls{
+        width: 90%;
+        margin-right: 5%;
+    }
 }
