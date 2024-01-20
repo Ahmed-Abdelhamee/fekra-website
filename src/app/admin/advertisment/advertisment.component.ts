@@ -11,16 +11,13 @@ import { DataService } from 'src/app/new-services/data.service';
 })
 export class AdvertismentComponent implements OnInit {
   
-  controlItem:string=""
-
+  controlItem:string="";
   updatedObject:advertisment={
     name:"",
     description:"",
     id:0
   };
-  
   advertismentList:advertisment[]=[]
-
   advertisment=this.formBuilder.group({
     name:["", Validators.required],
     description:["", Validators.required],
@@ -33,8 +30,6 @@ export class AdvertismentComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-
   
   // for controling the show    &&    and we will use it with the API for controling the data 
   controlShow(data:string){
@@ -49,8 +44,6 @@ export class AdvertismentComponent implements OnInit {
     }
   }
   
-
-
   // -------------------- get data for firebase  --------------------
   getAdvertisment(){
     this.advertismentList=[]

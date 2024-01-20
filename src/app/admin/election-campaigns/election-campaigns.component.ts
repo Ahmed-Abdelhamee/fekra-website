@@ -57,7 +57,7 @@ export class ElectionCampaignsComponent implements OnInit {
     this.uploadingImg="uploadingImg";
     const file=event.target.files[0];
     if(file){
-      const path=`fekra/${file.name}${new Date().getTime()}`; // we make name of file in firebase storage 
+      const path=`fekra/${new Date().getTime()}${file.name}`; // we make name of file in firebase storage 
       const uploadTask = await this.firestorage.upload(path,file)
       const url =await uploadTask.ref.getDownloadURL()
       this.photoUrl=url;

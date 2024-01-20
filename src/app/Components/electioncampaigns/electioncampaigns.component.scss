@@ -14,17 +14,17 @@
 .div-title {
     padding-top: 30px;
 }
-
 .h1 {
     color: blue;
     text-align: center;
     margin-bottom: 20px;
 }
-
-
 .col-lg-6 img{
     height: 480px;
     width: 85%;
     margin-right: 7.5%;
     border-radius: 4px;
+}
+.carousel-item img{
+    height: calc( 100vh - 190px);
 }
