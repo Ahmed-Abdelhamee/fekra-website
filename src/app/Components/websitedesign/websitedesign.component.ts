@@ -16,26 +16,28 @@ export class WebsitedesignComponent implements OnInit {
 
   // designList:design[]=[];
   // api_link="http://markitingwebsite-001-site1.dtempurl.com"
-  constructor(private dataServ:DataService) {
-    this.dataServ.getOurWorks().subscribe(data=>{
-      for (const key in data) {
-        this.designList.push(data[key])
+  constructor(private dataServ: DataService) {
+    this.dataServ.getOurWorks().subscribe({
+      next: data => {
+        for (const key in data) {
+          this.designList.push(data[key])
+        }
+      },
+      complete:()=>{
+        if(window.innerWidth > 700 ){
+          for(let i=0 ; i < 3 ; i++ ){
+            this.designListShow.push(this.designList[i])
+          }
+        }else{
+          for(let i=0 ; i < this.designList.length ; i++ ){
+            this.designListShow.push(this.designList[i])
+          }
+        }
       }
     })
-   }
+  }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      if(window.innerWidth > 700 ){
-        for(let i=0 ; i < 3 ; i++ ){
-          this.designListShow.push(this.designList[i])
-        }
-      }else{
-        for(let i=0 ; i < this.designList.length ; i++ ){
-          this.designListShow.push(this.designList[i])
-        }
-      }
-    }, 500); // to wait the constructor ;oad the data in the Array , then we set If statement
     AOS.init();
   }
 
