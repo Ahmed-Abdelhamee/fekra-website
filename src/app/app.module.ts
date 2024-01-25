@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +26,10 @@ import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { provideAuth,getAuth } from '@angular/fire/auth';
+// import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import Swiper from 'swiper';
+import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 
 @NgModule({
   declarations: [
@@ -50,7 +54,12 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
     AngularFireModule,
     AngularFireStorageModule ,
     provideFirebaseApp(() => initializeApp(environment.firebase)), provideDatabase(() => getDatabase()), provideStorage(() => getStorage()), provideAuth(() => getAuth()),
+    // CarouselModule,
+    // NgxUsefulSwiperModule,
+    BrowserAnimationsModule,
+    NgxUsefulSwiperModule
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [
    // write this special code for upload img 
    { provide: FIREBASE_OPTIONS, useValue: environment.firebase },

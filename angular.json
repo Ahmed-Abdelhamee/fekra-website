@@ -31,11 +31,13 @@
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/assets/css/main.css",
-              "node_modules/aos/dist/aos.css"
+              "node_modules/aos/dist/aos.css",
+              "./node_modules/swiper/swiper-bundle.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/aos/dist/aos.js"
+              "node_modules/aos/dist/aos.js",
+              "node_modules/jquery/dist/jquery.min.js"
             ]
           },
           "configurations": {
