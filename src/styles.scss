@@ -3,7 +3,9 @@
 // @import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 // @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
-
+img::selection{
+    background: none;
+}
 .col-lg-6{
     float: right;
 }

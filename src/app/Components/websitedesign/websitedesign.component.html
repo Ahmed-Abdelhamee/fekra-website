@@ -1,13 +1,13 @@
 <div class="col-12 container set-margin-for-header">
     <!-- -----------------------------------------------------------------------------------The best design company--------------------------------------------------------------- -->
     <div class="The-best-design-company pt-2">
-        <p class="title">أفضل شركة تصميم
-            <br>
-            وتطوير مواقع الانترنت
-        </p>
         <div class="small-titlerefer col-12">
             <div class="row">
                 <div class="col-lg-6">
+                    <p class="title">أفضل شركة تصميم
+                        <br>
+                        وتطوير مواقع الانترنت
+                    </p>
                     <p class="articles-paragraph" data-aos="fade-up" data-aos-duration="1500">العالم أصبح يعيش داخل
                         الإنترنت ، و أنت ما لذي يؤخرك حتى الآن عنهم ..!؟<br>
                         اصنع مجتمعك الخاص بنشاطك التجاري على الإنترنت و اجعله مزاراً للكثير من العملاء ، اجعل منه مقراً
@@ -203,6 +203,11 @@
         <!-- -----------------------------------------------------------------------------------type of site-------------------------------------------------------- -->
         <div class="Types-of-sites-container">
             <h2 class="big-blue-title"> انواع المواقع</h2>
+            <div class="scoller-container">
+                <div class="scroll-view" #scroller > <img *ngFor="let item of list" [src]="item" alt=""></div>
+            </div>
+            <i class="bi bi-caret-right-fill" (click)="left()"></i>
+            <i class="bi bi-caret-left-fill" (click)="right()"></i>
             <div class="row text-center">
                 <div class="col-lg-4" data-aos="fade-up" data-aos-duration="1500">
                     <img src="assets/المواقع الشخصية.jpg" class="icon" alt="">

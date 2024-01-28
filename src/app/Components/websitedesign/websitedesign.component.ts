@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { design } from 'src/app/admin/interfaces/design.interface';
 import { DataService } from 'src/app/new-services/data.service';
 import  * as AOS from 'aos' ;
 import { SwiperOptions } from 'swiper';
+import * as $ from 'jquery'
 // import { OwlOptions } from 'ngx-owl-carousel-o';
 // import { register } from 'swiper/element/bundle'; 
 // register();
@@ -25,6 +26,7 @@ export class WebsitedesignComponent implements OnInit {
   designList:design[]=[];
   designListShow:design[]=[];
   leftOrRight:string="";
+  @ViewChild('scroller') scroller!:ElementRef;
   // customOptions: OwlOptions = {
   //   loop: true,
   //   mouseDrag: true,
@@ -59,10 +61,11 @@ export class WebsitedesignComponent implements OnInit {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev'
     },
+    autoplay:true,
     spaceBetween: 30
   };  
   
-  
+  list:string[]=["assets/1.jpg","assets/2.jpg","assets/3.jpg","assets/4.jpg","assets/5.jpg","assets/6.png","assets/4.jpg","assets/1.jpg","assets/2.jpg","assets/3.jpg","assets/4.jpg","assets/5.jpg","assets/6.png","assets/4.jpg"]
   // designList:design[]=[];
   // api_link="http://markitingwebsite-001-site1.dtempurl.com"
   constructor(private dataServ: DataService) {
@@ -110,5 +113,57 @@ export class WebsitedesignComponent implements OnInit {
     }
   }
 
+  intervalCounter=0;
+  intervalCounterView=3;
+  interLeft:any;
+  interRight:any;
+  left(){
+    clearInterval(this.interRight)
+    clearInterval(this.interLeft)
+    if(this.intervalCounterView<this.list.length){
+      this.interLeft= window.setInterval(()=>{this.scroller.nativeElement.style.marginRight=`${this.intervalCounter}vw`;
+      this.intervalCounter--;
+        if(this.intervalCounter%25==0){
+          clearInterval(this.interLeft)
+          this.intervalCounterView++;
+        }
+      },10);
+    }else{
+      this.intervalCounterView=this.list.length
+    }
+  }
+  
+  right(){
+    clearInterval(this.interLeft)
+    clearInterval(this.interRight)
+    if(this.intervalCounterView>3){
+      this.interRight= window.setInterval(()=>{this.scroller.nativeElement.style.marginRight=`${this.intervalCounter}vw`;
+      this.intervalCounter++;
+      if(this.intervalCounter%25==0){
+        clearInterval(this.interRight)
+        this.intervalCounterView--;
+      }
+      },10);
+    }else{
+      this.intervalCounterView=3
+    }
+  }
 
+
+//      id:any;
+//  myMove() {
+//   let elem = document.getElementById("myAnimation");   
+//   let pos = 0;
+//   clearInterval(this.id!);
+//   this.id = setInterval(frame, 10);
+//   function frame() {
+//     if (pos == 350) {
+//       clearInterval(this.id);
+//     } else {
+//       pos++; 
+//       elem.style.top = pos + 'px'; 
+//       elem.style.left = pos + 'px'; 
+//     }
+//   }
+// }
 }

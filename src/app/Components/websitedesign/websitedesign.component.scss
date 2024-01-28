@@ -1,49 +1,4 @@
 
-@media screen and (max-width:991px) {
-    i.bi{
-        display: none;
-    }
-}
-
-@media screen and (max-width:700px) {
-    .Design-company .Dc .img {
-        width: 100%;
-    }
-    .The-best-design-company .prefer {
-        display: block;
-    }
-    .Articles .row {
-        display: block;
-    }
-    .most-important-features-of-Electro-website-design .row {
-        display: block;
-        margin-right: 0;
-    }
-    .most-important-features-of-Electro-website-design .maindiv2 {
-        margin-bottom: 27px;
-    }
-    .row {
-        margin-left: 0px;
-        margin-right: 0px;
-    }
-    .Design-company .span1 {
-        margin-right: 3px;
-    }
-    .prefer .col-lg-6 p{
-        font-size: 16px;
-    }
-    .Some-of-our-work .row .mb-3{
-        margin-bottom: 2rem !important;
-    }
-    .Some-of-our-work .row img{
-        width: 90%;
-        margin-bottom: 14px;
-        margin-right: 5%;
-    }
-    img.big-image{
-        width: 90%;
-    }
-}
 
 .row {
     padding: 10px;
@@ -150,8 +105,41 @@
 .professionals-img{
     width: 70%;
 }
-
-
+// ------------------------------------- scroller view ----------------------------
+.swiper-slide img{
+    height: 75vh;
+}
+.scoller-container{
+    overflow-x: scroll !important;
+}
+.scoller-container::-webkit-scrollbar{
+    height: 0px;
+}
+.scroll-view{
+    display: inline-flex;
+    position: relative;
+}
+.scroll-view img{
+    width: 25vw !important;
+    height: 270px;
+    padding: 3px ;
+    border-radius: 10px;
+}
+.Types-of-sites-container{
+    position: relative;
+}
+.Types-of-sites-container .bi{
+    position: absolute;
+    top: 22%;
+    z-index: 2;
+    font-size: 25px;
+}
+.Types-of-sites-container .bi.bi-caret-left{
+    left: -30px;
+}
+.Types-of-sites-container .bi.bi-caret-right{
+    right: -30px;
+}
 // ------------------------------------------------------------------
 
 .animation-left{
@@ -169,4 +157,67 @@
 @keyframes getProductRight {
     from{transform: translateX(-30px);}
     to{transform: translateX(0px);}
+}
+
+
+@media screen and (max-width:991px) {
+    i.bi{
+        display: none;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .Design-company .Dc .img {
+        width: 100%;
+    }
+    .The-best-design-company .prefer {
+        display: block;
+    }
+    .Articles .row {
+        display: block;
+    }
+    .most-important-features-of-Electro-website-design .row {
+        display: block;
+        margin-right: 0;
+    }
+    .most-important-features-of-Electro-website-design .maindiv2 {
+        margin-bottom: 27px;
+    }
+    .row {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .Design-company .span1 {
+        margin-right: 3px;
+    }
+    .prefer .col-lg-6 p{
+        font-size: 16px;
+    }
+    .Some-of-our-work .row .mb-3{
+        margin-bottom: 2rem !important;
+    }
+    .Some-of-our-work .row img{
+        width: 90%;
+        margin-bottom: 14px;
+        margin-right: 5%;
+    }
+    img.big-image{
+        width: 90%;
+    }
+    p.title{
+        font-size: 25px;
+        margin-bottom: 0;
+    }
+    .swiper-slide img{
+        height: 270px !important;
+    }
+    .swiper-button-next::after,
+    .swiper-button-prev::after{
+        font-size: 25px;
+        font-weight: 700;
+    }
+    .scroll-view img{
+        width: 42vw !important;
+        height: 150px;
+    }
 }
