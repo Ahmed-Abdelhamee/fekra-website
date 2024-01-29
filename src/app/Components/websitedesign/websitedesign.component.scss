@@ -87,7 +87,7 @@
 }
 .bi-caret-left-fill{
     position: absolute;
-    left: -1.5%;
+    left: -2.5%;
     top: 45%;
     z-index: 4;
     font-size: 25px;
@@ -97,7 +97,7 @@
     position: absolute;
     top: 45%;
     z-index: 4;
-    right: -1.5%;
+    right: -2.5%;
     font-size: 25px;
     color: orange;
 }
@@ -132,13 +132,7 @@
     position: absolute;
     top: 22%;
     z-index: 2;
-    font-size: 25px;
-}
-.Types-of-sites-container .bi.bi-caret-left{
-    left: -30px;
-}
-.Types-of-sites-container .bi.bi-caret-right{
-    right: -30px;
+    font-size: 30px;
 }
 // ------------------------------------------------------------------
 
@@ -150,6 +144,7 @@
     animation-name: getProductRight;
     animation-duration: 1.5s;
 }
+
 @keyframes getProductLeft {
     from{transform: translateX(30px);}
     to{transform: translateX(0px);}
@@ -158,14 +153,11 @@
     from{transform: translateX(-30px);}
     to{transform: translateX(0px);}
 }
-
-
 @media screen and (max-width:991px) {
     i.bi{
         display: none;
     }
 }
-
 @media screen and (max-width:700px) {
     .Design-company .Dc .img {
         width: 100%;
