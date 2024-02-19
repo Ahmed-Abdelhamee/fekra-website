@@ -14,6 +14,10 @@ export class ElectioncampaignsComponent implements OnInit {
   // api_link="http://markitingwebsite-001-site1.dtempurl.com";
 
   constructor(private dataServ:DataService) {
+    if(sessionStorage.getItem("runCarsouel")!="election loaded"){
+      sessionStorage.setItem("runCarsouel","election loaded")
+      location.reload();
+    }
     this.dataServ.getElection().subscribe(data=>{
       for (const key in data) {
         this.electionList.push(data[key])

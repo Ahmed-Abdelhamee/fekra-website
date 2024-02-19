@@ -13,6 +13,10 @@ export class HomeComponent implements OnInit {
   homeServices :homeServices[]=[];
 
   constructor(private dataServ:DataService) { 
+    if(sessionStorage.getItem("runCarsouel")!="home loaded"){
+      sessionStorage.setItem("runCarsouel","home loaded")
+      location.reload();
+    }
     dataServ.getHomeSerevices().subscribe(data =>{
       for (const key in data) {
           this.homeServices.push(data[key])

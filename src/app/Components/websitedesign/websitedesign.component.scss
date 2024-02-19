@@ -1,5 +1,3 @@
-
-
 .row {
     padding: 10px;
 }
@@ -7,10 +5,12 @@
 .Design-company {
     margin-top: 100px;
 }
+
 .Design-company img {
     padding-top: 100px;
     width: 100%;
 }
+
 .The-best-design-company {
     padding-right: 20px;
 }
@@ -18,6 +18,7 @@
 .prefer {
     font-size: 22px;
 }
+
 .prefer-img img {
     width: 100%;
     height: 338px;
@@ -31,6 +32,7 @@
     font-weight: 400;
     font-style: normal;
 }
+
 .title {
     white-space: nowrap;
     font-family: GE SS Two;
@@ -39,10 +41,12 @@
     font-size: 32px;
     color: rgba(66, 73, 91, 1);
 }
-.articles-paragraph{
+
+.articles-paragraph {
     padding-top: 20px;
     font-size: 19px;
 }
+
 .small-title {
     text-align: center;
     color: blue;
@@ -54,6 +58,7 @@
     margin-top: 70px;
     color: blue;
 }
+
 .text-blue {
     color: blue;
 }
@@ -62,30 +67,37 @@
     justify-content: center;
     display: flex;
 }
-.most-important-imgDiv img , .icon {
+
+.most-important-imgDiv img,
+.icon {
     width: 100px;
     height: 80px;
     margin-bottom: 5px;
 }
-.big-image{
+
+.big-image {
     margin: 10px;
     width: 50%;
 }
-.Some-of-our-work{
+
+.Some-of-our-work {
     position: relative;
 }
-.our-works-list-view{
+
+.our-works-list-view {
     display: flex;
     justify-content: space-evenly;
 }
-.our-work-img{
+
+.our-work-img {
     height: 240px;
     width: 100%;
     width: 300px;
     border-radius: 20px;
     margin-bottom: 10px;
 }
-.bi-caret-left-fill{
+
+.bi-caret-left-fill {
     position: absolute;
     left: -2.5%;
     top: 45%;
@@ -93,7 +105,8 @@
     font-size: 25px;
     color: orange;
 }
-.bi-caret-right-fill{
+
+.bi-caret-right-fill {
     position: absolute;
     top: 45%;
     z-index: 4;
@@ -102,113 +115,149 @@
     color: orange;
 }
 
-.professionals-img{
+.professionals-img {
     width: 70%;
 }
+
 // ------------------------------------- scroller view ----------------------------
-.swiper-slide img{
+.swiper-slide img {
     height: 75vh;
 }
-.scoller-container{
+
+.scoller-container {
     overflow-x: scroll !important;
 }
-.scoller-container::-webkit-scrollbar{
+
+.scoller-container::-webkit-scrollbar {
     height: 0px;
 }
-.scroll-view{
+
+.scroll-view {
     display: inline-flex;
     position: relative;
 }
-.scroll-view img{
+
+.scroll-view img {
     width: 25vw !important;
     height: 270px;
-    padding: 3px ;
-    border-radius: 10px;
+    padding: 3px;
+    border-radius: 18px;
 }
-.Types-of-sites-container{
+
+.Types-of-sites-container {
     position: relative;
 }
-.Types-of-sites-container .bi{
+
+.Types-of-sites-container .bi {
     position: absolute;
     top: 19%;
     z-index: 2;
     font-size: 30px;
 }
+
 // ------------------------------------------------------------------
 
-.animation-left{
+.animation-left {
     animation-name: getProductLeft;
     animation-duration: 1.5s;
 }
-.animation-right{
+
+.animation-right {
     animation-name: getProductRight;
     animation-duration: 1.5s;
 }
 
 @keyframes getProductLeft {
-    from{transform: translateX(30px);}
-    to{transform: translateX(0px);}
+    from {
+        transform: translateX(30px);
+    }
+
+    to {
+        transform: translateX(0px);
+    }
 }
+
 @keyframes getProductRight {
-    from{transform: translateX(-30px);}
-    to{transform: translateX(0px);}
+    from {
+        transform: translateX(-30px);
+    }
+
+    to {
+        transform: translateX(0px);
+    }
 }
+
 @media screen and (max-width:991px) {
-    i.bi{
+    i.bi {
         display: none;
     }
 }
+
 @media screen and (max-width:700px) {
     .Design-company .Dc .img {
         width: 100%;
     }
+
     .The-best-design-company .prefer {
         display: block;
     }
+
     .Articles .row {
         display: block;
     }
+
     .most-important-features-of-Electro-website-design .row {
         display: block;
         margin-right: 0;
     }
+
     .most-important-features-of-Electro-website-design .maindiv2 {
         margin-bottom: 27px;
     }
+
     .row {
         margin-left: 0px;
         margin-right: 0px;
     }
+
     .Design-company .span1 {
         margin-right: 3px;
     }
-    .prefer .col-lg-6 p{
+
+    .prefer .col-lg-6 p {
         font-size: 16px;
     }
-    .Some-of-our-work .row .mb-3{
+
+    .Some-of-our-work .row .mb-3 {
         margin-bottom: 2rem !important;
     }
-    .Some-of-our-work .row img{
+
+    .Some-of-our-work .row img {
         width: 90%;
         margin-bottom: 14px;
         margin-right: 5%;
     }
-    img.big-image{
+
+    img.big-image {
         width: 90%;
     }
-    p.title{
+
+    p.title {
         font-size: 25px;
         margin-bottom: 0;
     }
-    .swiper-slide img{
+
+    .swiper-slide img {
         height: 270px !important;
     }
+
     .swiper-button-next::after,
-    .swiper-button-prev::after{
+    .swiper-button-prev::after {
         font-size: 25px;
         font-weight: 700;
     }
-    .scroll-view img{
+
+    .scroll-view img {
         width: 60vw !important;
         height: 180px;
     }

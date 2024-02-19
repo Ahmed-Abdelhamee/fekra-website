@@ -3,7 +3,6 @@ import { design } from 'src/app/admin/interfaces/design.interface';
 import { DataService } from 'src/app/new-services/data.service';
 import  * as AOS from 'aos' ;
 import { SwiperOptions } from 'swiper';
-import * as $ from 'jquery'
 // import { OwlOptions } from 'ngx-owl-carousel-o';
 // import { register } from 'swiper/element/bundle'; 
 // register();
@@ -69,6 +68,10 @@ export class WebsitedesignComponent implements OnInit {
   // designList:design[]=[];
   // api_link="http://markitingwebsite-001-site1.dtempurl.com"
   constructor(private dataServ: DataService) {
+    if(sessionStorage.getItem("runCarsouel")!="website loaded"){
+      sessionStorage.setItem("runCarsouel","website loaded")
+      location.reload();
+    }
     this.dataServ.getOurWorks().subscribe({
       next: data => {
         for (const key in data) {
