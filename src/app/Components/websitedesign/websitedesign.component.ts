@@ -64,7 +64,7 @@ export class WebsitedesignComponent implements OnInit {
     spaceBetween: 30
   };  
   
-  list:string[]=["assets/Frame12.png","assets/Frame13.png","assets/Frame14.png","assets/Frame15.png","assets/Frame16.png","assets/Frame17.png","assets/Frame18.png","assets/Frame19.png"]
+  list:string[]=["assets/Frame12.png","assets/Frame13.png","assets/Frame14.png","assets/Frame15.png","assets/Frame16.png","assets/Frame17.png","assets/Frame18.png","assets/Frame19.png","assets/Frame20.png"]
   // designList:design[]=[];
   // api_link="http://markitingwebsite-001-site1.dtempurl.com"
   constructor(private dataServ: DataService) {
