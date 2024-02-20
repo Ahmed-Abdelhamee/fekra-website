@@ -1,20 +1,22 @@
-
-
 <div class="col-12">
   <div class="d-flex justify-content-end">
-    <button class="btn btn-info control-button" (click)="controlShow('add')" *ngIf="controlItem !='add'">Add </button>
-    <button class="btn btn-info control-button" (click)="controlShow('showData')" *ngIf="controlItem !='showData'">Show Data </button>
+    <button class="btn btn-info control-button" (click)="controlItem='add'" *ngIf="controlItem !='add'">Add </button>
+    <button class="btn btn-info control-button" (click)="controlItem='showData';getData()"
+      *ngIf="controlItem !='showData'">Show Data </button>
   </div>
-    <form [formGroup]="election" (ngSubmit)="submit()"  *ngIf="controlItem=='add' || controlItem=='edit'">
-      <div class="form-group mt-2">
-        <label for="formGroupExampleInput2"> صورة للحملات الانتخابية</label>
-        <input type="file" accept=".jpg , .png , .jpeg , .webp "  class="form-control" (change)="uploadImg($event)"  id="formGroupExampleInput2" >
-        <small><img [src]="photoUrl" alt="" *ngIf="photoUrl != '' && uploadingImg == 'imgUploaded'" class="promo-img-show-Admin">  <span class="p-2" *ngIf="uploadingImg == 'uploadingImg'">جاري التحميل ...</span></small>
-      </div>
-      <div class="text-center m-2">
-        <button type="submit" class="btn btn-outline-warning"> save</button>
-      </div>
-    </form>
+  <form [formGroup]="election" (ngSubmit)="submit()" *ngIf="controlItem=='add' || controlItem=='edit'">
+    <div class="form-group mt-2">
+      <label for="formGroupExampleInput2"> صورة للحملات الانتخابية</label>
+      <input type="file" accept=".jpg , .png , .jpeg , .webp " class="form-control" (change)="uploadImg($event)"
+        id="formGroupExampleInput2">
+      <small><img [src]="photoUrl" alt="" *ngIf="photoUrl != '' && uploadingImg == 'imgUploaded'"
+          class="promo-img-show-Admin"> <span class="p-2" *ngIf="uploadingImg == 'uploadingImg'">جاري التحميل
+          ...</span></small>
+    </div>
+    <div class="text-center m-2">
+      <button type="submit" class="btn btn-outline-warning"> save</button>
+    </div>
+  </form>
 </div>
 
 
@@ -37,7 +39,7 @@
       <td>
         <div class="additional-height"></div>
         <button class="btn btn-danger control-button" (click)="deleteItem(item.id)">Delete </button>
-        <button class="btn btn-warning control-button" (click)="editItem(item);controlShow('edit')">Edit </button>
+        <button class="btn btn-warning control-button" (click)="editItem(item);controlItem='edit'">Edit </button>
       </td>
     </tr>
   </tbody>
@@ -46,5 +48,5 @@
 
 
 
-        <!-- code for uplaod ASP.net -->
-        <!-- <input type="file" accept=".jpg , .png , .jpeg , .webp "  class="form-control" (change)="fileUploaded($event)"  id="formGroupExampleInput2" > -->
+<!-- code for uplaod ASP.net -->
+<!-- <input type="file" accept=".jpg , .png , .jpeg , .webp "  class="form-control" (change)="fileUploaded($event)"  id="formGroupExampleInput2" > -->
