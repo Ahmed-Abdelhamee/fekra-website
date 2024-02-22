@@ -19,7 +19,7 @@ export class WebDesignComponent implements OnInit {
   // api_link="http://markitingwebsite-001-site1.dtempurl.com";
 
   // variables for controlling the viewe And Data  
-  controlItem: string = "";
+  controlItem: string = "showData";
   uploadingImg: string = "";
   // variables for save & act with data
   photoUrl: any = "";
@@ -34,15 +34,24 @@ export class WebDesignComponent implements OnInit {
   }
 
   constructor(private formBuilder: FormBuilder, private firestorage: AngularFireStorage, private http: HttpClient, private dataServ: DataService, private toastr: ToastrService) {
-    this.controlShow("showData")
+    this.getData()
   }
 
   ngOnInit(): void {
   }
 
+  resetView() {
+    this.photoUrl = '';
+    this.updateObject = {} as design;
+    this.design.patchValue({
+      id: new Date().getTime(),
+      image: ''
+    })
+    this.uploadingImg = ""
+  }
+
   // ------------- uploading File ------------
   async fileUploaded(event: any) {
-    this.toastr.info("يتم رفع الصورة حاليا")
     this.uploadingImg = "uploadingImg";
     const file = event.target.files[0];
     if (file) {
@@ -57,21 +66,10 @@ export class WebDesignComponent implements OnInit {
     })
   }
 
-  //  -------------------- for control the view  with data ------------------
-  controlShow(data: string) {
-    this.controlItem = data;
-    if (data == "showData") {
-      this.designList = [];
-      this.getData()
-    } else if (data == "add") {
-      this.design.patchValue({
-        image: ""
-      })
-    }
-  }
 
   // -------------  get data from API  -------------
   getData() {
+    this.designList = []
     this.dataServ.getOurWorks().subscribe(data => {
       for (const key in data) {
         this.designList.push(data[key])
@@ -85,16 +83,17 @@ export class WebDesignComponent implements OnInit {
       this.design.patchValue({
         id: new Date().getTime()
       })
-      await this.dataServ.createOurWorks(this.design.value).then(() => {
-        this.controlShow("showData"); this.photoUrl = "";
-      })
+      await this.dataServ.createOurWorks(this.design.value)
     } else {
       this.dataServ.getOurWorks().subscribe(async data => {
         for (const key in data) {
-          if (data[key].id == this.updateObject.id)
+          if (data[key].id == this.updateObject.id) {
+            if (this.updateObject.image != this.photoUrl)
+              this.firestorage.storage.refFromURL(data[key].image).delete()
             await this.dataServ.updateOurWorks(key, this.design.value).then(() => {
-              this.controlShow("showData"); this.photoUrl = "";
+              this.photoUrl = "";
             })
+          }
         }
       })
     }
@@ -103,8 +102,10 @@ export class WebDesignComponent implements OnInit {
   // -------------  edit data to API  -------------
   editItem(item: design) {
     this.updateObject = item;
+    this.photoUrl=item.image;
     this.design.patchValue({
-      id: item.id
+      id: item.id,
+      image: item.image
     })
   }
 
@@ -112,11 +113,12 @@ export class WebDesignComponent implements OnInit {
   deleteItem(id: number) {
     this.dataServ.getOurWorks().subscribe(data => {
       for (const key in data) {
-        if (data[key].id == id)
+        if (data[key].id == id) {
           this.dataServ.deleteOurWorks(key)
-        this.firestorage.storage.refFromURL(data[key].image).delete().then(() => {
-          this.getData()
-        }) // to delete the file from Firebase Storage;
+          this.firestorage.storage.refFromURL(data[key].image).delete().then(() => {
+            location.reload()
+          }) // to delete the file from Firebase Storage;
+        }
       }
     })
     this.toastr.success("تم حذف المنتج")

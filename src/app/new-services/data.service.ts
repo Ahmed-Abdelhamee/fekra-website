@@ -25,18 +25,15 @@ export class DataService {
   getHomeSerevices(): Observable<homeServices[]> {
     return this.http.get<homeServices[]>(`${this.databaseURL}/HomeSerevicesData.json`)
   }
-  async createHomeSerevices(data: any) {
+  createHomeSerevices(data: any) {
     this.http.post(`${this.databaseURL}/HomeSerevicesData.json`, data).subscribe(()=>{
-      this.toastr.success("تم رفع المحتوي")
+      location.reload()
     })
   }
-  async updateHomeSerevices(key: string, data: any) {
+  updateHomeSerevices(key: string, data: any) {
     this.http.put(`${this.databaseURL}/HomeSerevicesData/${key}.json`, data).subscribe(()=>{
-      this.toastr.warning("تم تعديل المحتوي")
+      location.reload()
     });
-  }
-  deleteHomeSerevices(key: string) {
-    this.http.delete(`${this.databaseURL}/HomeSerevicesData/${key}.json`).subscribe()
   }
   // ******************************************** Advertisment Data ********************************************
   getAdvertisment(): Observable<advertisment[]> {
@@ -59,18 +56,20 @@ export class DataService {
   getElection(): Observable<election[]> {
     return this.http.get<election[]>(`${this.databaseURL}/ElectionImages.json`)
   }
-  async createElection(data: any) {
+  createElection(data: any) {
     return this.http.post(`${this.databaseURL}/ElectionImages.json`, data).subscribe(()=>{
-      this.toastr.success("تم رفع المحتوي")
+      location.reload()
     })
   }
-  async updateElection(key: string, data: any) {
+  updateElection(key: string, data: any) {
     this.http.put(`${this.databaseURL}/ElectionImages/${key}.json`, data).subscribe(()=>{
-      this.toastr.warning("تم تعديل المحتوي")
+      location.reload()
     });
   }
   deleteElection(key: string) {
-    this.http.delete(`${this.databaseURL}/ElectionImages/${key}.json`).subscribe()
+    this.http.delete(`${this.databaseURL}/ElectionImages/${key}.json`).subscribe(()=>{
+      location.reload()
+    })
   }
   // ******************************************** OurWorks Data ********************************************
   getOurWorks(): Observable<design[]> {
@@ -78,12 +77,12 @@ export class DataService {
   }
   async createOurWorks(data: any) {
     this.http.post(`${this.databaseURL}/OurWorksImages.json`, data).subscribe(()=>{
-      this.toastr.success("تم رفع المحتوي")
+      location.reload()
     })
   }
   async updateOurWorks(key: string, data: any) {
     this.http.put(`${this.databaseURL}/OurWorksImages/${key}.json`, data).subscribe(()=>{
-      this.toastr.warning("تم تعديل المحتوي")
+      location.reload()
     });
   }
   deleteOurWorks(key: string) {

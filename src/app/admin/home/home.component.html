@@ -1,63 +1,66 @@
-
-
 <div class="col-12">
-    <div class="d-flex justify-content-end">
-      <button class="btn btn-info control-button" (click)="controlShow('add')" *ngIf="controlItem !='add'">Add </button>
-      <button class="btn btn-info control-button" (click)="controlShow('showData')" *ngIf="controlItem !='showData'">Show Data </button>
-    </div>
-      <form [formGroup]="homeSerevices" (ngSubmit)="submit()"  *ngIf="controlItem=='add' || controlItem=='edit'">
-        <div class="form-group mt-2">
-          <label for="formGroupExampleInput2"> صورة خدمات الصفحة الرئيسية </label>
-          <input type="file" accept=".jpg , .png , .jpeg , .webp "  class="form-control" (change)="uploadImg($event)"  id="formGroupExampleInput2" >
-          <small><img [src]="photoUrl" alt="" *ngIf="photoUrl != '' && uploadingImg == 'imgUploaded'" class="promo-img-show-Admin">  <span class="p-2" *ngIf="uploadingImg == 'uploadingImg'">جاري التحميل ...</span></small>
-        </div>
-        <div class="form-group">
-            <label for="title">الخدمة</label>
-            <input type="text" class="form-control" name="title" id="title" formControlName="title">
-        </div>
-        <div class="form-group">
-            <label for="text">الوصف</label>
-            <input type="text" class="form-control" name="text" id="text" formControlName="text">
-        </div>
-        <div class="text-center m-2">
-          <button type="submit" class="btn btn-outline-warning"> save</button>
-        </div>
-      </form>
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-info control-button" (click)="controlItem='add'" *ngIf="controlItem !='add'">Add </button>
+    <button class="btn btn-info control-button" (click)="controlItem='showData'" *ngIf="controlItem !='showData'">Show
+      Data </button>
   </div>
-  
-  
-  
-  <table class="table" *ngIf="controlItem=='showData'">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">صورة خدمات الصفحة الرئيسية </th>
-        <th scope="col">الخدمة</th>
-        <th scope="col">الوصف</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="paddingTop" *ngFor="let item of homeServicesList; let i=index">
-        <th scope="row">
-          <div class="additional-height"></div>
-          {{i+1}}
-        </th>
-        <td><img src="{{item.image}}" class="promo-img-show-Admin" alt=""></td>
-        <td>{{item.title}}</td>
-        <td>{{item.text}}</td>
-        <td>
-          <div class="additional-height"></div>
-          <button class="btn btn-danger control-button" (click)="deleteItem(item.id!)">Delete </button>
-          <button class="btn btn-warning control-button" (click)="editItem(item);controlShow('edit')">Edit </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  
-  
-          <!-- code for uplaod ASP.net -->
-          <!-- <input type="file" accept=".jpg , .png , .jpeg , .webp "  class="form-control" (change)="fileUploaded($event)"  id="formGroupExampleInput2" > -->
-  
+  <form [formGroup]="homeSerevices" (ngSubmit)="submit()" *ngIf="controlItem=='add' || controlItem=='edit'">
+    <div class="form-group mt-2">
+      <label for="formGroupExampleInput2"> صورة خدمات الصفحة الرئيسية </label>
+      <input type="file" accept=".jpg , .png , .jpeg , .webp " class="form-control" (change)="uploadImg($event)"
+        id="formGroupExampleInput2">
+      <small><img [src]="photoUrl" alt="" *ngIf="photoUrl"
+          class="promo-img-show-Admin"> <span class="p-2" *ngIf="uploadingImg == 'uploadingImg'">جاري التحميل
+          ...</span></small>
+    </div>
+    <div class="form-group">
+      <label for="title">الخدمة</label>
+      <input type="text" class="form-control" name="title" id="title" formControlName="title">
+    </div>
+    <div class="form-group">
+      <label for="text">الوصف</label>
+      <input type="text" class="form-control" name="text" id="text" formControlName="text">
+    </div>
+    <div class="text-center m-2">
+      <button type="submit" class="btn btn-outline-warning" *ngIf="photoUrl || controlItem=='edit'"> save</button>
+    </div>
+  </form>
+</div>
+
+
+
+<table class="table" *ngIf="controlItem=='showData'">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">صورة خدمات الصفحة الرئيسية </th>
+      <th scope="col">الخدمة</th>
+      <th scope="col">الوصف</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="paddingTop" *ngFor="let item of homeServicesList; let i=index">
+      <th scope="row">
+        <div class="additional-height"></div>
+        {{i+1}}
+      </th>
+      <td><img src="{{item.image}}" class="promo-img-show-Admin" alt=""></td>
+      <td>{{item.title}}</td>
+      <td>{{item.text}}</td>
+      <td>
+        <div class="additional-height"></div>
+        <button class="btn btn-danger control-button" (click)="deleteItem(item.id!)"><i class="bi bi-trash-fill"></i>
+        </button>
+        <button class="btn btn-warning control-button" (click)="editItem(item);controlItem='edit'"><i
+            class="bi bi-pencil"></i> </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<!-- code for uplaod ASP.net -->
+<!-- <input type="file" accept=".jpg , .png , .jpeg , .webp "  class="form-control" (change)="fileUploaded($event)"  id="formGroupExampleInput2" > -->

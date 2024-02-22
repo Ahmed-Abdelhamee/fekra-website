@@ -45,44 +45,82 @@ export class WhoUsComponent implements OnInit {
     id: [new Date().getTime()]
   })
 
-  constructor(private formBuilder: FormBuilder, private route: Router, private dataServ: DataService, private firestorage: AngularFireStorage , private toastr:ToastrService) {
+  constructor(private formBuilder: FormBuilder, private route: Router, private dataServ: DataService, private firestorage: AngularFireStorage, private toastr: ToastrService) {
     this.showpart('who-us-showData')
   }
 
   ngOnInit(): void { }
+
+  /* ------------------------- get data from API ------------------------- */
+
+  getDataFromAPI() {
+    this.list = []
+    if (this.view_part == "who-us-showData") {
+      this.dataServ.getWhoUsDescription().subscribe(data => {
+        for (const key in data) {
+          this.list.push(data[key])
+        }
+      })
+    } else if (this.view_part == "our-services-showData") {
+      this.dataServ.getWhoUsServices().subscribe(data => {
+        for (const key in data) {
+          this.list.push(data[key])
+        }
+      })
+    } else if (this.view_part == "our-team-showData") {
+      this.dataServ.getWhoUsTeamWorks().subscribe(data => {
+        for (const key in data) {
+          this.list.push(data[key])
+        }
+      })
+    } else if (this.view_part == "our-clients-showData") {
+      this.dataServ.getWhoUsOurClients().subscribe(data => {
+        for (const key in data) {
+          this.list.push(data[key])
+        }
+      })
+    }
+  }
+
 
   showpart(part: string) {
     this.view_part = part;
     this.servicesPhotoUrl = ""
     this.teamPhotoUrl = ""
     this.clientPhotoUrl = ""
+    this.updatedObject = {}
+    this.list = []
     if (this.view_part == "who-us-add") {
       this.who_us.patchValue({
         description: "",
+        id: new Date().getTime()
       })
-    } else if (this.view_part == "who-us-showData") {
-      this.getDataFromAPI()
-    } else if (this.view_part == "our-team-showData") {
-      this.getDataFromAPI()
     } else if (this.view_part == "our-team-add") {
       this.our_team.patchValue({
+        image: "",
         name: "",// to show form with data to edit
+        id: new Date().getTime()
       })
-    } else if (this.view_part == "our-services-showData") {
-      this.getDataFromAPI()
     } else if (this.view_part == "our-services-add") {
       this.services.patchValue({
+        image: "",
         description: "",// to show form with data to edit
+        id: new Date().getTime()
       })
-    } else if (this.view_part == "our-clients-showData") {
+    } else if (this.view_part == "our-clients-add") {
+      this.our_clients.patchValue({
+        image: "",
+        id: new Date().getTime()
+      })
+    } else {
       this.getDataFromAPI()
     }
   }
 
+
   // -------------------------------------------------- Upload file data  ----------------------------------------------
 
   async servicesfileUpload(event: any) {
-    this.toastr.info("يتم رفع الصورة حاليا")
     this.uploadingImg = "uploadingImg";
     const file = event.target.files[0];
     if (file) {
@@ -98,7 +136,6 @@ export class WhoUsComponent implements OnInit {
   }
 
   async ourTeamfileUpload(event: any) {
-    this.toastr.info("يتم رفع الصورة حاليا")
     this.uploadingImg = "uploadingImg";
     const file = event.target.files[0];
     if (file) {
@@ -114,7 +151,6 @@ export class WhoUsComponent implements OnInit {
   }
 
   async clientfileUpload(event: any) {
-    this.toastr.info("يتم رفع الصورة حاليا")
     this.uploadingImg = "uploadingImg";
     const file = event.target.files[0];
     if (file) {
@@ -163,13 +199,17 @@ export class WhoUsComponent implements OnInit {
       // to get the object to update
       this.dataServ.getWhoUsServices().subscribe(async data => {
         for (const key in data) {
-          if (data[key].id == this.updatedObject.id)
+          if (data[key].id == this.updatedObject.id) {
             await this.dataServ.updateWhoUsServices(key, this.services.value)
+            if (this.servicesPhotoUrl != this.updatedObject.image) {
+              this.firestorage.storage.refFromURL(data[key].image).delete()
+            }
+          }
         }
       })
     }
-    setTimeout(() => { this.getDataFromAPI() }, 700); // to view data
-    this.view_part = "our-services-showData";
+    setTimeout(() => { this.getDataFromAPI(); }, 700); // to view data
+    setTimeout(() => { this.view_part = "our-services-showData"; }, 650); // to view data
   }
 
   // send Our Team data
@@ -184,8 +224,12 @@ export class WhoUsComponent implements OnInit {
       // to get the object to update
       this.dataServ.getWhoUsTeamWorks().subscribe(async data => {
         for (const key in data) {
-          if (data[key].id == this.updatedObject.id)
-            await this.dataServ.updateWhoUsTeamWorks(key, this.our_team.value)
+          if (data[key].id == this.updatedObject.id) {
+            await this.dataServ.updateWhoUsTeamWorks(key, this.our_team.value);
+            if (this.teamPhotoUrl != this.updatedObject.image) {
+              this.firestorage.storage.refFromURL(data[key].image).delete()
+            }
+          }
         }
       })
     }
@@ -205,8 +249,11 @@ export class WhoUsComponent implements OnInit {
       // to get the object to update
       this.dataServ.getWhoUsOurClients().subscribe(async data => {
         for (const key in data) {
-          if (data[key].id == this.updatedObject.id)
+          if (data[key].id == this.updatedObject.id) {
             await this.dataServ.updateWhoUsOurClients(key, this.our_clients.value)
+            if(this.clientPhotoUrl != this.updatedObject.image)
+            this.firestorage.storage.refFromURL(data[key].image).delete()
+          }
         }
       })
     }
@@ -214,37 +261,6 @@ export class WhoUsComponent implements OnInit {
     this.view_part = "our-clients-showData"; // to view data
   }
 
-
-  /* ------------------------- get data from API ------------------------- */
-
-  getDataFromAPI() {
-    this.list = []
-    if (this.view_part == "who-us-showData") {
-      this.dataServ.getWhoUsDescription().subscribe(data => {
-        for (const key in data) {
-          this.list.push(data[key])
-        }
-      })
-    } else if (this.view_part == "our-services-showData") {
-      this.dataServ.getWhoUsServices().subscribe(data => {
-        for (const key in data) {
-          this.list.push(data[key])
-        }
-      })
-    } else if (this.view_part == "our-team-showData") {
-      this.dataServ.getWhoUsTeamWorks().subscribe(data => {
-        for (const key in data) {
-          this.list.push(data[key])
-        }
-      })
-    } else if (this.view_part == "our-clients-showData") {
-      this.dataServ.getWhoUsOurClients().subscribe(data => {
-        for (const key in data) {
-          this.list.push(data[key])
-        }
-      })
-    }
-  }
 
 
   /* ------------------------- update data from API ------------------------- */
@@ -259,23 +275,27 @@ export class WhoUsComponent implements OnInit {
     } else if (this.view_part == "our-services-showData") {
       this.view_part = "our-services-edit" // to show form with data to edit
       this.services.patchValue({
+        image: item.image,
         description: item.description,// to show form with data to edit
         id: this.updatedObject.id // to set the id as it is 
       })
-      this.servicesPhotoUrl = ""
+      this.servicesPhotoUrl = item.image
     } else if (this.view_part == "our-team-showData") {
       this.view_part = "our-team-edit" // to show form with data to edit
       this.our_team.patchValue({
+        image: item.image,
         name: item.name,// to show form with data to editiption,
         id: this.updatedObject.id   // to set the id as it is 
       })
-      this.teamPhotoUrl = ""
+      this.teamPhotoUrl = item.image
     } else if (this.view_part == "our-clients-showData") {
       this.view_part = "our-clients-edit" // to show form with data to edit
       this.clientPhotoUrl = "";
-      this.services.patchValue({
-        id: this.updatedObject.id   // to set the id as it is 
+      this.our_clients.patchValue({
+        id: this.updatedObject.id,  // to set the id as it is 
+        image: item.image
       })
+      this.clientPhotoUrl = item.image;
     }
   }
 
@@ -289,42 +309,38 @@ export class WhoUsComponent implements OnInit {
           if (item.id == data[key].id)
             this.dataServ.deleteWhoUsDescription(key);
         }
-        this.getDataFromAPI()
       })
     } else if (this.view_part == "our-services-showData") {
       this.dataServ.getWhoUsServices().subscribe(data => {
         for (const key in data) {
-          if (item.id == data[key].id)
+          if (item.id == data[key].id) {
             this.dataServ.deleteWhoUsServices(key);
-            this.firestorage.storage.refFromURL(data[key].image).delete().then(() => {
-              this.getDataFromAPI()
-            }) // to delete the file from Firebase Storage;
-    
+            this.firestorage.storage.refFromURL(data[key].image).delete()
+          }
         }
       })
     } else if (this.view_part == "our-team-showData") {
       this.dataServ.getWhoUsTeamWorks().subscribe(data => {
         for (const key in data) {
-          if (item.id == data[key].id)
+          if (item.id == data[key].id) {
             this.dataServ.deleteWhoUsTeamWorks(key);
-            this.firestorage.storage.refFromURL(data[key].image).delete().then(() => {
-              this.getDataFromAPI()
-            }) // to delete the file from Firebase Storage;
-    
+            this.firestorage.storage.refFromURL(data[key].image).delete()
+          }
         }
       })
     } else if (this.view_part == "our-clients-showData") {
       this.dataServ.getWhoUsOurClients().subscribe(data => {
         for (const key in data) {
-          if (item.id == data[key].id)
+          if (item.id == data[key].id) {
             this.dataServ.deleteWhoUsOurClients(key);
-            this.firestorage.storage.refFromURL(data[key].image).delete().then(() => {
-              this.getDataFromAPI()
-            }) // to delete the file from Firebase Storage;
-    
+            this.firestorage.storage.refFromURL(data[key].image).delete()
+          }
         }
       })
     }
+    setTimeout(() => {
+      this.getDataFromAPI()
+    }, 700);
     this.toastr.success("تم حذف المنتج")
   }
 

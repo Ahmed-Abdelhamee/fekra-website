@@ -3,56 +3,65 @@
 // @import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 // @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 
-img::selection{
+img::selection {
     background: none;
 }
-.col-lg-6{
+
+.col-lg-6 {
     float: right;
 }
-.set-margin-for-header{
+
+.set-margin-for-header {
     margin-top: 92px;
 }
 
 // ----------------------------- style code for main css file shared --------------------------- 
 
 @media screen and (max-width: 600px) {
-    div.d-flex.justify-content-end{
+    div.d-flex.justify-content-end {
         justify-content: center !important;
     }
-    .form-group label{
+
+    .form-group label {
         font-size: 12px;
     }
-    .form-group input::placeholder{
+
+    .form-group input::placeholder {
         font-size: 12px;
     }
-    .form-group input[type="file"]{
+
+    .form-group input[type="file"] {
         font-size: 12px;
     }
 
     thead tr th,
     tbody tr td,
     tbody tr th,
-    tbody tr td .btn{
-        font-size: 10px !important; 
+    tbody tr td .btn {
+        font-size: 10px !important;
     }
-    tr td .btn-warning{
+
+    tr td .btn-warning {
         padding: 5px 17px;
     }
 }
 
-input::placeholder{
+input::placeholder {
     text-transform: capitalize;
 }
-label{
+
+label {
     padding: 5px;
 }
-.control-button{
+
+.control-button {
     margin-left: 10px;
     color: white;
-    font-size: 13px !important; 
+    font-size: 13px !important;
     margin-bottom: 20px;
 }
-.promo-img-show-Admin{
+
+.promo-img-show-Admin {
     height: 70px;
     width: 85px;
     border-radius: 5px;
@@ -60,6 +69,12 @@ label{
     margin-top: 22px;
     margin-bottom: 13px;
 }
-.additional-height{
+
+.additional-height {
     height: 26px;
+}
+
+th,
+td {
+    text-align: center !important;
 }

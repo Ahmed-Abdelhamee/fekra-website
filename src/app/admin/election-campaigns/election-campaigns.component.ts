@@ -28,20 +28,29 @@ export class ElectionCampaignsComponent implements OnInit {
   electionList: election[] = []
   // for add the image
   election = this.formBuilder.group({
+    id: [new Date().getTime()],
     image: [{}, Validators.required],
-    id: [new Date().getTime()]
   })
   // for update the image 
   updateObject: election = {} as election;
 
   constructor(private formBuilder: FormBuilder, private db: Database, private dataServ: DataService, private firestorage: AngularFireStorage, private toastr: ToastrService) {
+    this.getData()
   }
 
   ngOnInit(): void { }
 
+  resetView(){
+    this.photoUrl ='';
+    this.updateObject = {} as election;
+    this.election.patchValue({
+      id: new Date().getTime(),
+      image: ''
+    })
+    this.uploadingImg=""
+  }
   // -----------  for uploading image on firebase  ----------
   async uploadImg(event: any) {
-    this.toastr.info("يتم رفع الصورة حاليا")
     this.uploadingImg = "uploadingImg";
     const file = event.target.files[0];
     if (file) {
@@ -67,19 +76,18 @@ export class ElectionCampaignsComponent implements OnInit {
   }
 
   // -------------- sending data to function() ----------------
-  async submit() {
+  submit() {
     if (this.controlItem == "add") {
-      await this.dataServ.createElection(this.election.value).then(() => {
-        this.getData(); this.photoUrl = ""
-      })
+      this.dataServ.createElection(this.election.value)
     } else {
-      this.dataServ.getElection().subscribe(async data => {
+      this.dataServ.getElection().subscribe(data => {
         for (const key in data) {
           if (data[key].id == this.updateObject.id) {
-            await this.dataServ.updateElection(key, this.election.value)
+            this.dataServ.updateElection(key, this.election.value)
+            if (this.updateObject.image != this.photoUrl)
+              this.firestorage.storage.refFromURL(data[key].image).delete()
           }
         }
-        this.getData(); this.photoUrl = ""
       })
     }
   }
@@ -87,28 +95,28 @@ export class ElectionCampaignsComponent implements OnInit {
   // ----------------- to update data -------------------
   editItem(item: election) {
     this.photoUrl = item.image;
-    this.uploadingImg = "imgUploaded"
     this.updateObject = item;
     this.election.patchValue({
-      id: this.updateObject.id
+      id: this.updateObject.id,
+      image: item.image
     })
   }
-  
+
   // ----------------- for deleting item -----------------
   deleteItem(id: number) {
     this.dataServ.getElection().subscribe(data => {
       for (const key in data) {
-        if (data[key].id == id)
+        if (data[key].id == id){
           this.dataServ.deleteElection(key);
         this.firestorage.storage.refFromURL(data[key].image).delete().then(() => {
-          this.getData()
+          
         }) // to delete the file from Firebase Storage;
+      }
       }
     })
   }
 
 }
-
 
 
 

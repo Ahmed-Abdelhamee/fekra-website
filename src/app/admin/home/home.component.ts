@@ -5,6 +5,8 @@ import { DataService } from 'src/app/new-services/data.service';
 import { Database } from '@angular/fire/database';
 import { homeServices } from '../interfaces/home.interface';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -13,8 +15,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class HomeComponent implements OnInit {
 
+  databaseURL: any = environment.firebase.databaseURL;
   // for control the view 
-  controlItem: string = "";
+  controlItem: string = "showData";
   uploadingImg: string = "";
   // variables for getting the data 
   photoUrl: any = "";
@@ -27,39 +30,34 @@ export class HomeComponent implements OnInit {
     id: [new Date().getTime()]
   })
   // for update the image 
-  updateObject: homeServices = {
-    id: 0,
-    image: "",
-    text: "",
-    title: "",
-  }
+  updateObject: homeServices = {} as homeServices
 
-  constructor(private formBuilder: FormBuilder, private dataServ: DataService, private firestorage: AngularFireStorage, private toastr: ToastrService) {
-    this.controlShow("showData")
+  constructor(private formBuilder: FormBuilder, private dataServ: DataService, private http: HttpClient,
+    private firestorage: AngularFireStorage, private toastr: ToastrService) {
+    this.getData()
   }
 
   ngOnInit(): void {
   }
 
   // ----------------------- to control the show   with API  -----------------------
-  controlShow(data: string) {
+  restData(data: string) {
     this.controlItem = data;
-    if (data == "showData") {
-      this.homeServicesList = [];
-      setTimeout(() => { this.getData() }, 700);
-    } else if (data == "add") {
-      this.homeSerevices.patchValue({
-        id: new Date().getTime(),
-        image: "",
-        text: "",
-        title: "",
-      })
-    }
+    this.homeServicesList = [];
+    this.homeSerevices.patchValue({
+      id: new Date().getTime(),
+      image: "",
+      text: "",
+      title: "",
+    })
+    this.updateObject = {} as homeServices;
+    this.controlItem = "";
+    this.uploadingImg = "";
+
   }
 
   // -----------  for uploading image on firebase  ----------
   async uploadImg(event: any) {
-    this.toastr.info("يتم رفع الصورة حاليا")
     this.uploadingImg = "uploadingImg";
     const file = event.target.files[0];
     if (file) {
@@ -76,26 +74,28 @@ export class HomeComponent implements OnInit {
 
   // -------------------- get data for firebase  --------------------
   getData() {
+    let List: homeServices[] = [];
+    this.homeServicesList = []
     this.dataServ.getHomeSerevices().subscribe(data => {
       for (const key in data) {
-        this.homeServicesList.push(data[key])
+        List.push(data[key]);
       }
+      this.homeServicesList = List;
+      this.controlItem = "showData"
     })
   }
 
   // -------------- sending data to function() ----------------
-  async submit() {
+  submit() {
     if (this.controlItem == "add") {
-      await this.dataServ.createHomeSerevices(this.homeSerevices.value).then(() => {
-        this.controlShow("showData"); this.photoUrl = "";
-      })
+      this.dataServ.createHomeSerevices(this.homeSerevices.value)
     } else {
       this.dataServ.getHomeSerevices().subscribe(async data => {
         for (const key in data) {
           if (data[key].id == this.updateObject.id) {
-            await this.dataServ.updateHomeSerevices(key, this.homeSerevices.value).then(() => {
-              this.controlShow("showData"); this.photoUrl = "";
-            })
+            if(this.updateObject.image != this.photoUrl)
+            this.firestorage.storage.refFromURL(data[key].image!).delete()
+            this.dataServ.updateHomeSerevices(key, this.homeSerevices.value)
           }
         }
       })
@@ -105,6 +105,7 @@ export class HomeComponent implements OnInit {
   // ----------------- to update data -------------------
   editItem(item: homeServices) {
     this.updateObject = item;
+    this.photoUrl=item.image;
     this.homeSerevices.patchValue({
       id: item.id,
       image: item.image,
@@ -117,14 +118,15 @@ export class HomeComponent implements OnInit {
   deleteItem(id: number) {
     this.dataServ.getHomeSerevices().subscribe(data => {
       for (const key in data) {
-        if (data[key].id == id)
-          this.dataServ.deleteHomeSerevices(key);
-        this.firestorage.storage.refFromURL(data[key].image!).delete().then(() => {
-          this.controlShow("showData")
-        }) // to delete the file from Firebase Storage;
+        if (data[key].id == id) {
+          this.http.delete(`${this.databaseURL}/HomeSerevicesData/${key}.json`).subscribe(() => {
+            this.firestorage.storage.refFromURL(data[key].image!).delete().finally(() => {
+              location.reload()
+            })
+          })
+        }
       }
     })
-    this.toastr.success("تم حذف المنتج")
   }
 
 }

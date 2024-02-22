@@ -1,6 +1,6 @@
 <div class="col-12">
   <div class="d-flex justify-content-end">
-    <button class="btn btn-info control-button" (click)="controlItem='add'" *ngIf="controlItem !='add'">Add </button>
+    <button class="btn btn-info control-button" (click)="controlItem='add';resetView()" *ngIf="controlItem !='add'">Add </button>
     <button class="btn btn-info control-button" (click)="controlItem='showData';getData()"
       *ngIf="controlItem !='showData'">Show Data </button>
   </div>
@@ -9,17 +9,15 @@
       <label for="formGroupExampleInput2"> صورة للحملات الانتخابية</label>
       <input type="file" accept=".jpg , .png , .jpeg , .webp " class="form-control" (change)="uploadImg($event)"
         id="formGroupExampleInput2">
-      <small><img [src]="photoUrl" alt="" *ngIf="photoUrl != '' && uploadingImg == 'imgUploaded'"
+      <small><img [src]="photoUrl" alt="" *ngIf="photoUrl != ''"
           class="promo-img-show-Admin"> <span class="p-2" *ngIf="uploadingImg == 'uploadingImg'">جاري التحميل
           ...</span></small>
     </div>
     <div class="text-center m-2">
-      <button type="submit" class="btn btn-outline-warning"> save</button>
+      <button type="submit" class="btn btn-outline-warning" *ngIf="photoUrl"> save</button>
     </div>
   </form>
 </div>
-
-
 
 <table class="table" *ngIf="controlItem=='showData'">
   <thead>
@@ -38,14 +36,14 @@
       <td><img src="{{item.image}}" class="promo-img-show-Admin" alt=""></td>
       <td>
         <div class="additional-height"></div>
-        <button class="btn btn-danger control-button" (click)="deleteItem(item.id)">Delete </button>
-        <button class="btn btn-warning control-button" (click)="editItem(item);controlItem='edit'">Edit </button>
+        <button class="btn btn-danger control-button" (click)="deleteItem(item.id)"><i class="bi bi-trash-fill"></i>
+        </button>
+        <button class="btn btn-warning control-button" (click)="editItem(item);controlItem='edit'"><i
+            class="bi bi-pencil"></i> </button>
       </td>
     </tr>
   </tbody>
 </table>
-
-
 
 
 <!-- code for uplaod ASP.net -->
