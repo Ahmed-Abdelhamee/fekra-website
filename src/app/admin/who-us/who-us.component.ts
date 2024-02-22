@@ -189,7 +189,8 @@ export class WhoUsComponent implements OnInit {
         }
       })
     }
-    // setTimeout(() => { this.getDataFromAPI(); }, 700); // to view data
+      this.showpart("who-us-add")
+      // setTimeout(() => { this.getDataFromAPI(); }, 700); // to view data
     // setTimeout(() => { this.view_part = "who-us-showData"  /* to view data */ }, 650); // to view data
   }
 
@@ -213,6 +214,7 @@ export class WhoUsComponent implements OnInit {
         }
       })
     }
+    this.showpart("our-services-add")
   }
 
   // send Our Team data
@@ -236,6 +238,7 @@ export class WhoUsComponent implements OnInit {
         }
       })
     }
+    this.showpart("our-team-add")
   }
 
   // send Our Clients data
@@ -258,6 +261,7 @@ export class WhoUsComponent implements OnInit {
         }
       })
     }
+    this.showpart("our-clients-add")
   }
 
 
