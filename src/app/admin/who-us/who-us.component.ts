@@ -1,9 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { DataService } from 'src/app/new-services/data.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-who-us',
@@ -11,6 +13,8 @@ import { DataService } from 'src/app/new-services/data.service';
   styleUrls: ['./who-us.component.scss']
 })
 export class WhoUsComponent implements OnInit {
+
+  databaseURL: any = environment.firebase.databaseURL;
 
   view_part: string = "";
   updatedObject: any;
@@ -45,7 +49,8 @@ export class WhoUsComponent implements OnInit {
     id: [new Date().getTime()]
   })
 
-  constructor(private formBuilder: FormBuilder, private route: Router, private dataServ: DataService, private firestorage: AngularFireStorage, private toastr: ToastrService) {
+  constructor(private formBuilder: FormBuilder, private route: Router, private http: HttpClient,
+    private dataServ: DataService, private firestorage: AngularFireStorage, private toastr: ToastrService) {
     this.showpart('who-us-showData')
   }
 
@@ -251,8 +256,8 @@ export class WhoUsComponent implements OnInit {
         for (const key in data) {
           if (data[key].id == this.updatedObject.id) {
             await this.dataServ.updateWhoUsOurClients(key, this.our_clients.value)
-            if(this.clientPhotoUrl != this.updatedObject.image)
-            this.firestorage.storage.refFromURL(data[key].image).delete()
+            if (this.clientPhotoUrl != this.updatedObject.image)
+              this.firestorage.storage.refFromURL(data[key].image).delete()
           }
         }
       })
@@ -307,15 +312,21 @@ export class WhoUsComponent implements OnInit {
       this.dataServ.getWhoUsDescription().subscribe(data => {
         for (const key in data) {
           if (item.id == data[key].id)
-            this.dataServ.deleteWhoUsDescription(key);
+            this.http.delete(`${this.databaseURL}/WhoUsDescription/${key}.json`).subscribe(() => {
+              this.list = []
+              this.getDataFromAPI()
+            })
         }
       })
     } else if (this.view_part == "our-services-showData") {
       this.dataServ.getWhoUsServices().subscribe(data => {
         for (const key in data) {
           if (item.id == data[key].id) {
-            this.dataServ.deleteWhoUsServices(key);
             this.firestorage.storage.refFromURL(data[key].image).delete()
+            this.http.delete(`${this.databaseURL}/WhoUsServices/${key}.json`).subscribe(()=>{
+              this.list = []
+              this.getDataFromAPI()
+            })
           }
         }
       })
@@ -323,7 +334,10 @@ export class WhoUsComponent implements OnInit {
       this.dataServ.getWhoUsTeamWorks().subscribe(data => {
         for (const key in data) {
           if (item.id == data[key].id) {
-            this.dataServ.deleteWhoUsTeamWorks(key);
+            this.http.delete(`${this.databaseURL}/WhoUsTeamWorks/${key}.json`).subscribe(()=>{
+              this.list = []
+              this.getDataFromAPI()
+            })
             this.firestorage.storage.refFromURL(data[key].image).delete()
           }
         }
@@ -332,34 +346,19 @@ export class WhoUsComponent implements OnInit {
       this.dataServ.getWhoUsOurClients().subscribe(data => {
         for (const key in data) {
           if (item.id == data[key].id) {
-            this.dataServ.deleteWhoUsOurClients(key);
+            this.http.delete(`${this.databaseURL}/WhoUsOurClients/${key}.json`).subscribe(()=>{
+              this.list = []
+              this.getDataFromAPI()
+            })
             this.firestorage.storage.refFromURL(data[key].image).delete()
           }
         }
       })
     }
-    setTimeout(() => {
-      this.getDataFromAPI()
-    }, 700);
-    this.toastr.success("تم حذف المنتج")
+    this.toastr.success("تم حذف المحتوي")
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
