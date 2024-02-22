@@ -189,8 +189,8 @@ export class WhoUsComponent implements OnInit {
         }
       })
     }
-    setTimeout(() => { this.getDataFromAPI(); }, 700); // to view data
-    setTimeout(() => { this.view_part = "who-us-showData"  /* to view data */ }, 650); // to view data
+    // setTimeout(() => { this.getDataFromAPI(); }, 700); // to view data
+    // setTimeout(() => { this.view_part = "who-us-showData"  /* to view data */ }, 650); // to view data
   }
 
   // send Servics data
@@ -213,8 +213,6 @@ export class WhoUsComponent implements OnInit {
         }
       })
     }
-    setTimeout(() => { this.getDataFromAPI(); }, 700); // to view data
-    setTimeout(() => { this.view_part = "our-services-showData"; }, 650); // to view data
   }
 
   // send Our Team data
@@ -238,8 +236,6 @@ export class WhoUsComponent implements OnInit {
         }
       })
     }
-    setTimeout(() => { this.getDataFromAPI() }, 700); // to view data
-    this.view_part = "our-team-showData";  // to view data
   }
 
   // send Our Clients data
@@ -262,8 +258,6 @@ export class WhoUsComponent implements OnInit {
         }
       })
     }
-    setTimeout(() => { this.getDataFromAPI() }, 700); // to view data
-    this.view_part = "our-clients-showData"; // to view data
   }
 
 
