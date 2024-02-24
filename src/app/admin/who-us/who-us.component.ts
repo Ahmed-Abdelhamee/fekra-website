@@ -237,8 +237,8 @@ export class WhoUsComponent implements OnInit {
             if (this.teamPhotoUrl != this.updatedObject.image) {
               this.firestorage.storage.refFromURL(data[key].image).delete()
             }
+            this.showpart("our-team-add")
           }
-          this.showpart("our-team-add")
         }
       })
     }
@@ -267,7 +267,6 @@ export class WhoUsComponent implements OnInit {
       })
     }
   }
-
 
 
   /* ------------------------- update data from API ------------------------- */
