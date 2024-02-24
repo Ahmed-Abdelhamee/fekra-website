@@ -180,17 +180,18 @@ export class WhoUsComponent implements OnInit {
         id: new Date().getTime() // to make a new id
       })
       await this.dataServ.createWhoUsDescription(this.who_us.value)
+      this.showpart("who-us-add")
     } else {
       this.dataServ.getWhoUsDescription().subscribe(async data => {
         // to get the object to update
         for (const key in data) {
           if (data[key].id == this.updatedObject.id)
             await this.dataServ.updateWhoUsDescription(key, this.who_us.value)
+          this.showpart("who-us-add")
         }
       })
     }
-      this.showpart("who-us-add")
-      // setTimeout(() => { this.getDataFromAPI(); }, 700); // to view data
+    // setTimeout(() => { this.getDataFromAPI(); }, 700); // to view data
     // setTimeout(() => { this.view_part = "who-us-showData"  /* to view data */ }, 650); // to view data
   }
 
@@ -201,6 +202,7 @@ export class WhoUsComponent implements OnInit {
         id: new Date().getTime() // to make a new id
       })
       await this.dataServ.createWhoUsServices(this.services.value)
+      this.showpart("our-services-add")
     } else if (this.view_part == "our-services-edit") {
       // to get the object to update
       this.dataServ.getWhoUsServices().subscribe(async data => {
@@ -210,11 +212,11 @@ export class WhoUsComponent implements OnInit {
             if (this.servicesPhotoUrl != this.updatedObject.image) {
               this.firestorage.storage.refFromURL(data[key].image).delete()
             }
+            this.showpart("our-services-add")
           }
         }
       })
     }
-    this.showpart("our-services-add")
   }
 
   // send Our Team data
@@ -224,6 +226,7 @@ export class WhoUsComponent implements OnInit {
         id: new Date().getTime()   // to make a new id
       })
       await this.dataServ.createWhoUsTeamWorks(this.our_team.value)
+      this.showpart("our-team-add")
       // to get the object to update
     } else if (this.view_part == "our-team-edit") {
       // to get the object to update
@@ -235,10 +238,10 @@ export class WhoUsComponent implements OnInit {
               this.firestorage.storage.refFromURL(data[key].image).delete()
             }
           }
+          this.showpart("our-team-add")
         }
       })
     }
-    this.showpart("our-team-add")
   }
 
   // send Our Clients data
@@ -249,6 +252,7 @@ export class WhoUsComponent implements OnInit {
       })
       await this.dataServ.createWhoUsOurClients(this.our_clients.value)
       // to get the object to update
+      this.showpart("our-clients-add")
     } else if (this.view_part == "our-clients-edit") {
       // to get the object to update
       this.dataServ.getWhoUsOurClients().subscribe(async data => {
@@ -257,11 +261,11 @@ export class WhoUsComponent implements OnInit {
             await this.dataServ.updateWhoUsOurClients(key, this.our_clients.value)
             if (this.clientPhotoUrl != this.updatedObject.image)
               this.firestorage.storage.refFromURL(data[key].image).delete()
+            this.showpart("our-clients-add")
           }
         }
       })
     }
-    this.showpart("our-clients-add")
   }
 
 
@@ -321,7 +325,7 @@ export class WhoUsComponent implements OnInit {
         for (const key in data) {
           if (item.id == data[key].id) {
             this.firestorage.storage.refFromURL(data[key].image).delete()
-            this.http.delete(`${this.databaseURL}/WhoUsServices/${key}.json`).subscribe(()=>{
+            this.http.delete(`${this.databaseURL}/WhoUsServices/${key}.json`).subscribe(() => {
               this.list = []
               this.getDataFromAPI()
             })
@@ -332,7 +336,7 @@ export class WhoUsComponent implements OnInit {
       this.dataServ.getWhoUsTeamWorks().subscribe(data => {
         for (const key in data) {
           if (item.id == data[key].id) {
-            this.http.delete(`${this.databaseURL}/WhoUsTeamWorks/${key}.json`).subscribe(()=>{
+            this.http.delete(`${this.databaseURL}/WhoUsTeamWorks/${key}.json`).subscribe(() => {
               this.list = []
               this.getDataFromAPI()
             })
@@ -344,7 +348,7 @@ export class WhoUsComponent implements OnInit {
       this.dataServ.getWhoUsOurClients().subscribe(data => {
         for (const key in data) {
           if (item.id == data[key].id) {
-            this.http.delete(`${this.databaseURL}/WhoUsOurClients/${key}.json`).subscribe(()=>{
+            this.http.delete(`${this.databaseURL}/WhoUsOurClients/${key}.json`).subscribe(() => {
               this.list = []
               this.getDataFromAPI()
             })
