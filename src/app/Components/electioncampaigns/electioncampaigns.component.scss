@@ -1,23 +1,25 @@
-
 .div-title {
     padding-top: 30px;
 }
+
 .h1 {
     color: blue;
     text-align: center;
     margin-bottom: 20px;
 }
-.col-lg-6 img{
+
+.col-lg-6 img {
     height: 480px;
     width: 85%;
     margin-right: 7.5%;
     border-radius: 4px;
 }
-.carousel-item img{
-    height: calc( 100vh - 140px);
+
+.carousel-item img {
+    height: calc(100vh - 140px);
 }
 
-#carouselExampleControls{
+#carouselExampleControls {
     width: 42%;
     margin-right: 29.75%;
 }
@@ -27,13 +29,16 @@
         margin-right: 0px;
         margin-left: 0px;
     }
+
     div.col-lg-6 img {
         height: 300px;
     }
-    .carousel-item img{
+
+    .carousel-item img {
         height: calc(100vh - 225px);
     }
-    #carouselExampleControls{
+
+    #carouselExampleControls {
         width: 90%;
         margin-right: 5%;
     }

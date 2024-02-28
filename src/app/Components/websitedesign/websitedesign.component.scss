@@ -2,6 +2,11 @@
     padding: 10px;
 }
 
+.Articles p,
+.most-important-features-of-Electro-website-design p {
+    text-align: center;
+}
+
 .Design-company {
     margin-top: 100px;
 }
@@ -82,11 +87,21 @@
 
 .Some-of-our-work {
     position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .our-works-list-view {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    width: 90%;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    color: wheat;
+    color: #c7c7c7;
 }
 
 .our-work-img {
@@ -97,31 +112,22 @@
     margin-bottom: 10px;
 }
 
-.bi-caret-left-fill {
-    position: absolute;
-    left: -2.5%;
-    top: 45%;
-    z-index: 4;
-    font-size: 25px;
-    color: orange;
-}
-
-.bi-caret-right-fill {
-    position: absolute;
-    top: 45%;
-    z-index: 4;
-    right: -2.5%;
-    font-size: 25px;
-    color: orange;
-}
-
 .professionals-img {
     width: 70%;
+}
+
+
+// ------------------------------------- Articles view ----------------------------
+
+.Articles img {
+    height: 240px;
+    border-radius: 10px;
 }
 
 // ------------------------------------- scroller view ----------------------------
 .swiper-slide img {
     height: 75vh;
+
 }
 
 .scoller-container {
@@ -144,18 +150,37 @@
     border-radius: 18px;
 }
 
+// ------------------------------ special-owl ------------------------------------
+
 .Types-of-sites-container {
     position: relative;
 }
 
 .Types-of-sites-container .bi {
     position: absolute;
-    top: 19%;
+    top: 44%;
     z-index: 2;
     font-size: 30px;
 }
 
-// ------------------------------------------------------------------
+
+.bi-caret-left-fill {
+    position: absolute;
+    left: -2.7%;
+    top: 45%;
+    z-index: 4;
+    font-size: 25px;
+    color: orange;
+}
+
+.bi-caret-right-fill {
+    position: absolute;
+    top: 45%;
+    z-index: 4;
+    right: -2.6%;
+    font-size: 25px;
+    color: orange;
+}
 
 .animation-left {
     animation-name: getProductLeft;
@@ -165,6 +190,11 @@
 .animation-right {
     animation-name: getProductRight;
     animation-duration: 1.5s;
+}
+
+.special-owl {
+    position: relative;
+    height: fit-content;
 }
 
 @keyframes getProductLeft {
@@ -187,13 +217,21 @@
     }
 }
 
-@media screen and (max-width:991px) {
-    i.bi {
-        display: none;
+@media screen and (max-width:900px) {
+    .bi-caret-right-fill {
+        right: -5%;
+    }
+
+    .bi-caret-left-fill {
+        left: -5.5%;
     }
 }
 
 @media screen and (max-width:700px) {
+    i.bi {
+        display: none;
+    }
+
     .Design-company .Dc .img {
         width: 100%;
     }
@@ -218,6 +256,7 @@
     .row {
         margin-left: 0px;
         margin-right: 0px;
+        padding: 0px;
     }
 
     .Design-company .span1 {
@@ -233,9 +272,14 @@
     }
 
     .Some-of-our-work .row img {
-        width: 90%;
+        width: 100%;
         margin-bottom: 14px;
-        margin-right: 5%;
+        margin-right: 0%;
+    }
+
+    .our-works-list-view {
+        width: 100%;
+        margin: 0px;
     }
 
     img.big-image {
@@ -260,5 +304,9 @@
     .scroll-view img {
         width: 60vw !important;
         height: 180px;
+    }
+
+    .professionals-img{
+        width: 100%;
     }
 }

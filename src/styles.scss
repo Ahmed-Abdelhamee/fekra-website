@@ -2,7 +2,8 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 // @import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
 // @import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
-
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
 img::selection {
     background: none;
 }
@@ -77,4 +78,11 @@ label {
 th,
 td {
     text-align: center !important;
+}
+
+
+.carousel-item.active,
+.carousel-control-prev,
+.carousel-control-next {
+    z-index: 3 !important;
 }

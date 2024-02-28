@@ -30,7 +30,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { ToastrModule } from 'ngx-toastr';
-
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -57,9 +57,10 @@ import { ToastrModule } from 'ngx-toastr';
     provideFirebaseApp(() => initializeApp(environment.firebase)), provideDatabase(() => getDatabase()), provideStorage(() => getStorage()), provideAuth(() => getAuth()),
     // CarouselModule,
     // NgxUsefulSwiperModule,
+    CarouselModule,
     BrowserAnimationsModule,
     NgxUsefulSwiperModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

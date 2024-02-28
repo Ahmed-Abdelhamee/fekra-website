@@ -27,6 +27,8 @@
     "bootstrap-icons": "^1.11.1",
     "firebase": "^9.23.0",
     "firebase-tools": "^11.0.0",
+    "jquery": "^3.7.1",
+    "ngx-owl-carousel-o": "^14.0.1",
     "ngx-toastr": "^15.2.2",
     "ngx-useful-swiper": "^10.0.1",
     "rxjs": "~7.5.0",

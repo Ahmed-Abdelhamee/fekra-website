@@ -1,4 +1,16 @@
 <div class="col-12 container set-margin-for-header">
+
+
+
+    <!-- <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let slide of list2">
+          <ng-template carouselSlide [id]="slide.id">
+            <img [src]="slide.img">
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o> -->
+
+
     <!-- -----------------------------------------------------------------------------------The best design company--------------------------------------------------------------- -->
     <div class="The-best-design-company pt-2">
         <div class="small-titlerefer col-12">
@@ -27,7 +39,7 @@
     <!-- -------------------------------------------------------------------------------Articles------------------------------------------------------------------- -->
     <div class="Articles pt-5">
         <h2 class="big-blue-title">المقالات</h2>
-        <div class="row">
+        <div class="row d-flex justify-content-center flex-wrap">
             <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1000">
                 <img src="assets/Content creation.png">
                 <div class="small-titlet-3">
@@ -61,7 +73,7 @@
     <div class="most-important-features-of-Electro-website-design pt-5">
         <h2 class="big-blue-title">أهم ميزات تصميم موقع إلكتروني</h2>
         <br>
-        <div class="row d-flex">
+        <div class="row d-flex justify-content-center flex-wrap">
             <div class="col-sm-4" data-aos="fade-up" data-aos-duration="1000">
                 <div class="most-important-imgDiv">
                     <img src="assets/تصميم مواقع مخصص.png" alt="">
@@ -185,14 +197,14 @@
             <div class="row our-works-list-view">
                 <swiper [config]="config">
                     <div class="swiper-wrapper">
-                      <div class="swiper-slide" *ngFor="let item of designList"> <img [src]="item.image" alt=""></div>
+                        <div class="swiper-slide" *ngFor="let item of designList"> <img [src]="item.image" alt=""></div>
                     </div>
                     <!-- Add Pagination -->
                     <div class="swiper-pagination"></div>
                     <!-- Add Arrows -->
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
-                  </swiper>
+                </swiper>
                 <!-- <img src="{{ item.image !='' || item.image !=undefined ? item.image:'assets/logo.jpeg'}}"
                     class="our-work-img"
                     [ngClass]="leftOrRight == 'rightScroll' ? (i==0? 'animation-left':''):(i==designListShow.length-1 ? 'animation-right':'')"
@@ -202,12 +214,16 @@
         </div>
         <!-- -----------------------------------------------------------------------------------type of site-------------------------------------------------------- -->
         <div class="Types-of-sites-container">
-            <h2 class="big-blue-title"> انواع المواقع</h2>
-            <div class="scoller-container">
-                <div class="scroll-view" #scroller > <img *ngFor="let item of list" [src]="item" alt=""></div>
+            <div class="special-owl">
+                <h2 class="big-blue-title"> انواع المواقع</h2>
+                <div class="scoller-container">
+                    <div class="scroll-view" #scroller> <img *ngFor="let item of list" [src]="item" alt=""></div>
+                </div>
+                <i class="bi bi-caret-right-fill" [ngStyle]="{'opacity': this.intervalCounterView==3? '0.5':'1'}"
+                    (click)="right()"></i>
+                <i class="bi bi-caret-left-fill"
+                    [ngStyle]="{'opacity': this.intervalCounterView==list.length? '0.5':'1'}" (click)="left()"></i>
             </div>
-            <i class="bi bi-caret-right-fill" (click)="right()"></i>
-            <i class="bi bi-caret-left-fill" (click)="left()"></i>
             <div class="row text-center">
                 <div class="col-lg-4" data-aos="fade-up" data-aos-duration="1000">
                     <img src="assets/المواقع الشخصية.jpg" class="icon" alt="">
