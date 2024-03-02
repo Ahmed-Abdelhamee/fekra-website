@@ -1,22 +1,30 @@
 <div class="col-12">
   <div class="d-flex justify-content-end">
-    <button class="btn btn-info control-button" (click)="controlItem='add';resetView()" *ngIf="controlItem !='add'">Add </button>
+    <button class="btn btn-info control-button" (click)="controlItem='add';resetView()" *ngIf="controlItem !='add'">Add
+    </button>
     <button class="btn btn-info control-button" (click)="controlItem='showData';getData()"
       *ngIf="controlItem !='showData'">Show Data </button>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-warning control-button" data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop">
+      update pdf
+    </button>
   </div>
   <form [formGroup]="election" (ngSubmit)="submit()" *ngIf="controlItem=='add' || controlItem=='edit'">
     <div class="form-group mt-2">
       <label for="formGroupExampleInput2"> صورة للحملات الانتخابية</label>
       <input type="file" accept=".jpg , .png , .jpeg , .webp " class="form-control" (change)="uploadImg($event)"
         id="formGroupExampleInput2">
-      <small><img [src]="photoUrl" alt="" *ngIf="photoUrl != ''"
-          class="promo-img-show-Admin"> <span class="p-2" *ngIf="uploadingImg == 'uploadingImg'">جاري التحميل
+      <small><img [src]="photoUrl" alt="" *ngIf="photoUrl != ''" class="promo-img-show-Admin"> <span class="p-2"
+          *ngIf="uploadingImg == 'uploadingImg'">جاري التحميل
           ...</span></small>
     </div>
     <div class="text-center m-2">
       <button type="submit" class="btn btn-outline-warning" *ngIf="photoUrl"> save</button>
     </div>
   </form>
+
 </div>
 
 <table class="table" *ngIf="controlItem=='showData'">
@@ -48,3 +56,33 @@
 
 <!-- code for uplaod ASP.net -->
 <!-- <input type="file" accept=".jpg , .png , .jpeg , .webp "  class="form-control" (change)="fileUploaded($event)"  id="formGroupExampleInput2" > -->
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-2">
+        <form [formGroup]="electionPDF" (ngSubmit)="submitupdatePDF()">
+          <div class="form-group mt-2">
+            <label for="formGroupExampleInput2"> للحملات الانتخابية pdf </label>
+            <input type="file" accept=".pdf , .docx " class="form-control" (change)="uploadPDF($event)"
+              id="formGroupExampleInput2">
+            <small class="text-warning" *ngIf="uploadingPDF=='uploadingPDF'"> جاري التحميل ... </small>
+            <small class="text-success" *ngIf="uploadingPDF=='pdfUploaded'"> تم تحميل الملف بنجاح</small>
+          </div>
+          <div class="text-center m-2">
+            <button type="submit" class="btn btn-outline-warning" *ngIf="uploadingPDF=='pdfUploaded'"> update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

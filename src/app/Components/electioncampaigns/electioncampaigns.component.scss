@@ -1,33 +1,34 @@
-.div-title {
-    padding-top: 30px;
-}
-
 .h1 {
+    padding-top: 20px;
     color: blue;
     text-align: center;
     margin-bottom: 20px;
-}
-
-.col-lg-6 img {
-    height: 480px;
-    width: 85%;
-    margin-right: 7.5%;
-    border-radius: 4px;
+    font-size: 32px;
 }
 
 .carousel-item img {
     height: calc(100vh - 140px);
 }
 
-#carouselExampleControls {
-    width: 42%;
-    margin-right: 29.75%;
+#carouselExampleControls,
+.div-title {
+    width: 36%;
+    margin-right: 32%;
+}
+
+.div-title {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 @media screen and (max-width:700px) {
     .row {
         margin-right: 0px;
         margin-left: 0px;
+    }
+
+    .h1 {
+        font-size: 22px;
     }
 
     div.col-lg-6 img {
@@ -38,7 +39,8 @@
         height: calc(100vh - 225px);
     }
 
-    #carouselExampleControls {
+    #carouselExampleControls,
+    .div-title {
         width: 90%;
         margin-right: 5%;
     }

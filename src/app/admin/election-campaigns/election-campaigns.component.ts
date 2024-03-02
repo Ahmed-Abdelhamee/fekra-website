@@ -6,6 +6,7 @@ import { Database } from '@angular/fire/database';
 import { DataService } from 'src/app/new-services/data.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { ToastrService } from 'ngx-toastr';
+import { electionPDF } from '../interfaces/electionPDF.interface';
 // import { environment } from 'src/environments/environment';
 
 @Component({
@@ -23,6 +24,7 @@ export class ElectionCampaignsComponent implements OnInit {
   // for control the view 
   controlItem: string = "showData";
   uploadingImg: string = "";
+  uploadingPDF: string = "";
   // variables for getting the data 
   photoUrl: any = "";
   electionList: election[] = []
@@ -31,8 +33,15 @@ export class ElectionCampaignsComponent implements OnInit {
     id: [new Date().getTime()],
     image: [{}, Validators.required],
   })
+  // for add the pdf
+  electionPDF = this.formBuilder.group({
+    id: [new Date().getTime()],
+    pdf: [{}, Validators.required],
+  })
   // for update the image 
   updateObject: election = {} as election;
+  updateObjectPDF: electionPDF = {} as electionPDF;
+
 
   constructor(private formBuilder: FormBuilder, private db: Database, private dataServ: DataService, private firestorage: AngularFireStorage, private toastr: ToastrService) {
     this.getData()
@@ -40,15 +49,22 @@ export class ElectionCampaignsComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  resetView(){
-    this.photoUrl ='';
+  resetView() {
+    this.photoUrl = '';
     this.updateObject = {} as election;
     this.election.patchValue({
       id: new Date().getTime(),
       image: ''
     })
-    this.uploadingImg=""
+    this.electionPDF.patchValue({
+      id: new Date().getTime(),
+      pdf: ''
+    })
+    this.uploadingImg = ""
+    this.uploadingPDF=""
   }
+
+
   // -----------  for uploading image on firebase  ----------
   async uploadImg(event: any) {
     this.uploadingImg = "uploadingImg";
@@ -65,9 +81,23 @@ export class ElectionCampaignsComponent implements OnInit {
     })
   }
 
+  // -----------  for uploading image on firebase  ----------
+  async uploadPDF(event: any) {
+    this.uploadingPDF = "uploadingPDF";
+    const file = event.target.files[0];
+    if (file) {
+      const path = `fekra/${new Date().getTime()}${file.name}`; // we make name of file in firebase storage 
+      const uploadTask = await this.firestorage.upload(path, file)
+      this.electionPDF.patchValue({
+        pdf: await uploadTask.ref.getDownloadURL()
+      })
+      this.uploadingPDF = "pdfUploaded";
+    }
+  }
+
   // -------------------- get data for firebase  --------------------
   getData() {
-    this.electionList = []
+    this.electionList = [];
     this.dataServ.getElection().subscribe(data => {
       for (const key in data) {
         this.electionList.push(data[key])
@@ -92,6 +122,16 @@ export class ElectionCampaignsComponent implements OnInit {
     }
   }
 
+  async submitupdatePDF() {
+    this.dataServ.getElectionPDF().subscribe(data => {
+      for (const key in data) {
+            this.firestorage.storage.refFromURL(data[key].pdf).delete()
+            this.dataServ.updateElectionPdf(key, this.electionPDF.value).then(() => {
+              this.resetView()
+        })
+      }
+    })
+  }
   // ----------------- to update data -------------------
   editItem(item: election) {
     this.photoUrl = item.image;
@@ -106,12 +146,12 @@ export class ElectionCampaignsComponent implements OnInit {
   deleteItem(id: number) {
     this.dataServ.getElection().subscribe(data => {
       for (const key in data) {
-        if (data[key].id == id){
+        if (data[key].id == id) {
           this.dataServ.deleteElection(key);
-        this.firestorage.storage.refFromURL(data[key].image).delete().then(() => {
-          
-        }) // to delete the file from Firebase Storage;
-      }
+          this.firestorage.storage.refFromURL(data[key].image).delete().then(() => {
+
+          }) // to delete the file from Firebase Storage;
+        }
       }
     })
   }

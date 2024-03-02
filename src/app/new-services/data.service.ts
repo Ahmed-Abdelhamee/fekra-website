@@ -9,6 +9,7 @@ import { OurClients, OurTeam, Services, WhoUs } from '../admin/interfaces/who-us
 import { homeServices } from '../admin/interfaces/home.interface';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
+import { electionPDF } from '../admin/interfaces/electionPDF.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class DataService {
 
   databaseURL: any = environment.firebase.databaseURL;
 
-  constructor(private http: HttpClient , private toastr:ToastrService) {
+  constructor(private http: HttpClient, private toastr: ToastrService) {
   }
 
 
@@ -26,12 +27,12 @@ export class DataService {
     return this.http.get<homeServices[]>(`${this.databaseURL}/HomeSerevicesData.json`)
   }
   createHomeSerevices(data: any) {
-    this.http.post(`${this.databaseURL}/HomeSerevicesData.json`, data).subscribe(()=>{
+    this.http.post(`${this.databaseURL}/HomeSerevicesData.json`, data).subscribe(() => {
       location.reload()
     })
   }
   updateHomeSerevices(key: string, data: any) {
-    this.http.put(`${this.databaseURL}/HomeSerevicesData/${key}.json`, data).subscribe(()=>{
+    this.http.put(`${this.databaseURL}/HomeSerevicesData/${key}.json`, data).subscribe(() => {
       location.reload()
     });
   }
@@ -40,12 +41,12 @@ export class DataService {
     return this.http.get<advertisment[]>(`${this.databaseURL}/advertismentData.json`)
   }
   async createAdvertisment(data: any) {
-    this.http.post(`${this.databaseURL}/advertismentData.json`, data).subscribe(()=>{
+    this.http.post(`${this.databaseURL}/advertismentData.json`, data).subscribe(() => {
       this.toastr.success("تم رفع المحتوي")
     })
   }
   async updateAdvertisment(key: string, data: any) {
-    this.http.put(`${this.databaseURL}/advertismentData/${key}.json`, data).subscribe(()=>{
+    this.http.put(`${this.databaseURL}/advertismentData/${key}.json`, data).subscribe(() => {
       this.toastr.warning("تم تعديل المحتوي")
     });
   }
@@ -57,31 +58,50 @@ export class DataService {
     return this.http.get<election[]>(`${this.databaseURL}/ElectionImages.json`)
   }
   createElection(data: any) {
-    return this.http.post(`${this.databaseURL}/ElectionImages.json`, data).subscribe(()=>{
+    return this.http.post(`${this.databaseURL}/ElectionImages.json`, data).subscribe(() => {
       location.reload()
     })
   }
   updateElection(key: string, data: any) {
-    this.http.put(`${this.databaseURL}/ElectionImages/${key}.json`, data).subscribe(()=>{
+    this.http.put(`${this.databaseURL}/ElectionImages/${key}.json`, data).subscribe(() => {
       location.reload()
     });
   }
   deleteElection(key: string) {
-    this.http.delete(`${this.databaseURL}/ElectionImages/${key}.json`).subscribe(()=>{
+    this.http.delete(`${this.databaseURL}/ElectionImages/${key}.json`).subscribe(() => {
       location.reload()
     })
+  }
+
+  // ***************************************** update election *******************************************
+  getElectionPDF(): Observable<electionPDF[]> {
+    return this.http.get<electionPDF[]>(`${this.databaseURL}/ElectionPdf.json`)
+  }
+  // getElectionPDFArray():electionPDF[] {
+  //   let arr:electionPDF[]=[];
+  //   this.getElectionPDF().subscribe(data=>{
+  //     for (const key in data) {
+  //       arr.push(data[key])
+  //     }
+  //   })
+  //  return arr;
+  // }
+  async updateElectionPdf(key: string, data: any) {
+    this.http.put(`${this.databaseURL}/ElectionPdf/${key}.json`, data).subscribe(() => {
+      this.toastr.warning("تم تعديل الملف ")
+    });
   }
   // ******************************************** OurWorks Data ********************************************
   getOurWorks(): Observable<design[]> {
     return this.http.get<design[]>(`${this.databaseURL}/OurWorksImages.json`)
   }
   async createOurWorks(data: any) {
-    this.http.post(`${this.databaseURL}/OurWorksImages.json`, data).subscribe(()=>{
+    this.http.post(`${this.databaseURL}/OurWorksImages.json`, data).subscribe(() => {
       location.reload()
     })
   }
   async updateOurWorks(key: string, data: any) {
-    this.http.put(`${this.databaseURL}/OurWorksImages/${key}.json`, data).subscribe(()=>{
+    this.http.put(`${this.databaseURL}/OurWorksImages/${key}.json`, data).subscribe(() => {
       location.reload()
     });
   }
@@ -93,12 +113,12 @@ export class DataService {
     return this.http.get<WhoUs[]>(`${this.databaseURL}/WhoUsDescription.json`)
   }
   async createWhoUsDescription(data: any) {
-    this.http.post(`${this.databaseURL}/WhoUsDescription.json`, data).subscribe(()=>{
+    this.http.post(`${this.databaseURL}/WhoUsDescription.json`, data).subscribe(() => {
       this.toastr.success("تم رفع المحتوي")
     })
   }
   async updateWhoUsDescription(key: string, data: any) {
-    this.http.put(`${this.databaseURL}/WhoUsDescription/${key}.json`, data).subscribe(()=>{
+    this.http.put(`${this.databaseURL}/WhoUsDescription/${key}.json`, data).subscribe(() => {
       this.toastr.warning("تم تعديل المحتوي")
     });
   }
@@ -111,12 +131,12 @@ export class DataService {
     return this.http.get<Services[]>(`${this.databaseURL}/WhoUsServices.json`)
   }
   async createWhoUsServices(data: any) {
-    this.http.post(`${this.databaseURL}/WhoUsServices.json`, data).subscribe(()=>{
+    this.http.post(`${this.databaseURL}/WhoUsServices.json`, data).subscribe(() => {
       this.toastr.success("تم رفع المحتوي")
     })
   }
   async updateWhoUsServices(key: string, data: any) {
-    this.http.put(`${this.databaseURL}/WhoUsServices/${key}.json`, data).subscribe(()=>{
+    this.http.put(`${this.databaseURL}/WhoUsServices/${key}.json`, data).subscribe(() => {
       this.toastr.warning("تم تعديل المحتوي")
     });
   }
@@ -129,12 +149,12 @@ export class DataService {
     return this.http.get<OurTeam[]>(`${this.databaseURL}/WhoUsTeamWorks.json`)
   }
   async createWhoUsTeamWorks(data: any) {
-    this.http.post(`${this.databaseURL}/WhoUsTeamWorks.json`, data).subscribe(()=>{
+    this.http.post(`${this.databaseURL}/WhoUsTeamWorks.json`, data).subscribe(() => {
       this.toastr.success("تم رفع المحتوي")
     })
   }
   async updateWhoUsTeamWorks(key: string, data: any) {
-    this.http.put(`${this.databaseURL}/WhoUsTeamWorks/${key}.json`, data).subscribe(()=>{
+    this.http.put(`${this.databaseURL}/WhoUsTeamWorks/${key}.json`, data).subscribe(() => {
       this.toastr.warning("تم تعديل المحتوي")
     });
   }
@@ -146,17 +166,19 @@ export class DataService {
     return this.http.get<OurClients[]>(`${this.databaseURL}/WhoUsOurClients.json`)
   }
   async createWhoUsOurClients(data: any) {
-    this.http.post(`${this.databaseURL}/WhoUsOurClients.json`, data).subscribe(()=>{
+    this.http.post(`${this.databaseURL}/WhoUsOurClients.json`, data).subscribe(() => {
       this.toastr.success("تم رفع المحتوي")
     })
   }
   async updateWhoUsOurClients(key: string, data: any) {
-    this.http.put(`${this.databaseURL}/WhoUsOurClients/${key}.json`, data).subscribe(()=>{
+    this.http.put(`${this.databaseURL}/WhoUsOurClients/${key}.json`, data).subscribe(() => {
       this.toastr.warning("تم تعديل المحتوي")
     });
   }
   deleteWhoUsOurClients(key: string) {
     this.http.delete(`${this.databaseURL}/WhoUsOurClients/${key}.json`).subscribe()
   }
+
+
 
 }

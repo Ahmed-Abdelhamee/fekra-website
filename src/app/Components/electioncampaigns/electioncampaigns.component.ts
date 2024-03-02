@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { election } from 'src/app/admin/interfaces/election.interface';
+import { electionPDF } from 'src/app/admin/interfaces/electionPDF.interface';
 import { DataService } from 'src/app/new-services/data.service';
 import { environment } from 'src/environments/environment';
 
@@ -11,12 +12,18 @@ import { environment } from 'src/environments/environment';
 export class ElectioncampaignsComponent implements OnInit {
 
   electionList:election[]=[];
+  electionListPdf:electionPDF[]=[];
   // api_link="http://markitingwebsite-001-site1.dtempurl.com";
 
   constructor(private dataServ:DataService) {
     this.dataServ.getElection().subscribe(data=>{
       for (const key in data) {
         this.electionList.push(data[key])
+      }
+    })
+    this.dataServ.getElectionPDF().subscribe(data=>{
+      for (const key in data) {
+        this.electionListPdf.push(data[key])
       }
     })
    }

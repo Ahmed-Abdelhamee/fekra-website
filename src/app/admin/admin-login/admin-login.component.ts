@@ -33,8 +33,8 @@ export class AdminLoginComponent implements OnInit {
     // }
 
     this.auth.login(this.adminLogin.value).then(()=> {
-      this.route.navigate(["/admin-dash/home"]);
       sessionStorage.setItem("Admin","welcomeAdminfekra")
+      this.route.navigate(["/admin-dash/home"]);
     }).catch(()=>{
       this.errorView=true;
       sessionStorage.removeItem("Admin");
