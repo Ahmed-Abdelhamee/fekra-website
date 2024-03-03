@@ -1,37 +1,66 @@
 <div class="col-12">
   <div class="d-flex justify-content-end">
-    <button class="btn btn-info control-button" (click)="controlItem='add';resetView()" *ngIf="controlItem !='add'">Add
-    </button>
+
+    <button class="btn btn-info control-button" (click)="controlItem='add';resetView()"
+      [disabled]="controlItem =='add'">اضف صورة حملة </button>
+
+    <button class="btn btn-info control-button" (click)="controlItem='add-samples';resetView()"
+      [disabled]="controlItem =='add-samples'">اضف منشور الحملة الانتخابية </button>
+
     <button class="btn btn-info control-button" (click)="controlItem='showData';getData()"
-      *ngIf="controlItem !='showData'">Show Data </button>
+      [disabled]="controlItem =='showData'">عرض الصور المتحركة </button>
+
+    <button class="btn btn-info control-button" (click)="controlItem='showData-samples';getDataSamples()"
+      [disabled]="controlItem =='showData-samples'">عرض المنشورات </button>
 
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-warning control-button" data-bs-toggle="modal"
-      data-bs-target="#staticBackdrop">
-      update pdf
-    </button>
+      data-bs-target="#staticBackdrop"> update pdf </button>
   </div>
-  <form [formGroup]="election" (ngSubmit)="submit()" *ngIf="controlItem=='add' || controlItem=='edit'">
+
+  <form [formGroup]="election" (ngSubmit)="submit()" *ngIf="controlItem=='add' || controlItem=='edit-election'">
     <div class="form-group mt-2">
-      <label for="formGroupExampleInput2"> صورة للحملات الانتخابية</label>
+      <label for="image"> صورة متحركة </label>
       <input type="file" accept=".jpg , .png , .jpeg , .webp " class="form-control" (change)="uploadImg($event)"
-        id="formGroupExampleInput2">
+        id="image">
       <small><img [src]="photoUrl" alt="" *ngIf="photoUrl != ''" class="promo-img-show-Admin"> <span class="p-2"
-          *ngIf="uploadingImg == 'uploadingImg'">جاري التحميل
-          ...</span></small>
+          *ngIf="uploadingImg == 'uploadingImg'">جاري التحميل ...</span></small>
     </div>
     <div class="text-center m-2">
       <button type="submit" class="btn btn-outline-warning" *ngIf="photoUrl"> save</button>
     </div>
   </form>
 
+  <form [formGroup]="electionSamples" (ngSubmit)="submitSamples()"
+    *ngIf="controlItem=='add-samples' || controlItem=='edit-electionSamples'">
+    <div class="form-group mt-2">
+      <label for="image-samples"> صورة للحملة الانتخابية</label>
+      <input type="file" accept=".jpg , .png , .jpeg , .webp " class="form-control"
+        (change)="uploadSamplesImages($event)" id="image-samples">
+      <small><img [src]="photoUrl" alt="" *ngIf="photoUrl != ''" class="promo-img-show-Admin"> <span class="p-2"
+          *ngIf="uploadingElectionSamples == 'uploadingElectionSamples'">جاري التحميل ...</span></small>
+    </div>
+    <div class="form-group">
+      <label for="title">عنوان</label>
+      <input type="text" class="form-control" id="title" formControlName="title">
+    </div>
+    <div class="form-group">
+      <label for="url">الرابط</label>
+      <input type="url" class="form-control" formControlName="url">
+    </div>
+    <div class="text-center m-2">
+      <button type="submit" class="btn btn-outline-warning" *ngIf="photoUrl"> save</button>
+    </div>
+  </form>
 </div>
 
-<table class="table" *ngIf="controlItem=='showData'">
+<table class="table" *ngIf="controlItem=='showData' || controlItem =='showData-samples'">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">صورة حملة انتخابية</th>
+      <th scope="col">صورة</th>
+      <th scope="col" *ngIf="controlItem =='showData-samples'">عنوان</th>
+      <th scope="col" *ngIf="controlItem =='showData-samples'">الرابط</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -42,24 +71,21 @@
         {{i+1}}
       </th>
       <td><img src="{{item.image}}" class="promo-img-show-Admin" alt=""></td>
+      <td *ngIf="controlItem =='showData-samples'">{{item.title}}</td>
+      <td *ngIf="controlItem =='showData-samples'">{{item.url}}</td>
       <td>
         <div class="additional-height"></div>
-        <button class="btn btn-danger control-button" (click)="deleteItem(item.id)"><i class="bi bi-trash-fill"></i>
+        <button class="btn btn-danger control-button"
+          (click)="controlItem=controlItem=='showData'?'delete-election' :'delete-electionSamples';deleteItem(item.id);"><i
+            class="bi bi-trash-fill"></i>
         </button>
-        <button class="btn btn-warning control-button" (click)="editItem(item);controlItem='edit'"><i
+        <button class="btn btn-warning control-button"
+          (click)="controlItem=controlItem=='showData'?'edit-election' :'edit-electionSamples';editItem(item);"><i
             class="bi bi-pencil"></i> </button>
       </td>
     </tr>
   </tbody>
 </table>
-
-
-<!-- code for uplaod ASP.net -->
-<!-- <input type="file" accept=".jpg , .png , .jpeg , .webp "  class="form-control" (change)="fileUploaded($event)"  id="formGroupExampleInput2" > -->
-
-
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"

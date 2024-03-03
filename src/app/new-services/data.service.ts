@@ -10,6 +10,7 @@ import { homeServices } from '../admin/interfaces/home.interface';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { electionPDF } from '../admin/interfaces/electionPDF.interface';
+import { electionSamples } from '../admin/interfaces/electionSamples.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +37,10 @@ export class DataService {
       location.reload()
     });
   }
+
+
   // ******************************************** Advertisment Data ********************************************
+
   getAdvertisment(): Observable<advertisment[]> {
     return this.http.get<advertisment[]>(`${this.databaseURL}/advertismentData.json`)
   }
@@ -53,7 +57,11 @@ export class DataService {
   deleteAdvertisment(key: string) {
     this.http.delete(`${this.databaseURL}/advertismentData/${key}.json`).subscribe()
   }
+
+
+
   // ******************************************** Election Data ********************************************
+
   getElection(): Observable<election[]> {
     return this.http.get<election[]>(`${this.databaseURL}/ElectionImages.json`)
   }
@@ -73,25 +81,33 @@ export class DataService {
     })
   }
 
-  // ***************************************** update election *******************************************
+  // ***************************************** election Samples *************************************
+
+  getElectionSamples(): Observable<electionSamples[]> {
+    return this.http.get<electionSamples[]>(`${this.databaseURL}/ElectionSamples.json`)
+  }
+  async createElectionSamples(data: any) {
+    return this.http.post(`${this.databaseURL}/ElectionSamples.json`, data).subscribe()
+  }
+  async updateElectionSamples(key: string, data: any) {
+    this.http.put(`${this.databaseURL}/ElectionSamples/${key}.json`, data).subscribe();
+  }
+
+  // ***************************************** update election PDF ****************************************
+
   getElectionPDF(): Observable<electionPDF[]> {
     return this.http.get<electionPDF[]>(`${this.databaseURL}/ElectionPdf.json`)
   }
-  // getElectionPDFArray():electionPDF[] {
-  //   let arr:electionPDF[]=[];
-  //   this.getElectionPDF().subscribe(data=>{
-  //     for (const key in data) {
-  //       arr.push(data[key])
-  //     }
-  //   })
-  //  return arr;
-  // }
   async updateElectionPdf(key: string, data: any) {
     this.http.put(`${this.databaseURL}/ElectionPdf/${key}.json`, data).subscribe(() => {
       this.toastr.warning("تم تعديل الملف ")
     });
   }
+
+
+
   // ******************************************** OurWorks Data ********************************************
+
   getOurWorks(): Observable<design[]> {
     return this.http.get<design[]>(`${this.databaseURL}/OurWorksImages.json`)
   }
@@ -108,7 +124,11 @@ export class DataService {
   deleteOurWorks(key: string) {
     this.http.delete(`${this.databaseURL}/OurWorksImages/${key}.json`).subscribe()
   }
+
+
+
   // ******************************************** Who-Us Description ********************************************
+
   getWhoUsDescription(): Observable<WhoUs[]> {
     return this.http.get<WhoUs[]>(`${this.databaseURL}/WhoUsDescription.json`)
   }
@@ -126,7 +146,10 @@ export class DataService {
     this.http.delete(`${this.databaseURL}/WhoUsDescription/${key}.json`).subscribe()
   }
 
+
+
   // ******************************************** Who-Us Services ********************************************
+
   getWhoUsServices(): Observable<Services[]> {
     return this.http.get<Services[]>(`${this.databaseURL}/WhoUsServices.json`)
   }
@@ -144,7 +167,10 @@ export class DataService {
     this.http.delete(`${this.databaseURL}/WhoUsServices/${key}.json`).subscribe()
   }
 
+
+
   // ******************************************** Who-Us TeamWorks ********************************************
+  
   getWhoUsTeamWorks(): Observable<OurTeam[]> {
     return this.http.get<OurTeam[]>(`${this.databaseURL}/WhoUsTeamWorks.json`)
   }
@@ -161,7 +187,11 @@ export class DataService {
   deleteWhoUsTeamWorks(key: string) {
     this.http.delete(`${this.databaseURL}/WhoUsTeamWorks/${key}.json`).subscribe()
   }
+
+
+
   // ******************************************** Who-Us OurClients ********************************************
+
   getWhoUsOurClients(): Observable<OurClients[]> {
     return this.http.get<OurClients[]>(`${this.databaseURL}/WhoUsOurClients.json`)
   }
